@@ -34,6 +34,7 @@
         <button type="submit">Vorschau anzeigen</button>
     </form>
     <?php
+    endif;
     if ($typ === 'ro') 
         ?>
         <form action="vorschau.php" method="post" enctype="multipart/form-data">
@@ -60,6 +61,7 @@
         <button type="submit">Vorschau anzeigen</button>
     </form>
     <?php
+    endif;
     if ($typ === 'lu') 
         ?>
         <form action="vorschau.php" method="post" enctype="multipart/form-data">
@@ -86,6 +88,7 @@
         <button type="submit">Vorschau anzeigen</button>
     </form>
     <?php
+    endif;
     if ($typ === 'ru') 
         ?>
         <form action="vorschau.php" method="post" enctype="multipart/form-data">
@@ -111,8 +114,10 @@
 
         <button type="submit">Vorschau anzeigen</button>
     </form>
+    <?php
+    endif;
+        ?>
     
-    
-     <a href="bearbeiten.php">Zurück</a>
+     <a href="index.php">Zurück</a>
 </body>
 </html>
