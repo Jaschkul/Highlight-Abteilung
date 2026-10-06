@@ -34,6 +34,6 @@ rename("temp/" . $_SESSION['bild1'], "uploads/" . $_SESSION['bild1']);
 rename("temp/" . $_SESSION['bild2'], "uploads/" . $_SESSION['bild2']);
 
 echo "✔ Highlight gespeichert!";
-
+?>
 </body>
 </html>
