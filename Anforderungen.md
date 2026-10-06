@@ -26,12 +26,7 @@ Anforderungen
         
         zwischen Software und input 
      
-Offene Fragen 
-
-    Wer stellt alles ein nur it oder alle abt
-    
-
-    
+dsvds
 
 
     
