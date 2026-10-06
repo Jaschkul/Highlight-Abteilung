@@ -31,8 +31,39 @@
         <img src="temp/<?= $bilder[1] ?>" style="width:100%; max-width:800px;">
     <?php endif; ?>
 
-    <a href="bearbeiten.php">Zurück</a>
     <a href="speichern.php">Speichern</a>
-
+        <?php
+    $typ = $_GET['typ'] ?? $_POST['typ'] ?? null;
+    if ($typ === 'lo') {
+    ?>
+    <form action="bearbeiten.php" method="post">
+        <input type="hidden" name="typ" value="lo">
+        <button>Bearbeiten</button>
+    </form>
+    <?php
+    } if ($typ === 'ro') {
+    ?>
+    <form action="bearbeiten.php" method="post">
+        <input type="hidden" name="typ" value="ro">
+        <button>Bearbeiten</button>
+    </form>
+    <?php
+    } if ($typ === 'lu') {
+    ?>
+    <form action="bearbeiten.php" method="post">
+        <input type="hidden" name="typ" value="lu">
+        <button>Bearbeiten</button>
+    </form>
+    <?php
+    } if ($typ === 'ru') {
+    ?>
+    <form action="bearbeiten.php" method="post">
+        <input type="hidden" name="typ" value="ru">
+        <button>Bearbeiten</button>
+    </form>
+    <?php
+    } 
+    ?>
+    
 </body>
 </html>

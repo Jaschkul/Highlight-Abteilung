@@ -65,7 +65,7 @@
     if ($typ === 'lu') {
         ?>
         <form action="vorschau.php" method="post" enctype="multipart/form-data">
-
+        <input type="hidden" name="typ" value="lo">
         <label>Titel:</label>
         <input type="text" name="titel" required>
 
