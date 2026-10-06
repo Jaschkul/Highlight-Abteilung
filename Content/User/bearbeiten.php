@@ -6,29 +6,109 @@
     <title>Bearbeiten</title>
 </head>
 <body>
-    <form action="vorschau.php" method="post" enctype="multipart/form-data">
+    <?php
+    $typ = $_GET['typ'] ?? $_POST['typ'] ?? null;
+    if ($typ === 'lo') {
+        <form action="vorschau.php" method="post" enctype="multipart/form-data">
 
-    <label>Titel:</label>
-    <input type="text" name="titel" required>
+        <label>Titel:</label>
+        <input type="text" name="titel" required>
 
-    <label>Beschreibung:</label>
-    <textarea name="beschreibung1"></textarea>
+        <label>Beschreibung:</label>
+        <textarea name="beschreibung1"></textarea>
 
-    <label>Abteilung:</label>
-    <select name="abteilungs_id">
-        <option value="1">IT</option>
-        <option value="2">Marketing</option>
-        <option value="3">Vertrieb</option>
-    </select>
+        <label>Abteilung:</label>
+        <select name="abteilungs_id">
+            <option value="1">IT</option>
+            <option value="2">Marketing</option>
+            <option value="3">Vertrieb</option>
+        </select>
 
-    <label>Bild 1:</label>
-    <input type="file" name="bild1">
+        <label>Bild 1:</label>
+        <input type="file" name="bild1">
 
-    <label>Bild 2:</label>
-    <input type="file" name="bild2">
+        <label>Bild 2:</label>
+        <input type="file" name="bild2">
 
-    <button type="submit">Vorschau anzeigen</button>
-</form>
+        <button type="submit">Vorschau anzeigen</button>
+    </form>
+    }
+    if ($typ === 'ro') {
+        <form action="vorschau.php" method="post" enctype="multipart/form-data">
 
+        <label>Titel:</label>
+        <input type="text" name="titel" required>
+
+        <label>Beschreibung:</label>
+        <textarea name="beschreibung1"></textarea>
+
+        <label>Abteilung:</label>
+        <select name="abteilungs_id">
+            <option value="1">IT</option>
+            <option value="2">Marketing</option>
+            <option value="3">Vertrieb</option>
+        </select>
+
+        <label>Bild 1:</label>
+        <input type="file" name="bild1">
+
+        <label>Bild 2:</label>
+        <input type="file" name="bild2">
+
+        <button type="submit">Vorschau anzeigen</button>
+    </form>
+    }
+    if ($typ === 'lu') {
+        <form action="vorschau.php" method="post" enctype="multipart/form-data">
+
+        <label>Titel:</label>
+        <input type="text" name="titel" required>
+
+        <label>Beschreibung:</label>
+        <textarea name="beschreibung1"></textarea>
+
+        <label>Abteilung:</label>
+        <select name="abteilungs_id">
+            <option value="1">IT</option>
+            <option value="2">Marketing</option>
+            <option value="3">Vertrieb</option>
+        </select>
+
+        <label>Bild 1:</label>
+        <input type="file" name="bild1">
+
+        <label>Bild 2:</label>
+        <input type="file" name="bild2">
+
+        <button type="submit">Vorschau anzeigen</button>
+    </form>
+    }
+    if ($typ === 'ru') {
+        <form action="vorschau.php" method="post" enctype="multipart/form-data">
+
+        <label>Titel:</label>
+        <input type="text" name="titel" required>
+
+        <label>Beschreibung:</label>
+        <textarea name="beschreibung1"></textarea>
+
+        <label>Abteilung:</label>
+        <select name="abteilungs_id">
+            <option value="1">IT</option>
+            <option value="2">Marketing</option>
+            <option value="3">Vertrieb</option>
+        </select>
+
+        <label>Bild 1:</label>
+        <input type="file" name="bild1">
+
+        <label>Bild 2:</label>
+        <input type="file" name="bild2">
+
+        <button type="submit">Vorschau anzeigen</button>
+    </form>
+    }
+    ?>
+     <a href="bearbeiten.php">Zurück</a>
 </body>
 </html>
