@@ -13,16 +13,15 @@
         <form action="vorschau.php" method="post" enctype="multipart/form-data">
         <input type="hidden" name="typ" value="lo">
         <label>Titel:</label>
-        <input type="text" name="titel" required>
-
+        <input type="text" name="titel" value="<?= $_SESSION['titel'] ?? '' ?>" required>
         <label>Beschreibung:</label>
-        <textarea name="beschreibung1"></textarea>
+        <textarea name="beschreibung1"><?= $_SESSION['beschreibung1'] ?? '' ?></textarea>
 
         <label>Abteilung:</label>
         <select name="abteilungs_id">
-            <option value="1">IT</option>
-            <option value="2">Marketing</option>
-            <option value="3">Vertrieb</option>
+            <option value="<?= $_SESSION['abteilungs_id'] ?? '' ?>">
+                <?= $_SESSION['abteilungs_id'] ?? 'Bitte wählen' ?>
+            </option>
         </select>
 
         <label>Bild 1:</label>
