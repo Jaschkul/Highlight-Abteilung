@@ -11,7 +11,7 @@
     if ($typ === 'lo') {
     ?>
         <form action="vorschau.php" method="post" enctype="multipart/form-data">
-
+        <input type="hidden" name="typ" value="lo">
         <label>Titel:</label>
         <input type="text" name="titel" required>
 
@@ -38,7 +38,7 @@
     if ($typ === 'ro') {
         ?>
         <form action="vorschau.php" method="post" enctype="multipart/form-data">
-
+        <input type="hidden" name="typ" value="ro">
         <label>Titel:</label>
         <input type="text" name="titel" required>
 
@@ -65,7 +65,7 @@
     if ($typ === 'lu') {
         ?>
         <form action="vorschau.php" method="post" enctype="multipart/form-data">
-        <input type="hidden" name="typ" value="lo">
+        <input type="hidden" name="typ" value="lu">
         <label>Titel:</label>
         <input type="text" name="titel" required>
 
@@ -92,7 +92,7 @@
     if ($typ === 'ru') {
         ?>
         <form action="vorschau.php" method="post" enctype="multipart/form-data">
-
+        <input type="hidden" name="typ" value="ru">
         <label>Titel:</label>
         <input type="text" name="titel" required>
 
