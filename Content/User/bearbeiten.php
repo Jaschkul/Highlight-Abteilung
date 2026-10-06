@@ -62,7 +62,7 @@
     </form>
     <?php
     }
-    if ($typ === 'lu') 
+    if ($typ === 'lu') {
         ?>
         <form action="vorschau.php" method="post" enctype="multipart/form-data">
 
@@ -88,7 +88,7 @@
         <button type="submit">Vorschau anzeigen</button>
     </form>
     <?php
-    endif;
+    }
     if ($typ === 'ru') {
         ?>
         <form action="vorschau.php" method="post" enctype="multipart/form-data">
