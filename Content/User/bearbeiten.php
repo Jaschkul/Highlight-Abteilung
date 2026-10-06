@@ -8,7 +8,7 @@
 <body>
     <?php
     $typ = $_GET['typ'] ?? $_POST['typ'] ?? null;
-    if ($typ === 'lo') 
+    if ($typ === 'lo') {
     ?>
         <form action="vorschau.php" method="post" enctype="multipart/form-data">
 
@@ -34,8 +34,8 @@
         <button type="submit">Vorschau anzeigen</button>
     </form>
     <?php
-    endif;
-    if ($typ === 'ro') 
+    }
+    if ($typ === 'ro') {
         ?>
         <form action="vorschau.php" method="post" enctype="multipart/form-data">
 
@@ -61,7 +61,7 @@
         <button type="submit">Vorschau anzeigen</button>
     </form>
     <?php
-    endif;
+    }
     if ($typ === 'lu') 
         ?>
         <form action="vorschau.php" method="post" enctype="multipart/form-data">
@@ -89,7 +89,7 @@
     </form>
     <?php
     endif;
-    if ($typ === 'ru') 
+    if ($typ === 'ru') {
         ?>
         <form action="vorschau.php" method="post" enctype="multipart/form-data">
 
@@ -115,7 +115,7 @@
         <button type="submit">Vorschau anzeigen</button>
     </form>
     <?php
-    endif;
+    }
         ?>
     
      <a href="index.php">Zurück</a>
