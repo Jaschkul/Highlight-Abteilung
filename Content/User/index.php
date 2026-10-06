@@ -8,6 +8,6 @@
 <body>
     Hello World! e
     iii
-     <a href=template.php">template</a>
+     <a href=template.php>template</a>
 </body>
 </html>
