@@ -1,12 +1,11 @@
 <?php
 session_start();
 
-// Wenn das Formular abgeschickt wurde → Session aktualisieren
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $_SESSION['titel'] = $_POST['titel'] ?? '';
-    $_SESSION['autor'] = $_POST['Autor'] ?? '';
-    $_SESSION['beschreibung1'] = $_POST['beschreibung1'] ?? '';
-    $_SESSION['abteilungs_id'] = $_POST['abteilungs_id'] ?? '';
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['titel'])) {
+    $_SESSION['titel'] = $_POST['titel'];
+    $_SESSION['autor'] = $_POST['Autor'];
+    $_SESSION['beschreibung1'] = $_POST['beschreibung1'];
+    $_SESSION['abteilungs_id'] = $_POST['abteilungs_id'];
 
     // Bilder speichern
     $uploadDir = "temp/";
@@ -21,6 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 }
+
 
 $typ = $_GET['typ'] ?? $_POST['typ'] ?? null;
 
