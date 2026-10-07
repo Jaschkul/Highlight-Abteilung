@@ -19,3 +19,28 @@ Task: die Bilder müssen sich flexibel an die Bildschirmgröße anpassen
     background-color: transparent;
     border: none;
 }
+
+
+
+
+
+
+.dropzone1 {
+    width: 100%;
+    max-width: 400px;
+    padding: 30px;
+    border: 2px dashed #888;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: 0.2s;
+    position: relative;
+}
+
+.preview-img1 {
+    width: 100%;
+    max-width: 400px;
+    margin-top: 0;
+    display: none;
+}

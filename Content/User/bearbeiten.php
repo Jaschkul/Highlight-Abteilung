@@ -6,6 +6,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style-sheet.css">
     <title>Bearbeiten</title>
 </head>
 <body>
@@ -19,9 +20,9 @@ session_start();
         <form action="vorschau.php" method="post" enctype="multipart/form-data">
         <input type="hidden" name="typ" value="lo">
         <label>Titel:</label>
-        <input type="text" name="titel" value="<?= $_SESSION['titel'] ?? '' ?>" required>
+        <input type="text" name="titel" value="<?= $_SESSION['titel'] ?>" required>
         <label>Beschreibung:</label>
-        <textarea name="beschreibung1"><?= $_SESSION['beschreibung1'] ?? '' ?></textarea>
+        <textarea name="beschreibung1" required><?= $_SESSION['beschreibung1'] ?> </textarea>
         <?php
         $pdo = new PDO(
             'mysql:host=mariadb;dbname=iii;charset=utf8',
@@ -34,7 +35,13 @@ session_start();
 
 
         <label>Abteilung:</label>
+<<<<<<< HEAD
         <select name="abteilungs_id">
+=======
+        <select name="abteilungs_id" required>
+        <option value="" disabled selected>Bitte auswählen</option>
+
+>>>>>>> 1d97e7c5333813f4e223a031a3409b9b0d87825a
     <?php foreach ($abteilungen as $abt): ?>
         <option value="<?= $abt['id'] ?>"
             <?= (isset($_SESSION['abteilungs_id']) && $_SESSION['abteilungs_id'] == $abt['id']) ? 'selected' : '' ?>
@@ -45,94 +52,20 @@ session_start();
 </select>
 
 
-        <label>Bild 1:</label>
-        <input type="file" name="bild1">
+            
 
-        <label>Bild 2:</label>
-            <style>
-.dropzone {
-    width: 100%;
-    max-width: 400px;
-    padding: 30px;
-    border: 2px dashed #888;
-    border-radius: 10px;
-    text-align: center;
-    cursor: pointer;
-    margin-bottom: 20px;
-    transition: 0.2s;
-    position: relative;
-}
-
-.preview-img {
-    width: 100%;
-    max-width: 400px;
-    margin-top: 0;
-    display: none;
-}
-
-.dropzone.dragover {
-    background-color: #eef;
-    border-color: #55f;
-}
-
-</style>
-
-<div class="dropzone" id="dropzone2">
-    <span id="dropzoneText2">Bild hierher ziehen oder klicken</span>
+<div class="dropzone" id="dropzone1">
+    <span id="dropzoneText1">Bild hierher ziehen oder klicken</span>
 </div>
 
-<input type="file" name="bild2" id="bild2" style="display:none;">
-<img id="preview2" class="preview-img">
+<input type="file" name="bild1" id="bild1" style="display:none;">
+<img id="preview1" class="preview-img">
 
 
         <button type="submit">Vorschau anzeigen</button>
     </form>
 
-   <script>
-const dropzone2 = document.getElementById("dropzone2");
-const dropzoneText2 = document.getElementById("dropzoneText2");
-const fileInput2 = document.getElementById("bild2");
-const preview2 = document.getElementById("preview2");mu
-
-// Klick öffnet Datei-Dialog
-dropzone2.addEventListener("click", () => fileInput2.click());
-
-// Datei per Klick ausgewählt → anzeigen
-fileInput2.addEventListener("change", () => {
-    showPreview(fileInput2.files[0]);
-});
-
-// Drag & Drop Events
-dropzone2.addEventListener("dragover", (e) => {
-    e.preventDefault();
-    dropzone2.classList.add("dragover");
-});
-
-dropzone2.addEventListener("dragleave", () => {
-    dropzone2.classList.remove("dragover");
-});
-
-dropzone2.addEventListener("drop", (e) => {
-    e.preventDefault();
-    dropzone2.classList.remove("dragover");
-
-    const file = e.dataTransfer.files[0];
-    fileInput2.files = e.dataTransfer.files;
-    showPreview(file);
-});
-
-// Bild anzeigen + Text ausblenden
-function showPreview(file) {
-    const reader = new FileReader();
-    reader.onload = () => {
-        preview2.src = reader.result;
-        preview2.style.display = "block";
-        dropzoneText2.style.display = "none"; // Text ausblenden
-        dropzone2.appendChild(preview2);      // Bild IN den Kasten setzen
-    };
-    reader.readAsDataURL(file);
-}
-</script>
+   
 
 
     <?php
@@ -173,8 +106,12 @@ function showPreview(file) {
         <label>Bild 1:</label>
         <input type="file" name="bild1">
 
-        <label>Bild 2:</label>
-        <input type="file" name="bild2">
+        <div class="dropzone" id="dropzone1">
+    <span id="dropzoneText1">Bild hierher ziehen oder klicken</span>
+</div>
+<input type="file" name="bild1" id="bild1" style="display:none;">
+<img id="preview1" class="preview-img">
+
 
         <button type="submit">Vorschau anzeigen</button>
     </form>
@@ -213,11 +150,18 @@ function showPreview(file) {
 </select>
 
 
-        <label>Bild 1:</label>
-        <input type="file" name="bild1">
+        <div class="dropzone" id="dropzone1">
+    <span id="dropzoneText1">Bild hierher ziehen oder klicken</span>
+</div>
+<input type="file" name="bild1" id="bild1" style="display:none;">
+<img id="preview1" class="preview-img">
 
-        <label>Bild 2:</label>
-        <input type="file" name="bild2">
+<div class="dropzone" id="dropzone2">
+    <span id="dropzoneText2">Bild hierher ziehen oder klicken</span>
+</div>
+<input type="file" name="bild2" id="bild2" style="display:none;">
+<img id="preview2" class="preview-img">
+
 
         <button type="submit">Vorschau anzeigen</button>
     </form>
@@ -256,18 +200,69 @@ function showPreview(file) {
 </select>
 
 
-        <label>Bild 1:</label>
-        <input type="file" name="bild1">
+        <?php for ($i = 1; $i <= 5; $i++): ?>
+<div class="dropzone" id="dropzone<?= $i ?>">
+    <span id="dropzoneText<?= $i ?>">Bild hierher ziehen oder klicken</span>
+</div>
+<input type="file" name="bild<?= $i ?>" id="bild<?= $i ?>" style="display:none;">
+<img id="preview<?= $i ?>" class="preview-img">
+<?php endfor; ?>
 
-        <label>Bild 2:</label>
-        <input type="file" name="bild2">
 
         <button type="submit">Vorschau anzeigen</button>
     </form>
     <?php
     }
     ?>
-    
-     <a href="index.html", <?php session_destroy();?> >Zurück</a>
+    <script>
+for (let i = 1; i <= 5; i++) {
+
+    const dropzone = document.getElementById("dropzone" + i);
+    const dropzoneText = document.getElementById("dropzoneText" + i);
+    const fileInput = document.getElementById("bild" + i);
+    const preview = document.getElementById("preview" + i);
+
+    // Wenn der Typ weniger Bilder hat → überspringen
+    if (!dropzone || !fileInput || !preview) continue;
+
+    dropzone.addEventListener("click", () => fileInput.click());
+
+    fileInput.addEventListener("change", () => {
+        showPreview(fileInput.files[0], preview, dropzoneText, dropzone);
+    });
+
+    dropzone.addEventListener("dragover", (e) => {
+        e.preventDefault();
+        dropzone.classList.add("dragover");
+    });
+
+    dropzone.addEventListener("dragleave", () => {
+        dropzone.classList.remove("dragover");
+    });
+
+    dropzone.addEventListener("drop", (e) => {
+        e.preventDefault();
+        dropzone.classList.remove("dragover");
+
+        const file = e.dataTransfer.files[0];
+        fileInput.files = e.dataTransfer.files;
+        showPreview(file, preview, dropzoneText, dropzone);
+    });
+}
+
+function showPreview(file, preview, dropzoneText, dropzone) {
+    const reader = new FileReader();
+    reader.onload = () => {
+        preview.src = reader.result;
+        preview.style.display = "block";
+        if (dropzoneText) dropzoneText.style.display = "none";
+        dropzone.appendChild(preview);
+    };
+    reader.readAsDataURL(file);
+}
+</script>
+
+
+     <a href="index.html", <?php session_destroy(); ?> >Zurück</a>
 </body>
 </html>
