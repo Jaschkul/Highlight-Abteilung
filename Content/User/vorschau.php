@@ -3,6 +3,7 @@ session_start();
 
 // Textdaten speichern
 $_SESSION['titel'] = $_POST['titel'] ?? '';
+$_SESSION['autor'] = $_POST['Autor'] ?? '';
 $_SESSION['beschreibung1'] = $_POST['beschreibung1'] ?? '';
 $_SESSION['abteilungs_id'] = $_POST['abteilungs_id'] ?? '';
 
