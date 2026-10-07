@@ -1,35 +1,22 @@
 h1{
     text-align: center;
 }
-.btnro{
-    background-color: transparent;
-    position:fixed;
-    top: 10%;
-    right: 10%;
-    border: none;
-}
 
-.btnlo{
-    background-color: transparent;
-    position:fixed;
-    top: 10%;
-    left: 10%;
-    border: none;
-}
+/* Position der buttons*/
+/*
+Task: die Bilder müssen sich flexibel an die Bildschirmgröße anpassen
+*/
 
-.btnru{
-    background-color: transparent;
-    position:fixed;
-    bottom: 10%;
-    right: 10%;
-    border: none;
-}
 
-.btnlu{
+.box1{
+    border: 1px, solid; 
+    height: 50px; 
+    width: 100px; 
+    top: 0px;
+    margin: 50px;
+}
+.btns{
     background-color: transparent;
-    position:fixed;
-    bottom: 10%;
-    left: 10%;
     border: none;
 }
 
