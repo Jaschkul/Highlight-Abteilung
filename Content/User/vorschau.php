@@ -1,15 +1,19 @@
 <?php
 session_start();
 
+// Typ übernehmen
+$typ = $_POST['typ'] ?? $_GET['typ'] ?? $_SESSION['typ'] ?? null;
+$_SESSION['typ'] = $typ;
+
 // Textdaten übernehmen
-$_SESSION['titel'] = $_POST['titel'] ?? $_SESSION['titel'] ?? '';
-$_SESSION['autor'] = $_POST['Autor'] ?? $_SESSION['autor'] ?? '';
-$_SESSION['beschreibung1'] = $_POST['beschreibung1'] ?? $_SESSION['beschreibung1'] ?? '';
-$_SESSION['abteilungs_id'] = $_POST['abteilungs_id'] ?? $_SESSION['abteilungs_id'] ?? '';
+if (!empty($_POST)) {
+    $_SESSION['titel'] = $_POST['titel'] ?? $_SESSION['titel'] ?? '';
+    $_SESSION['autor'] = $_POST['Autor'] ?? $_SESSION['autor'] ?? '';
+    $_SESSION['beschreibung1'] = $_POST['beschreibung1'] ?? $_SESSION['beschreibung1'] ?? '';
+    $_SESSION['abteilungs_id'] = $_POST['abteilungs_id'] ?? $_SESSION['abteilungs_id'] ?? '';
+}
 
-$typ = $_POST['typ'] ?? $_GET['typ'] ?? null;
-
-// Bilder speichern / übernehmen
+// Bilder übernehmen / speichern
 $uploadDir = 'temp/';
 $bilder = [];
 
@@ -45,8 +49,6 @@ for ($i = 1; $i <= 5; $i++) {
 
 <p><?= nl2br(htmlspecialchars($_SESSION['beschreibung1'])) ?></p>
 
-<hr>
-
 <?php
 // Anzahl Bilder je nach Typ
 $bildCount = [
@@ -64,7 +66,6 @@ for ($i = 1; $i <= $bildCount; $i++) {
 }
 ?>
 
-<hr>
 
 <a href="speichern.php" class="btn">Speichern</a>
 
