@@ -27,9 +27,14 @@ for ($i = 1; $i <= 5; $i++) {
     <h1><?= $_SESSION['titel'] ?></h1>
     <p><?= $_SESSION['beschreibung1'] ?></p>
 
-    <?php if ($bilder[1]): ?>
-        <img src="temp/<?= $bilder[1] ?>" style="width:100%; max-width:800px;">
-    <?php endif; ?>
+    <?php
+    for ($i = 1; $i <= 5; $i++) {
+        if (!empty($bilder[$i])) {
+            echo '<img src="temp/' . $bilder[$i] . '" style="width:100%; max-width:800px; margin-bottom:20px;">';
+        }
+    }
+    ?>
+
 
     <a href="speichern.php">Speichern</a>
         <?php
