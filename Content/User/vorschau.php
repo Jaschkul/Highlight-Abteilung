@@ -6,7 +6,7 @@ $typ = $_POST['typ'] ?? $_GET['typ'] ?? $_SESSION['typ'] ?? null;
 $_SESSION['typ'] = $typ;
 
 // Textdaten übernehmen
-if (!empty($_POST)) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $_SESSION['titel'] = $_POST['titel'] ?? $_SESSION['titel'] ?? '';
     $_SESSION['autor'] = $_POST['Autor'] ?? $_SESSION['autor'] ?? '';
     $_SESSION['beschreibung1'] = $_POST['beschreibung1'] ?? $_SESSION['beschreibung1'] ?? '';
@@ -15,7 +15,6 @@ if (!empty($_POST)) {
 
 // Bilder übernehmen / speichern
 $uploadDir = 'temp/';
-$bilder = [];
 
 for ($i = 1; $i <= 5; $i++) {
     $feld = "bild$i";
@@ -27,10 +26,7 @@ for ($i = 1; $i <= 5; $i++) {
         move_uploaded_file($tmp, $uploadDir . $name);
 
         $_SESSION[$feld] = $name;
-        $bilder[$i] = $name;
-    } else {
-        // Bereits vorhandenes Bild aus Session
-        $bilder[$i] = $_SESSION[$feld] ?? null;
+        
     }
 }
 ?>
@@ -59,8 +55,8 @@ $bildCount = [
 ][$typ] ?? 1;
 
 for ($i = 1; $i <= $bildCount; $i++) {
-    if (!empty($bilder[$i])) {
-        echo '<img src="temp/' . htmlspecialchars($bilder[$i]) . '" 
+    if (!empty($_SESSION["bild$i"])) {
+        echo '<img src="temp/' . htmlspecialchars($_SESSION["bild$i"]) . '" 
               style="width:100%; max-width:800px; margin-bottom:20px;">';
     }
 }
