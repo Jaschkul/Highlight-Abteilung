@@ -10,23 +10,40 @@ session_start();
 </head>
 <body>
     <?php
-    
+
     $typ = $_GET['typ'] ?? $_POST['typ'] ?? null;
     if ($typ === 'lo') {
-    ?>
+        ?>
         <form action="vorschau.php" method="post" enctype="multipart/form-data">
         <input type="hidden" name="typ" value="lo">
         <label>Titel:</label>
         <input type="text" name="titel" value="<?= $_SESSION['titel'] ?? '' ?>" required>
         <label>Beschreibung:</label>
         <textarea name="beschreibung1"><?= $_SESSION['beschreibung1'] ?? '' ?></textarea>
+        <?php
+        $pdo = new PDO(
+            'mysql:host=mariadb;dbname=iii;charset=utf8',
+            'azubi26',
+            'Cucxe9-vyxxos'
+        );
+        $stmt = $pdo->query('SELECT id, name FROM abteilung ORDER BY name ASC');
+        $abteilungen = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        ?>
+
 
         <label>Abteilung:</label>
         <select name="abteilungs_id">
-            <option value="<?= $_SESSION['abteilungs_id'] ?? '' ?>">
-                <?= $_SESSION['abteilungs_id'] ?? 'Bitte wählen' ?>
-            </option>
-        </select>
+    <option value="">Bitte wählen</option>
+
+    <?php foreach ($abteilungen as $abt): ?>
+        <option value="<?= $abt['id'] ?>"
+            <?= (isset($_SESSION['abteilungs_id']) && $_SESSION['abteilungs_id'] == $abt['id']) ? 'selected' : '' ?>
+        >
+            <?= htmlspecialchars($abt['name']) ?>
+        </option>
+    <?php endforeach; ?>
+</select>
+
 
         <label>Bild 1:</label>
         <input type="file" name="bild1">
@@ -119,7 +136,7 @@ session_start();
     </form>
     <?php
     }
-        ?>
+    ?>
     
      <a href="index.html">Zurück</a>
 </body>
