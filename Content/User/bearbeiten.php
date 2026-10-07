@@ -94,7 +94,7 @@ session_start();
 const dropzone2 = document.getElementById("dropzone2");
 const dropzoneText2 = document.getElementById("dropzoneText2");
 const fileInput2 = document.getElementById("bild2");
-const preview2 = document.getElementById("preview2");
+const preview2 = document.getElementById("preview2");mu
 
 // Klick öffnet Datei-Dialog
 dropzone2.addEventListener("click", () => fileInput2.click());
@@ -270,6 +270,6 @@ function showPreview(file) {
     }
     ?>
     
-     <a href="index.html">Zurück</a>
+     <a href="index.html", <?php session_destroy();?> >Zurück</a>
 </body>
 </html>
