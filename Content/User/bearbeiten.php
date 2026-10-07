@@ -14,7 +14,7 @@ session_start();
 
     <?php
 
-    $typ = $_GET['typ'] ?? $_POST['typ'] ?? null; && || oder 
+    $typ = $_GET['typ'] ?? $_POST['typ'] ?? null; 
     if ($typ === 'lo') {
         ?>
         <form action="vorschau.php" method="post" enctype="multipart/form-data">
@@ -35,13 +35,10 @@ session_start();
 
 
         <label>Abteilung:</label>
-<<<<<<< HEAD
         <select name="abteilungs_id">
-=======
         <select name="abteilungs_id" required>
         <option value="" disabled selected>Bitte auswählen</option>
 
->>>>>>> 1d97e7c5333813f4e223a031a3409b9b0d87825a
     <?php foreach ($abteilungen as $abt): ?>
         <option value="<?= $abt['id'] ?>"
             <?= (isset($_SESSION['abteilungs_id']) && $_SESSION['abteilungs_id'] == $abt['id']) ? 'selected' : '' ?>
