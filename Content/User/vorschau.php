@@ -20,13 +20,15 @@ for ($i = 1; $i <= 5; $i++) {
         $_SESSION[$feld] = $name;
         $bilder[$i] = $name;
     } else {
-        $_SESSION[$feld] = null;
-        $bilder[$i] = null;
+        $bilder[$i] = $_SESSION[$feld] ?? null;
     }
 }
 ?>
     <h1><?= $_SESSION['titel'] ?></h1>
+    <h1><?= $_SESSION['autor'] ?></h1>
+    <h1><?= $_SESSION['abteilungs_id'] ?></h1>
     <p><?= $_SESSION['beschreibung1'] ?></p>
+
 
     <?php
     for ($i = 1; $i <= 5; $i++) {
