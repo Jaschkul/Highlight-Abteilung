@@ -32,6 +32,14 @@ $pdo = new PDO(
 );
 $stmt = $pdo->query('SELECT id, name FROM abteilung ORDER BY name ASC');
 $abteilungen = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+ // Anzahl Bilder je nach Typ
+    $bildCount = [
+        'lo' => 1,
+        'ro' => 1,
+        'lu' => 2,
+        'ru' => 5
+    ][$typ] ?? 1;
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -47,17 +55,17 @@ $abteilungen = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <input type="hidden" name="typ" value="<?= $typ ?>">
 
     <label>Titel:</label>
-    <input type="text" name="titel" required value="<?= $_SESSION['titel'] ?? '' ?>">
+    <input type="text" name="titel" required value="<?= htmlspecialchars($_SESSION['titel'] ?? '') ?>">
 
     <label>Autor:</label>
-    <input type="text" name="Autor" required value="<?= $_SESSION['autor'] ?? '' ?>">
+    <input type="text" name="Autor" required value="<?= htmlspecialchars($_SESSION['autor'] ?? '') ?>">
 
     <label>Beschreibung:</label>
-    <textarea name="beschreibung1" required><?= $_SESSION['beschreibung1'] ?? '' ?></textarea>
+    <textarea name="beschreibung1" required><?= htmlspecialchars($_SESSION['beschreibung1'] ?? '') ?></textarea>
 
     <label>Abteilung:</label>
     <select name="abteilungs_id" required>
-        <option value="" disabled selected>Bitte auswählen</option>
+        <option value="" disabled>Bitte auswählen</option>
         <?php foreach ($abteilungen as $abt): ?>
             <option value="<?= $abt['id'] ?>"
                 <?= (isset($_SESSION['abteilungs_id']) && $_SESSION['abteilungs_id'] == $abt['id']) ? 'selected' : '' ?>
@@ -67,22 +75,16 @@ $abteilungen = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <?php endforeach; ?>
     </select>
 
-    <?php
-    // Anzahl Bilder je nach Typ
-    $bildCount = [
-        'lo' => 1,
-        'ro' => 1,
-        'lu' => 2,
-        'ru' => 5
-    ][$typ] ?? 1;
-
-    for ($i = 1; $i <= $bildCount; $i++):
-    ?>
+    <?php for ($i = 1; $i <= $bildCount; $i++): ?>
         <div class="dropzone" id="dropzone<?= $i ?>">
             <span id="dropzoneText<?= $i ?>">Bild hierher ziehen oder klicken</span>
         </div>
         <input type="file" name="bild<?= $i ?>" id="bild<?= $i ?>" style="display:none;">
-        <img id="preview<?= $i ?>" class="preview-img">
+        <?php if (!empty($_SESSION["bild$i"])): ?>
+            <img id="preview<?= $i ?>" class="preview-img" src="temp/<?= htmlspecialchars($_SESSION["bild$i"]) ?>" style="display:block;">
+        <?php else: ?>
+            <img id="preview<?= $i ?>" class="preview-img" style="display:none;">
+        <?php endif; ?>
     <?php endfor; ?>
 
     <button type="submit">Vorschau anzeigen</button>
@@ -90,6 +92,9 @@ $abteilungen = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <?php endif; ?>
 
 <script>
+// Bestehende Bilder aus PHP an JavaScript übergeben
+const existingImages = <?= json_encode(array_map(fn($i) => $_SESSION["bild$i"] ?? null, range(1, 5))) ?>;
+
 for (let i = 1; i <= 5; i++) {
     const dropzone = document.getElementById("dropzone" + i);
     const dropzoneText = document.getElementById("dropzoneText" + i);
@@ -97,6 +102,12 @@ for (let i = 1; i <= 5; i++) {
     const preview = document.getElementById("preview" + i);
 
     if (!dropzone || !fileInput || !preview) continue;
+
+    // Bestehendes Bild anzeigen
+    if (existingImages[i-1]) {
+        preview.style.display = "block";
+        dropzoneText.style.display = "none";
+    }
 
     dropzone.addEventListener("click", () => fileInput.click());
 
@@ -134,7 +145,6 @@ function showPreview(file, preview, dropzoneText, dropzone) {
     reader.readAsDataURL(file);
 }
 </script>
-
 
 <a href="index.html" <?php session_destroy(); ?>>Zurück</a>
 
