@@ -1,28 +1,59 @@
 <?php
 session_start();
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && !empty($_POST['titel'])) {
-    $_SESSION['titel'] = $_POST['titel'];
-    $_SESSION['autor'] = $_POST['Autor'];
-    $_SESSION['beschreibung1'] = $_POST['beschreibung1'];
-    $_SESSION['abteilungs_id'] = $_POST['abteilungs_id'];
+$typ = $_GET['typ'] ?? $_POST['typ'] ?? $_SESSION['typ'] ?? null;
 
-    // Bilder speichern
-    $uploadDir = "temp/";
-    for ($i = 1; $i <= 5; $i++) {
-        $feld = "bild" . $i;
+if ($typ !== null) {
+    $_SESSION['typ'] = $typ;
+}
 
-        if (!empty($_FILES[$feld]['name'])) {
-            $tmp = $_FILES[$feld]['tmp_name'];
-            $name = time() . "_" . basename($_FILES[$feld]['name']);
-            move_uploaded_file($tmp, $uploadDir . $name);
-            $_SESSION[$feld] = $name;
+// Textdaten übernehmen, wenn das Formular abgeschickt wurde
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $_SESSION['titel'] = $_POST['titel'] ?? $_SESSION['titel'] ?? '';
+    $_SESSION['autor'] = $_POST['Autor'] ?? $_SESSION['autor'] ?? '';
+    $_SESSION['beschreibung1'] = $_POST['beschreibung1'] ?? $_SESSION['beschreibung1'] ?? '';
+    $_SESSION['abteilungs_id'] = $_POST['abteilungs_id'] ?? $_SESSION['abteilungs_id'] ?? '';
+}
+
+// Nur neue Bilder speichern.
+// Wenn kein neues Bild hochgeladen wurde, bleibt das vorhandene Session-Bild erhalten.
+$uploadDir = __DIR__ . '/temp/';
+
+if (!is_dir($uploadDir)) {
+    mkdir($uploadDir, 0755, true);
+}
+
+for ($i = 1; $i <= 5; $i++) {
+    $feld = 'bild' . $i;
+
+    if (
+        isset($_FILES[$feld]) &&
+        $_FILES[$feld]['error'] === UPLOAD_ERR_OK &&
+        is_uploaded_file($_FILES[$feld]['tmp_name'])
+    ) {
+        $originalName = basename($_FILES[$feld]['name']);
+        $extension = strtolower(pathinfo($originalName, PATHINFO_EXTENSION));
+
+        $erlaubteEndungen = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
+
+        if (in_array($extension, $erlaubteEndungen, true)) {
+            $name = bin2hex(random_bytes(16)) . '.' . $extension;
+
+            if (move_uploaded_file($_FILES[$feld]['tmp_name'], $uploadDir . $name)) {
+                // Optional: altes Bild löschen
+                if (!empty($_SESSION[$feld])) {
+                    $alteDatei = $uploadDir . basename($_SESSION[$feld]);
+
+                    if (is_file($alteDatei)) {
+                        unlink($alteDatei);
+                    }
+                }
+
+                $_SESSION[$feld] = $name;
+            }
         }
     }
 }
-
-
-$typ = $_GET['typ'] ?? $_POST['typ'] ?? null;
 
 // DB laden
 $pdo = new PDO(
@@ -76,47 +107,72 @@ $abteilungen = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </select>
 
     <?php for ($i = 1; $i <= $bildCount; $i++): ?>
-        <div class="dropzone" id="dropzone<?= $i ?>">
-            <span id="dropzoneText<?= $i ?>">Bild hierher ziehen oder klicken</span>
-        </div>
-        <input type="file" name="bild<?= $i ?>" id="bild<?= $i ?>" style="display:none;">
-        <?php if (!empty($_SESSION["bild$i"])): ?>
-            <img id="preview<?= $i ?>" class="preview-img" src="temp/<?= htmlspecialchars($_SESSION["bild$i"]) ?>" style="display:block;">
-        <?php else: ?>
-            <img id="preview<?= $i ?>" class="preview-img" style="display:none;">
-        <?php endif; ?>
-    <?php endfor; ?>
+    <?php
+        $bildname = $_SESSION["bild$i"] ?? '';
+        $bildUrl = '';
+
+        if ($bildname !== '') {
+            $bildUrl = 'temp/' . rawurlencode(basename($bildname));
+        }
+    ?>
+
+    <div class="dropzone" id="dropzone<?= $i ?>">
+        <span
+            id="dropzoneText<?= $i ?>"
+            style="<?= $bildUrl !== '' ? 'display:none;' : '' ?>"
+        >
+            Bild hierher ziehen oder klicken
+        </span>
+
+        <img
+            id="preview<?= $i ?>"
+            class="preview-img"
+            src="<?= htmlspecialchars($bildUrl) ?>"
+            style="<?= $bildUrl !== '' ? 'display:block;' : 'display:none;' ?>"
+            alt="Bild <?= $i ?>"
+        >
+    </div>
+
+    <input
+        type="file"
+        name="bild<?= $i ?>"
+        id="bild<?= $i ?>"
+        accept="image/jpeg,image/png,image/gif,image/webp"
+        style="display:none;"
+    >
+<?php endfor; ?>
 
     <button type="submit">Vorschau anzeigen</button>
 </form>
 <?php endif; ?>
 
 <script>
-// Bestehende Bilder aus PHP an JavaScript übergeben
-const existingImages = <?= json_encode(array_map(fn($i) => $_SESSION["bild$i"] ?? null, range(1, 5))) ?>;
-
 for (let i = 1; i <= 5; i++) {
     const dropzone = document.getElementById("dropzone" + i);
     const dropzoneText = document.getElementById("dropzoneText" + i);
     const fileInput = document.getElementById("bild" + i);
     const preview = document.getElementById("preview" + i);
 
-    if (!dropzone || !fileInput || !preview) continue;
-
-    // Bestehendes Bild anzeigen
-    if (existingImages[i-1]) {
-        preview.style.display = "block";
-        dropzoneText.style.display = "none";
+    if (!dropzone || !dropzoneText || !fileInput || !preview) {
+        continue;
     }
 
-    dropzone.addEventListener("click", () => fileInput.click());
-
-    fileInput.addEventListener("change", () => {
-        showPreview(fileInput.files[0], preview, dropzoneText, dropzone);
+    dropzone.addEventListener("click", () => {
+        fileInput.click();
     });
 
-    dropzone.addEventListener("dragover", (e) => {
-        e.preventDefault();
+    fileInput.addEventListener("change", () => {
+        if (fileInput.files.length > 0) {
+            showPreview(
+                fileInput.files[0],
+                preview,
+                dropzoneText
+            );
+        }
+    });
+
+    dropzone.addEventListener("dragover", (event) => {
+        event.preventDefault();
         dropzone.classList.add("dragover");
     });
 
@@ -124,29 +180,41 @@ for (let i = 1; i <= 5; i++) {
         dropzone.classList.remove("dragover");
     });
 
-    dropzone.addEventListener("drop", (e) => {
-        e.preventDefault();
+    dropzone.addEventListener("drop", (event) => {
+        event.preventDefault();
         dropzone.classList.remove("dragover");
 
-        const file = e.dataTransfer.files[0];
-        fileInput.files = e.dataTransfer.files;
-        showPreview(file, preview, dropzoneText, dropzone);
+        if (event.dataTransfer.files.length > 0) {
+            fileInput.files = event.dataTransfer.files;
+
+            showPreview(
+                event.dataTransfer.files[0],
+                preview,
+                dropzoneText
+            );
+        }
     });
 }
 
-function showPreview(file, preview, dropzoneText, dropzone) {
+function showPreview(file, preview, dropzoneText) {
+    if (!file.type.startsWith("image/")) {
+        alert("Bitte nur ein Bild auswählen.");
+        return;
+    }
+
     const reader = new FileReader();
-    reader.onload = () => {
-        preview.src = reader.result;
+
+    reader.onload = function(event) {
+        preview.src = event.target.result;
         preview.style.display = "block";
         dropzoneText.style.display = "none";
-        dropzone.appendChild(preview);
     };
+
     reader.readAsDataURL(file);
 }
 </script>
 
-<a href="index.html" <?php session_destroy(); ?>>Zurück</a>
+<a href="reset.php">Zurück</a>
 
 </body>
 </html>
