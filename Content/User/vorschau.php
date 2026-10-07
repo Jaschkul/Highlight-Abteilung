@@ -1,11 +1,9 @@
 <?php
 session_start();
 
-// Typ übernehmen
 $typ = $_POST['typ'] ?? $_GET['typ'] ?? $_SESSION['typ'] ?? null;
 $_SESSION['typ'] = $typ;
 
-// Textdaten übernehmen
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $_SESSION['titel'] = $_POST['titel'] ?? $_SESSION['titel'] ?? '';
     $_SESSION['autor'] = $_POST['Autor'] ?? $_SESSION['autor'] ?? '';
@@ -13,23 +11,41 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $_SESSION['abteilungs_id'] = $_POST['abteilungs_id'] ?? $_SESSION['abteilungs_id'] ?? '';
 }
 
-// Bilder übernehmen / speichern
-$uploadDir = 'temp/';
+$uploadDir = __DIR__ . '/temp/';
+
+if (!is_dir($uploadDir)) {
+    mkdir($uploadDir, 0755, true);
+}
 
 for ($i = 1; $i <= 5; $i++) {
-    $feld = "bild$i";
+    $feld = 'bild' . $i;
 
-    // Neues Bild hochgeladen?
-    if (!empty($_FILES[$feld]['name'])) {
-        $tmp = $_FILES[$feld]['tmp_name'];
-        $name = time() . "_" . basename($_FILES[$feld]['name']);
-        move_uploaded_file($tmp, $uploadDir . $name);
+    if (
+        isset($_FILES[$feld]) &&
+        $_FILES[$feld]['error'] === UPLOAD_ERR_OK &&
+        is_uploaded_file($_FILES[$feld]['tmp_name'])
+    ) {
+        $extension = strtolower(
+            pathinfo($_FILES[$feld]['name'], PATHINFO_EXTENSION)
+        );
 
-        $_SESSION[$feld] = $name;
-        
+        $erlaubteEndungen = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
+
+        if (in_array($extension, $erlaubteEndungen, true)) {
+            $name = bin2hex(random_bytes(16)) . '.' . $extension;
+
+            if (move_uploaded_file($_FILES[$feld]['tmp_name'], $uploadDir . $name)) {
+                $_SESSION[$feld] = $name;
+            }
+        }
     }
 }
 ?>
+<pre>
+<?php
+var_dump($_SESSION);
+?>
+</pre>
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -70,12 +86,7 @@ for ($i = 1; $i <= $bildCount; $i++) {
     <button type="submit">Bearbeiten</button>
 </form>
 
-<?php
-// Debug-Ausgabe
-echo '<pre>';
-print_r($_SESSION);
-echo '</pre>';
-?>
+
 
 </body>
 </html>
