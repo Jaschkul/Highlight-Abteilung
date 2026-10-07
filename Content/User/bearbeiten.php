@@ -136,7 +136,7 @@ function showPreview(file, preview, dropzoneText, dropzone) {
 </script>
 
 
-<a href="index.html" onclick="<?php session_destroy(); ?>>Zurück</a>
+<a href="index.html" <?php session_destroy(); ?>>Zurück</a>
 
 </body>
 </html>
