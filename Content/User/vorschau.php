@@ -70,7 +70,12 @@ for ($i = 1; $i <= $bildCount; $i++) {
     <button type="submit">Bearbeiten</button>
 </form>
 
-
+<?php
+// Debug-Ausgabe
+echo '<pre>';
+print_r($_SESSION);
+echo '</pre>';
+?>
 
 </body>
 </html>
