@@ -60,6 +60,7 @@ session_start();
 <img id="preview1" class="preview-img">
 
 
+
         <button type="submit">Vorschau anzeigen</button>
     </form>
 
@@ -218,6 +219,25 @@ session_start();
     <?php
     }
     ?>
+    <?php for ($i = 1; $i <= 5; $i++): ?>
+    <?php if (!empty($_SESSION["bild$i"])): ?>
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const preview = document.getElementById("preview<?= $i ?>");
+        const dropzoneText = document.getElementById("dropzoneText<?= $i ?>");
+        const dropzone = document.getElementById("dropzone<?= $i ?>");
+
+        if (!preview || !dropzone) return;
+
+        preview.src = "temp/<?= $_SESSION["bild$i"] ?>";
+        preview.style.display = "block";
+        if (dropzoneText) dropzoneText.style.display = "none";
+        dropzone.appendChild(preview);
+    });
+    </script>
+    <?php endif; ?>
+<?php endfor; ?>
+
     <script>
 for (let i = 1; i <= 5; i++) {
 
