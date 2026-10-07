@@ -62,39 +62,46 @@ session_start();
     cursor: pointer;
     margin-bottom: 20px;
     transition: 0.2s;
+    position: relative;
 }
+
+.preview-img {
+    width: 100%;
+    max-width: 400px;
+    margin-top: 0;
+    display: none;
+}
+
 .dropzone.dragover {
     background-color: #eef;
     border-color: #55f;
 }
-.preview-img {
-    width: 100%;
-    max-width: 400px;
-    margin-top: 20px;
-    display: none;
-}
+
 </style>
 
 <div class="dropzone" id="dropzone2">
-    Bild hierher ziehen oder klicken
+    <span id="dropzoneText2">Bild hierher ziehen oder klicken</span>
 </div>
 
 <input type="file" name="bild2" id="bild2" style="display:none;">
 <img id="preview2" class="preview-img">
 
+
         <button type="submit">Vorschau anzeigen</button>
     </form>
-    <script>
+
+   <script>
 const dropzone2 = document.getElementById("dropzone2");
+const dropzoneText2 = document.getElementById("dropzoneText2");
 const fileInput2 = document.getElementById("bild2");
 const preview2 = document.getElementById("preview2");
 
-// Klick auf Dropzone öffnet Datei-Dialog
+// Klick öffnet Datei-Dialog
 dropzone2.addEventListener("click", () => fileInput2.click());
 
 // Datei per Klick ausgewählt → anzeigen
 fileInput2.addEventListener("change", () => {
-    showPreview(fileInput2.files[0], preview2);
+    showPreview(fileInput2.files[0]);
 });
 
 // Drag & Drop Events
@@ -112,20 +119,23 @@ dropzone2.addEventListener("drop", (e) => {
     dropzone2.classList.remove("dragover");
 
     const file = e.dataTransfer.files[0];
-    fileInput2.files = e.dataTransfer.files; // wichtig!
-    showPreview(file, preview2);
+    fileInput2.files = e.dataTransfer.files;
+    showPreview(file);
 });
 
-// Bild anzeigen
-function showPreview(file, previewElement) {
+// Bild anzeigen + Text ausblenden
+function showPreview(file) {
     const reader = new FileReader();
     reader.onload = () => {
-        previewElement.src = reader.result;
-        previewElement.style.display = "block";
+        preview2.src = reader.result;
+        preview2.style.display = "block";
+        dropzoneText2.style.display = "none"; // Text ausblenden
+        dropzone2.appendChild(preview2);      // Bild IN den Kasten setzen
     };
     reader.readAsDataURL(file);
 }
 </script>
+
 
     <?php
     }
