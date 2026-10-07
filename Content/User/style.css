@@ -25,7 +25,7 @@ Task: die Bilder müssen sich flexibel an die Bildschirmgröße anpassen
 
 
 
-.dropzone1 {
+.dropzone {
     width: 100%;
     max-width: 400px;
     padding: 30px;
@@ -38,9 +38,14 @@ Task: die Bilder müssen sich flexibel an die Bildschirmgröße anpassen
     position: relative;
 }
 
-.preview-img1 {
+.preview-img {
     width: 100%;
     max-width: 400px;
     margin-top: 0;
     display: none;
+}
+
+.dropzone.dragover {
+    background-color: #eef;
+    border-color: #55f;
 }
