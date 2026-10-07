@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,13 +9,13 @@
     <title>Bearbeiten</title>
 </head>
 <body>
-    session_start();
     <?php
+    
     $typ = $_GET['typ'] ?? $_POST['typ'] ?? null;
     if ($typ === 'lo') {
     ?>
         <form action="vorschau.php" method="post" enctype="multipart/form-data">
-        <input type="guidden" name="typ" value="lo">
+        <input type="hidden" name="typ" value="lo">
         <label>Titel:</label>
         <input type="text" name="titel" value="<?= $_SESSION['titel'] ?? '' ?>" required>
         <label>Beschreibung:</label>

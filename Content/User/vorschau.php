@@ -35,10 +35,6 @@
         <?php
     $typ = $_GET['typ'] ?? $_POST['typ'] ?? null;
     ?>
-    //<form action="bearbeiten.php" method="post">
-    //<input type="hidden" name="typ" value="<?= $typ ?>">
-    //<button>Bearbeiten</button>
-    //</form>
     <?php if ($typ): ?>
     <form action="bearbeiten.php" method="post">
         <input type="hidden" name="typ" value="<?= $typ ?>">
