@@ -8,30 +8,32 @@
 </head>
 <body>
     <h1>Wähle ein Template aus</h1>
+    
+    
     <form action="bearbeiten.php" method="post">
-        <input type="hidden" name="typ" value="lo">
-        <button class="btnlo">
-            <img src="bsp.png" width="300" height="200" alt="template1">
-        </button>
-    </form>
-    <form action="bearbeiten.php" method="post">
-        <input type="hidden" name="typ" value="ro">
-        <button class="btnro">
-            <img src="bsp.png" width="300" height="200" alt="template1">
-        </button>
-    </form>
-    <form action="bearbeiten.php" method="post">
-        <input type="hidden" name="typ" value="lu">
-        <button class="btnlu">
-            <img src="bsp.png" width="300" height="200" alt="template1">
-        </button>
-    </form>
-    <form action="bearbeiten.php" method="post">
-        <input type="hidden" name="typ" value="ru">
-        <button class="btnru">
-            <img src="bsp.png" width="300" height="200" alt="template1">
-        </button>
-    </form>
+    <div class="box1">
+        <button class="btns" id="btnlo" type="submit" name="type" value="lo">
+            template1
+        </button> 
+    </div>
+    <div class="box1">
+        <button class="btns" id="btnro" type="submit" name="type" value="ro">
+            template2
+        </button> 
+    </div>
+    <div class="box1">
+        <button  class="btns" id="btnlu" type="submit" name="type" value="lu">
+            template3
+        </button> 
+    </div>
+    <div class="box1">
+        <button class="btns" id="btnru" type="submit" name="type" value="ru">
+            template4
+        </button> 
+    </div>
 
+
+    </form>
+   
 </body>
 </html>
