@@ -41,11 +41,6 @@ for ($i = 1; $i <= 5; $i++) {
     }
 }
 ?>
-<pre>
-<?php
-var_dump($_SESSION);
-?>
-</pre>
 <!DOCTYPE html>
 <html lang="de">
 <head>

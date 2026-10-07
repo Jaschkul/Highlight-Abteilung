@@ -96,7 +96,7 @@ $abteilungen = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     <label>Abteilung:</label>
     <select name="abteilungs_id" required>
-        <option value="" disabled>Bitte auswählen</option>
+        <option value="" selected >Bitte auswählen</option>
         <?php foreach ($abteilungen as $abt): ?>
             <option value="<?= $abt['id'] ?>"
                 <?= (isset($_SESSION['abteilungs_id']) && $_SESSION['abteilungs_id'] == $abt['id']) ? 'selected' : '' ?>
