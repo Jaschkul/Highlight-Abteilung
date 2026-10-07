@@ -70,7 +70,7 @@ for ($i = 1; $i <= $bildCount; $i++) {
     <button type="submit">Bearbeiten</button>
 </form>
 
-<a href="index.html" class="btn">Zurück</a>
+
 
 </body>
 </html>
