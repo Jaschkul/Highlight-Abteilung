@@ -20,9 +20,9 @@ session_start();
         <form action="vorschau.php" method="post" enctype="multipart/form-data">
         <input type="hidden" name="typ" value="lo">
         <label>Titel:</label>
-        <input type="text" name="titel" value="<?= $_SESSION['titel'] ?>" required>
+        <input type="text" name="titel" required value="<?= $_SESSION['titel']?? ''  ?>" >
         <label>Beschreibung:</label>
-        <textarea name="beschreibung1" required><?= $_SESSION['beschreibung1'] ?> </textarea>
+        <textarea name="beschreibung1" required><?= $_SESSION['beschreibung1']?? ''  ?> </textarea>
         <?php
         $pdo = new PDO(
             'mysql:host=mariadb;dbname=iii;charset=utf8',
