@@ -14,15 +14,17 @@ session_start();
 
     <?php
 
-    $typ = $_GET['typ'] ?? $_POST['typ'] ?? null; 
+    $typ = $_GET['typ'] ?? $_POST['typ'] ?? null;
     if ($typ === 'lo') {
         ?>
         <form action="vorschau.php" method="post" enctype="multipart/form-data">
         <input type="hidden" name="typ" value="lo">
         <label>Titel:</label>
-        <input type="text" name="titel" required value="<?= $_SESSION['titel']?? ''  ?>" >
+        <input type="text" name="titel" required value="<?= $_SESSION['titel'] ?? '' ?>" >
+        <label>Autor:</label>
+        <input type="text" name="Autor" required value="<?= $_SESSION['autor'] ?? '' ?>" >
         <label>Beschreibung:</label>
-        <textarea name="beschreibung1" required><?= $_SESSION['beschreibung1']?? ''  ?> </textarea>
+        <textarea name="beschreibung1" required><?= $_SESSION['beschreibung1'] ?? '' ?> </textarea>
         <?php
         $pdo = new PDO(
             'mysql:host=mariadb;dbname=iii;charset=utf8',
@@ -35,7 +37,9 @@ session_start();
 
 
         <label>Abteilung:</label>
+        
         <select name="abteilungs_id">
+             <option value="" disabled selected>Bitte auswählen</option>
     <?php foreach ($abteilungen as $abt): ?>
         <option value="<?= $abt['id'] ?>"
             <?= (isset($_SESSION['abteilungs_id']) && $_SESSION['abteilungs_id'] == $abt['id']) ? 'selected' : '' ?>
@@ -70,6 +74,8 @@ session_start();
         <input type="hidden" name="typ" value="ro">
         <label>Titel:</label>
         <input type="text" name="titel" value="<?= $_SESSION['titel'] ?? '' ?>" required>
+        <label>Autor:</label>
+        <input type="text" name="Autor" required value="<?= $_SESSION['autor'] ?? '' ?>" >
         <label>Beschreibung:</label>
         <textarea name="beschreibung1"><?= $_SESSION['beschreibung1'] ?? '' ?></textarea>
         <?php
@@ -86,7 +92,7 @@ session_start();
         <label>Abteilung:</label>
         <select name="abteilungs_id">
     
-
+ <option value="" disabled selected>Bitte auswählen</option>
     <?php foreach ($abteilungen as $abt): ?>
         <option value="<?= $abt['id'] ?>"
             <?= (isset($_SESSION['abteilungs_id']) && $_SESSION['abteilungs_id'] == $abt['id']) ? 'selected' : '' ?>
@@ -117,6 +123,8 @@ session_start();
         <input type="hidden" name="typ" value="lu">
         <label>Titel:</label>
         <input type="text" name="titel" value="<?= $_SESSION['titel'] ?? '' ?>" required>
+        <label>Autor:</label>
+        <input type="text" name="Autor" required value="<?= $_SESSION['autor'] ?? '' ?>" >
         <label>Beschreibung:</label>
         <textarea name="beschreibung1"><?= $_SESSION['beschreibung1'] ?? '' ?></textarea>
         <?php
@@ -132,7 +140,7 @@ session_start();
 
         <label>Abteilung:</label>
         <select name="abteilungs_id">
-    
+     <option value="" disabled selected>Bitte auswählen</option>
 
     <?php foreach ($abteilungen as $abt): ?>
         <option value="<?= $abt['id'] ?>"
@@ -167,6 +175,8 @@ session_start();
         <input type="hidden" name="typ" value="ru">
         <label>Titel:</label>
         <input type="text" name="titel" value="<?= $_SESSION['titel'] ?? '' ?>" required>
+        <label>Autor:</label>
+        <input type="text" name="Autor" required value="<?= $_SESSION['autor'] ?? '' ?>" >
         <label>Beschreibung:</label>
         <textarea name="beschreibung1"><?= $_SESSION['beschreibung1'] ?? '' ?></textarea>
         <?php
@@ -183,7 +193,7 @@ session_start();
         <label>Abteilung:</label>
         <select name="abteilungs_id">
     
-
+ <option value="" disabled selected>Bitte auswählen</option>
     <?php foreach ($abteilungen as $abt): ?>
         <option value="<?= $abt['id'] ?>"
             <?= (isset($_SESSION['abteilungs_id']) && $_SESSION['abteilungs_id'] == $abt['id']) ? 'selected' : '' ?>
