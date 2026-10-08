@@ -142,7 +142,7 @@ $abteilungen = $stmt->fetchAll(PDO::FETCH_ASSOC);
     >
 <?php endfor; ?>
 
-    <button type="submit">Vorschau anzeigen</button>
+    <button type="submit" id="vorschauBtn">Vorschau anzeigen</button>
 </form>
 <?php endif; ?>
 
@@ -212,6 +212,32 @@ function showPreview(file, preview, dropzoneText) {
 
     reader.readAsDataURL(file);
 }
+document.getElementById("vorschauBtn").addEventListener("click", function(e) {
+
+    const required = <?= $bildCount ?>; // Anzahl Bilder aus PHP
+    let filled = 0;
+
+    for (let i = 1; i <= required; i++) {
+        const input = document.getElementById("bild" + i);
+
+        // Wenn ein neues Bild hochgeladen wurde → ok
+        if (input.files && input.files.length > 0) {
+            filled++;
+            continue;
+        }
+
+        // Wenn bereits ein Bild in der Session existiert → auch ok
+        const preview = document.getElementById("preview" + i);
+        if (preview && preview.src && preview.style.display !== "none") {
+            filled++;
+        }
+    }
+
+    if (filled < required) {
+        e.preventDefault();
+        alert("Bitte alle " + required + " Bilder hochladen, bevor du zur Vorschau gehst.");
+    }
+});
 </script>
 
 <a href="reset.php">Zurück</a>
