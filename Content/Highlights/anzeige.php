@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Anzeige</title>
 </head>
 <body>
     
@@ -12,6 +12,11 @@
 </html>
 
 <?php
+# php 7.*
+header("Refresh:1");
+echo date('H:i:s Y-m-d');
+
+
 $host = "mariadb";
 $user = "azubi26";
 $pass = "Cucxe9-vyxxos";
@@ -20,14 +25,7 @@ $db   = "iii";
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$db;charset=utf8", $user, $pass);
 
-    echo "<h2>Alle Tabellen & Inhalte</h2>";
-
-    // Tabellen abrufen
-    $stmt = $pdo->query("SHOW TABLES;");
-    $tables = $stmt->fetchAll(PDO::FETCH_COLUMN);
-
-    foreach ($tables as $table) {
-        echo "<h3>Tabelle: $table</h3>";
+    
 
         // Daten abrufen
         $stmt = $pdo->query("SELECT * FROM `$table`");
