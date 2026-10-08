@@ -1,232 +1,178 @@
 <?php
 session_start();
+
+$typ = $_GET['typ'] ?? $_POST['typ'] ?? $_SESSION['typ'] ?? null;
+
+if ($typ !== null) {
+    $_SESSION['typ'] = $typ;
+}
+
+// Textdaten übernehmen, wenn das Formular abgeschickt wurde
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $_SESSION['titel'] = $_POST['titel'] ?? $_SESSION['titel'] ?? '';
+    $_SESSION['autor'] = $_POST['Autor'] ?? $_SESSION['autor'] ?? '';
+    $_SESSION['beschreibung1'] = $_POST['beschreibung1'] ?? $_SESSION['beschreibung1'] ?? '';
+    $_SESSION['abteilungs_id'] = $_POST['abteilungs_id'] ?? $_SESSION['abteilungs_id'] ?? '';
+}
+
+// Nur neue Bilder speichern.
+// Wenn kein neues Bild hochgeladen wurde, bleibt das vorhandene Session-Bild erhalten.
+$uploadDir = __DIR__ . '/temp/';
+
+if (!is_dir($uploadDir)) {
+    mkdir($uploadDir, 0755, true);
+}
+
+for ($i = 1; $i <= 4; $i++) {
+    $feld = 'bild' . $i;
+
+    if (
+        isset($_FILES[$feld]) &&
+        $_FILES[$feld]['error'] === UPLOAD_ERR_OK &&
+        is_uploaded_file($_FILES[$feld]['tmp_name'])
+    ) {
+        $originalName = basename($_FILES[$feld]['name']);
+        $extension = strtolower(pathinfo($originalName, PATHINFO_EXTENSION));
+
+        $erlaubteEndungen = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
+
+        if (in_array($extension, $erlaubteEndungen, true)) {
+            $name = bin2hex(random_bytes(16)) . '.' . $extension;
+
+            if (move_uploaded_file($_FILES[$feld]['tmp_name'], $uploadDir . $name)) {
+                // Optional: altes Bild löschen
+                if (!empty($_SESSION[$feld])) {
+                    $alteDatei = $uploadDir . basename($_SESSION[$feld]);
+
+                    if (is_file($alteDatei)) {
+                        unlink($alteDatei);
+                    }
+                }
+
+                $_SESSION[$feld] = $name;
+            }
+        }
+    }
+}
+
+// DB laden
+$pdo = new PDO(
+    'mysql:host=mariadb;dbname=iii;charset=utf8',
+    'azubi26',
+    'Cucxe9-vyxxos'
+);
+$stmt = $pdo->query('SELECT id, name FROM abteilung ORDER BY name ASC');
+$abteilungen = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+ // Anzahl Bilder je nach Typ
+    $bildCount = [
+        'lo' => 1,
+        'ro' => 2,
+        'lu' => 3,
+        'ru' => 4
+    ][$typ] ?? 1;
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style-sheet.css">
+    <link rel="stylesheet" href="style.css">
     <title>Bearbeiten</title>
 </head>
 <body>
 
+<?php if ($typ): ?>
+<form action="vorschau.php" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="typ" value="<?= $typ ?>">
 
+    <label>Titel:</label>
+    <input type="text" name="titel" required value="<?= htmlspecialchars($_SESSION['titel'] ?? '') ?>">
+
+    <label>Autor:</label>
+    <input type="text" name="Autor" required value="<?= htmlspecialchars($_SESSION['autor'] ?? '') ?>">
+
+    <label>Beschreibung:</label>
+    <textarea name="beschreibung1" required><?= htmlspecialchars($_SESSION['beschreibung1'] ?? '') ?></textarea>
+
+    <label>Abteilung:</label>
+    <select name="abteilungs_id" required>
+        <option value="" selected >Bitte auswählen</option>
+        <?php foreach ($abteilungen as $abt): ?>
+            <option value="<?= $abt['id'] ?>"
+                <?= (isset($_SESSION['abteilungs_id']) && $_SESSION['abteilungs_id'] == $abt['id']) ? 'selected' : '' ?>
+            >
+                <?= htmlspecialchars($abt['name']) ?>
+            </option>
+        <?php endforeach; ?>
+    </select>
+
+    <?php for ($i = 1; $i <= $bildCount; $i++): ?>
     <?php
+        $bildname = $_SESSION["bild$i"] ?? '';
+        $bildUrl = '';
 
-    $typ = $_GET['typ'] ?? $_POST['typ'] ?? null; 
-    if ($typ === 'lo') {
-        ?>
-        <form action="vorschau.php" method="post" enctype="multipart/form-data">
-        <input type="hidden" name="typ" value="lo">
-        <label>Titel:</label>
-        <input type="text" name="titel" required value="<?= $_SESSION['titel']?? ''  ?>" >
-        <label>Beschreibung:</label>
-        <textarea name="beschreibung1" required><?= $_SESSION['beschreibung1']?? ''  ?> </textarea>
-        <?php
-        $pdo = new PDO(
-            'mysql:host=mariadb;dbname=iii;charset=utf8',
-            'azubi26',
-            'Cucxe9-vyxxos'
-        );
-        $stmt = $pdo->query('SELECT id, name FROM abteilung ORDER BY name ASC');
-        $abteilungen = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        ?>
-
-
-        <label>Abteilung:</label>
-        <select name="abteilungs_id">
-    <?php foreach ($abteilungen as $abt): ?>
-        <option value="<?= $abt['id'] ?>"
-            <?= (isset($_SESSION['abteilungs_id']) && $_SESSION['abteilungs_id'] == $abt['id']) ? 'selected' : '' ?>
-        >
-            <?= htmlspecialchars($abt['name']) ?>
-        </option>
-    <?php endforeach; ?>
-</select>
-
-
-            
-
-<div class="dropzone" id="dropzone1">
-    <span id="dropzoneText1">Bild hierher ziehen oder klicken</span>
-</div>
-
-<input type="file" name="bild1" id="bild1" style="display:none;">
-<img id="preview1" class="preview-img">
-
-
-        <button type="submit">Vorschau anzeigen</button>
-    </form>
-
-   
-
-
-    <?php
-    }
-    if ($typ === 'ro') {
-        ?>
-        <form action="vorschau.php" method="post" enctype="multipart/form-data">
-        <input type="hidden" name="typ" value="ro">
-        <label>Titel:</label>
-        <input type="text" name="titel" value="<?= $_SESSION['titel'] ?? '' ?>" required>
-        <label>Beschreibung:</label>
-        <textarea name="beschreibung1"><?= $_SESSION['beschreibung1'] ?? '' ?></textarea>
-        <?php
-        $pdo = new PDO(
-            'mysql:host=mariadb;dbname=iii;charset=utf8',
-            'azubi26',
-            'Cucxe9-vyxxos'
-        );
-        $stmt = $pdo->query('SELECT id, name FROM abteilung ORDER BY name ASC');
-        $abteilungen = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        ?>
-
-
-        <label>Abteilung:</label>
-        <select name="abteilungs_id">
-    
-
-    <?php foreach ($abteilungen as $abt): ?>
-        <option value="<?= $abt['id'] ?>"
-            <?= (isset($_SESSION['abteilungs_id']) && $_SESSION['abteilungs_id'] == $abt['id']) ? 'selected' : '' ?>
-        >
-            <?= htmlspecialchars($abt['name']) ?>
-        </option>
-    <?php endforeach; ?>
-</select>
-
-
-        <label>Bild 1:</label>
-        <input type="file" name="bild1">
-
-        <div class="dropzone" id="dropzone1">
-    <span id="dropzoneText1">Bild hierher ziehen oder klicken</span>
-</div>
-<input type="file" name="bild1" id="bild1" style="display:none;">
-<img id="preview1" class="preview-img">
-
-
-        <button type="submit">Vorschau anzeigen</button>
-    </form>
-    <?php
-    }
-    if ($typ === 'lu') {
-        ?>
-        <form action="vorschau.php" method="post" enctype="multipart/form-data">
-        <input type="hidden" name="typ" value="lu">
-        <label>Titel:</label>
-        <input type="text" name="titel" value="<?= $_SESSION['titel'] ?? '' ?>" required>
-        <label>Beschreibung:</label>
-        <textarea name="beschreibung1"><?= $_SESSION['beschreibung1'] ?? '' ?></textarea>
-        <?php
-        $pdo = new PDO(
-            'mysql:host=mariadb;dbname=iii;charset=utf8',
-            'azubi26',
-            'Cucxe9-vyxxos'
-        );
-        $stmt = $pdo->query('SELECT id, name FROM abteilung ORDER BY name ASC');
-        $abteilungen = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        ?>
-
-
-        <label>Abteilung:</label>
-        <select name="abteilungs_id">
-    
-
-    <?php foreach ($abteilungen as $abt): ?>
-        <option value="<?= $abt['id'] ?>"
-            <?= (isset($_SESSION['abteilungs_id']) && $_SESSION['abteilungs_id'] == $abt['id']) ? 'selected' : '' ?>
-        >
-            <?= htmlspecialchars($abt['name']) ?>
-        </option>
-    <?php endforeach; ?>
-</select>
-
-
-        <div class="dropzone" id="dropzone1">
-    <span id="dropzoneText1">Bild hierher ziehen oder klicken</span>
-</div>
-<input type="file" name="bild1" id="bild1" style="display:none;">
-<img id="preview1" class="preview-img">
-
-<div class="dropzone" id="dropzone2">
-    <span id="dropzoneText2">Bild hierher ziehen oder klicken</span>
-</div>
-<input type="file" name="bild2" id="bild2" style="display:none;">
-<img id="preview2" class="preview-img">
-
-
-        <button type="submit">Vorschau anzeigen</button>
-    </form>
-    <?php
-    }
-    if ($typ === 'ru') {
-        ?>
-        <form action="vorschau.php" method="post" enctype="multipart/form-data">
-        <input type="hidden" name="typ" value="ru">
-        <label>Titel:</label>
-        <input type="text" name="titel" value="<?= $_SESSION['titel'] ?? '' ?>" required>
-        <label>Beschreibung:</label>
-        <textarea name="beschreibung1"><?= $_SESSION['beschreibung1'] ?? '' ?></textarea>
-        <?php
-        $pdo = new PDO(
-            'mysql:host=mariadb;dbname=iii;charset=utf8',
-            'azubi26',
-            'Cucxe9-vyxxos'
-        );
-        $stmt = $pdo->query('SELECT id, name FROM abteilung ORDER BY name ASC');
-        $abteilungen = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        ?>
-
-
-        <label>Abteilung:</label>
-        <select name="abteilungs_id">
-    
-
-    <?php foreach ($abteilungen as $abt): ?>
-        <option value="<?= $abt['id'] ?>"
-            <?= (isset($_SESSION['abteilungs_id']) && $_SESSION['abteilungs_id'] == $abt['id']) ? 'selected' : '' ?>
-        >
-            <?= htmlspecialchars($abt['name']) ?>
-        </option>
-    <?php endforeach; ?>
-</select>
-
-
-        <?php for ($i = 1; $i <= 5; $i++): ?>
-<div class="dropzone" id="dropzone<?= $i ?>">
-    <span id="dropzoneText<?= $i ?>">Bild hierher ziehen oder klicken</span>
-</div>
-<input type="file" name="bild<?= $i ?>" id="bild<?= $i ?>" style="display:none;">
-<img id="preview<?= $i ?>" class="preview-img">
-<?php endfor; ?>
-
-
-        <button type="submit">Vorschau anzeigen</button>
-    </form>
-    <?php
-    }
+        if ($bildname !== '') {
+            $bildUrl = 'temp/' . rawurlencode(basename($bildname));
+        }
     ?>
-    <script>
-for (let i = 1; i <= 5; i++) {
 
+    <div class="dropzone" id="dropzone<?= $i ?>">
+        <span
+            id="dropzoneText<?= $i ?>"
+            style="<?= $bildUrl !== '' ? 'display:none;' : '' ?>"
+        >
+            Bild hierher ziehen oder klicken
+        </span>
+
+        <img
+            id="preview<?= $i ?>"
+            class="preview-img"
+            src="<?= htmlspecialchars($bildUrl) ?>"
+            style="<?= $bildUrl !== '' ? 'display:block;' : 'display:none;' ?>"
+            alt="Bild <?= $i ?>"
+        >
+    </div>
+
+    <input
+        type="file"
+        name="bild<?= $i ?>"
+        id="bild<?= $i ?>"
+        accept="image/jpeg,image/png,image/gif,image/webp"
+        style="display:none;"
+    >
+<?php endfor; ?>
+    <div id="errorBox" ></div>
+    <button type="submit" id="vorschauBtn">Vorschau anzeigen</button>
+</form>
+<?php endif; ?>
+
+<script>
+for (let i = 1; i <= 4; i++) {
     const dropzone = document.getElementById("dropzone" + i);
     const dropzoneText = document.getElementById("dropzoneText" + i);
     const fileInput = document.getElementById("bild" + i);
     const preview = document.getElementById("preview" + i);
 
-    // Wenn der Typ weniger Bilder hat → überspringen
-    if (!dropzone || !fileInput || !preview) continue;
+    if (!dropzone || !dropzoneText || !fileInput || !preview) {
+        continue;
+    }
 
-    dropzone.addEventListener("click", () => fileInput.click());
-
-    fileInput.addEventListener("change", () => {
-        showPreview(fileInput.files[0], preview, dropzoneText, dropzone);
+    dropzone.addEventListener("click", () => {
+        fileInput.click();
     });
 
-    dropzone.addEventListener("dragover", (e) => {
-        e.preventDefault();
+    fileInput.addEventListener("change", () => {
+        if (fileInput.files.length > 0) {
+            showPreview(
+                fileInput.files[0],
+                preview,
+                dropzoneText
+            );
+        }
+    });
+
+    dropzone.addEventListener("dragover", (event) => {
+        event.preventDefault();
         dropzone.classList.add("dragover");
     });
 
@@ -234,29 +180,88 @@ for (let i = 1; i <= 5; i++) {
         dropzone.classList.remove("dragover");
     });
 
-    dropzone.addEventListener("drop", (e) => {
-        e.preventDefault();
+    dropzone.addEventListener("drop", (event) => {
+        event.preventDefault();
         dropzone.classList.remove("dragover");
 
-        const file = e.dataTransfer.files[0];
-        fileInput.files = e.dataTransfer.files;
-        showPreview(file, preview, dropzoneText, dropzone);
+        if (event.dataTransfer.files.length > 0) {
+            fileInput.files = event.dataTransfer.files;
+
+            showPreview(
+                event.dataTransfer.files[0],
+                preview,
+                dropzoneText
+            );
+        }
     });
 }
 
-function showPreview(file, preview, dropzoneText, dropzone) {
+function showPreview(file, preview, dropzoneText) {
+    if (!file.type.startsWith("image/")) {
+        alert("Bitte nur ein Bild auswählen.");
+        return;
+    }
+
     const reader = new FileReader();
-    reader.onload = () => {
-        preview.src = reader.result;
+
+    reader.onload = function(event) {
+        preview.src = event.target.result;
         preview.style.display = "block";
-        if (dropzoneText) dropzoneText.style.display = "none";
-        dropzone.appendChild(preview);
+        dropzoneText.style.display = "none";
     };
+
     reader.readAsDataURL(file);
 }
+
+document.getElementById("vorschauBtn").addEventListener("click", function(e) {
+
+    const required = <?= $bildCount ?>; // Anzahl Bilder aus PHP
+    let filled = 0;
+
+    for (let i = 1; i <= required; i++) {
+        const input = document.getElementById("bild" + i);
+
+        // Neues Bild hochgeladen?
+        if (input.files && input.files.length > 0) {
+            filled++;
+            continue;
+        }
+
+        // Bereits vorhandenes Bild in der Session?
+        const preview = document.getElementById("preview" + i);
+        if (preview && preview.src && preview.style.display !== "none") {
+            filled++;
+        }
+    }
+
+    if (filled < required) {
+        e.preventDefault();
+
+        const errorBox = document.getElementById("errorBox");
+        errorBox.textContent = "Bitte alle " + required + " Bilder hochladen, bevor du zur Vorschau gehst.";
+
+        // Optional: Dropzones rot markieren
+        for (let i = 1; i <= required; i++) {
+            const input = document.getElementById("bild" + i);
+            const preview = document.getElementById("preview" + i);
+            const dropzone = document.getElementById("dropzone" + i);
+
+            if (
+                (!input.files || input.files.length === 0) &&
+                (!preview.src || preview.style.display === "none")
+            ) {
+                dropzone.style.border = "2px solid red";
+            } else {
+                dropzone.style.border = "";
+            }
+        }
+    }
+});
+
+
 </script>
 
+<a href="reset.php">Zurück</a>
 
-     <a href="index.html", <?php session_destroy(); ?> >Zurück</a>
 </body>
 </html>

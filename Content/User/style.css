@@ -91,3 +91,8 @@ h1{
     background-color: #eef;
     border-color: #55f;
 }
+div#errorBox {
+    color: red;
+    margin-top: 10px;
+    font-weight: bold;
+}
