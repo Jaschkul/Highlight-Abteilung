@@ -71,6 +71,7 @@ try {
 
         echo "</table>";
     }
+}
 
 catch (PDOException $e) {
     echo "❌ Fehler: " . $e->getMessage();
