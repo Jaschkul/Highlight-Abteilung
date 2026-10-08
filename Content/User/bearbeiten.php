@@ -92,8 +92,7 @@ $abteilungen = $stmt->fetchAll(PDO::FETCH_ASSOC);
     hier wird ein Container für die Anordnung des Templates geöffnet. Dieser wird später wieder geschlossen
     - es muss eine Variable in die class eingesetzt werden 
     -->
-    <?php echo $bildCount;?>
-    <div class="template<?php $bildCount?>">
+    <div class="template<?php $bildCount;?>">
         <!--Titel box 1-->
         <div style ="grid-area: box-1;">
             <label>Titel:</label>
