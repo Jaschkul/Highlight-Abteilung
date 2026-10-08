@@ -55,6 +55,10 @@ if ($abteilungs_id) {
     $stmt->execute([$abteilungs_id]);
     $abteilungs_name = $stmt->fetchColumn();
 }
+try {
+    // Aktuelles Datum und Uhrzeit erzeugen
+    $now = new DateTime();
+    $now->format('Y-m-d');
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -68,7 +72,7 @@ if ($abteilungs_id) {
 <h1><?= htmlspecialchars($_SESSION['titel']) ?></h1>
 <h3>Autor: <?= htmlspecialchars($_SESSION['autor']) ?></h3>
 <h4>Abteilung: <?= htmlspecialchars($abteilungs_name) ?></h4>
-
+<h3>Datum: <?= $now->format('Y-m-d') ?></h3>
 
 <p><?= nl2br(htmlspecialchars($_SESSION['beschreibung1'])) ?></p>
 
