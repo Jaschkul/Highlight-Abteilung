@@ -29,51 +29,48 @@ $db   = "iii";
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$db;charset=utf8", $user, $pass);
 
-    // Tabellen abrufen
-    $stmt = $pdo->query("SHOW TABLES;");
-    $tables = $stmt->fetchAll(PDO::FETCH_COLUMN);
+    // Daten abrufen
+    $stmt = $pdo->query("SELECT * FROM highlights");
+    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-      
+    echo "<h2>Highlights</h2>";
 
-      foreach ($tables as $table) {
-        echo "<h3>Tabelle: $table</h3>";
+    // Prüfen ob Daten vorhanden sind
+    if (empty($rows)) {
+        echo "<i>Keine Einträge in der Tabelle 'highlights'.</i>";
+        exit;
+    }
 
-        // Daten abrufen
-        $stmt = $pdo->query("SELECT * FROM `$table`");
-        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    echo "<table border='1' cellpadding='5' cellspacing='0' style='margin-bottom:20px;'>";
 
-        if (empty($rows)) {
-            echo "<i>Keine Daten vorhanden.</i><br><br>";
-            continue;
-        }
+    // Spaltenüberschriften
+    echo "<tr>";
+    foreach (array_keys($rows[0]) as $col) {
+        echo "<th>$col</th>";
+    }
+    echo "</tr>";
 
-        echo "<table border='1' cellpadding='5' cellspacing='0' style='margin-bottom:20px;'>";
-
-        // Spaltenüberschriften
+    // Datenzeilen
+    foreach ($rows as $row) {
         echo "<tr>";
-        foreach (array_keys($rows[0]) as $col) {
-            echo "<th>$col</th>";
+        foreach ($row as $col => $value) {
+
+            // Bildfelder automatisch erkennen
+            if (preg_match('/bild[1-5]/', $col) && !empty($value)) {
+
+                // KORREKTER Upload-Pfad
+                echo "<td><img src='/User/uploads/$value' style='width:150px; border-radius:8px;'></td>";
+
+            } else {
+                echo "<td>" . htmlspecialchars($value ?? '') . "</td>";
+            }
         }
         echo "</tr>";
-
-        // Datenzeilen
-        foreach ($rows as $row) {
-            echo "<tr>";
-            foreach ($row as $col => $value) {
-
-                // Bildfelder automatisch erkennen
-                if (preg_match('/bild[1-5]/', $col) && !empty($value)) {
-                    echo "<td><img src='/User/uploads/$value' style='width:150px; border-radius:8px;'></td>";
-                } else {
-                    echo "<td>" . htmlspecialchars($value ?? '') . "</td>";
-                }
-            }
-            echo "</tr>";
-        }
-
-        echo "</table>";
     }
-}
+
+    echo "</table>";
+    }
+
 
 catch (PDOException $e) {
     echo "❌ Fehler: " . $e->getMessage();
