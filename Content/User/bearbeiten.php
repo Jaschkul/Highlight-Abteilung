@@ -81,7 +81,7 @@ $abteilungen = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <title>Bearbeiten</title>
 </head>
 <body>
-//Textfelder und Dropzones für Bilder
+<!-- Textfelder und Dropzones für Bilder -->
 <?php if ($typ): ?>
 <form action="vorschau.php" method="post" enctype="multipart/form-data">
     <input type="hidden" name="typ" value="<?= $typ ?>">
@@ -262,7 +262,7 @@ document.getElementById("vorschauBtn").addEventListener("click", function(e) {
 
 
 </script>
-<form action="reset.php." method="post" class="class-button">
+<form action="reset.php" method="post" class="class-button">
     <button type="submit">Zurück</button>
 </form>
 
