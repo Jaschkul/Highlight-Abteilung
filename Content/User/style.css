@@ -106,3 +106,8 @@ div#errorBox {
     margin-top: 10px;
     font-weight: bold;
 }
+
+/* Button aller Seiten */
+.class-button {
+    margin-top: 20px;
+}

@@ -73,7 +73,6 @@ if ($abteilungs_id) {
 <h3>Autor: <?= htmlspecialchars($_SESSION['autor']) ?></h3>
 <h4>Abteilung: <?= htmlspecialchars($abteilungs_name) ?></h4>
 <h3>Datum: <?= $now->format('d.m.Y') ?></h3>
-
 <p><?= nl2br(htmlspecialchars($_SESSION['beschreibung1'])) ?></p>
 
 <?php
@@ -93,10 +92,12 @@ for ($i = 1; $i <= $bildCount; $i++) {
 }
 ?>
 
+<form action="speichern.php" method="post" class="class-button">
+    <button type="submit">Speichern</button>
+</form>
 
-<a href="speichern.php" class="btn">Speichern</a>
 
-<form action="bearbeiten.php" method="post" style="margin-top:20px;">
+<form action="bearbeiten.php" method="post" class="class-button" >
     <input type="hidden" name="typ" value="<?= htmlspecialchars($typ) ?>">
     <button type="submit">Bearbeiten</button>
 </form>
