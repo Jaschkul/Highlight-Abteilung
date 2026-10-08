@@ -67,8 +67,8 @@ $abteilungen = $stmt->fetchAll(PDO::FETCH_ASSOC);
  // Anzahl Bilder je nach Typ
     $bildCount = [
         'lo' => 1,
-        'ro' => 3,
-        'lu' => 2,
+        'ro' => 2,
+        'lu' => 3,
         'ru' => 4
     ][$typ] ?? 1;
 ?>
