@@ -141,7 +141,7 @@ $abteilungen = $stmt->fetchAll(PDO::FETCH_ASSOC);
         style="display:none;"
     >
 <?php endfor; ?>
-    <div id="errorBox" ></div>
+    <div id="errorBox" >test</div>
     <button type="submit" id="vorschauBtn">Vorschau anzeigen</button>
 </form>
 <?php endif; ?>
