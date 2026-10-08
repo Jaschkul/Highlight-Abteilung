@@ -79,6 +79,7 @@ $abteilungen = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css">
     <title>Bearbeiten</title>
+    <h1>Template1</h1>
 </head>
 <body>
 <!-- Textfelder und Dropzones für Bilder -->
@@ -129,7 +130,7 @@ $abteilungen = $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
     ?>
     <!--Dropzone box 3-->
-    <div class="dropzone" id="dropzone<?= $i ?>" style ="grid-area: box-2;">
+    <div class="dropzone" id="dropzone<?= $i ?>" style ="grid-area: box-3;">
         <span
             id="dropzoneText<?= $i ?>"
             style="<?= $bildUrl !== '' ? 'display:none;' : '' ?>"
@@ -157,7 +158,7 @@ $abteilungen = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <!--Error Message box 8-->
     <div id="errorBox" style ="grid-area: box-8;"></div>
     <!--Vorschau box 7-->
-    <div>
+    <div style ="grid-area: box-7;">
         <button type="submit" id="vorschauBtn">Vorschau anzeigen</button>
     </div>
 </form>
