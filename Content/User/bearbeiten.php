@@ -61,10 +61,11 @@ $pdo = new PDO(
     'azubi26',
     'Cucxe9-vyxxos'
 );
+// Abteilungsname laden
 $stmt = $pdo->query('SELECT id, name FROM abteilung ORDER BY name ASC');
 $abteilungen = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
- // Anzahl Bilder je nach Typ
+ // Anzahl Bilder je nach Template Typ
     $bildCount = [
         'lo' => 1,
         'ro' => 2,
@@ -80,7 +81,7 @@ $abteilungen = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <title>Bearbeiten</title>
 </head>
 <body>
-
+//Textfelder und Dropzones für Bilder
 <?php if ($typ): ?>
 <form action="vorschau.php" method="post" enctype="multipart/form-data">
     <input type="hidden" name="typ" value="<?= $typ ?>">
@@ -145,7 +146,7 @@ $abteilungen = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <button type="submit" id="vorschauBtn">Vorschau anzeigen</button>
 </form>
 <?php endif; ?>
-
+//Script für Drag & Drop und Vorschau-Validierung
 <script>
 for (let i = 1; i <= 4; i++) {
     const dropzone = document.getElementById("dropzone" + i);
@@ -195,7 +196,7 @@ for (let i = 1; i <= 4; i++) {
         }
     });
 }
-
+// Vorschau-Button Validierung Bild muss ausgewählt sein
 function showPreview(file, preview, dropzoneText) {
     if (!file.type.startsWith("image/")) {
         alert("Bitte nur ein Bild auswählen.");
@@ -240,7 +241,7 @@ document.getElementById("vorschauBtn").addEventListener("click", function(e) {
         const errorBox = document.getElementById("errorBox");
         errorBox.textContent = "Bitte alle " + required + " Bilder hochladen, bevor du zur Vorschau gehst.";
 
-        // Optional: Dropzones rot markieren
+        
         for (let i = 1; i <= required; i++) {
             const input = document.getElementById("bild" + i);
             const preview = document.getElementById("preview" + i);

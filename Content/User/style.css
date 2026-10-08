@@ -66,7 +66,7 @@ h1{
     "box-3 box-4 box-5";
 }
 
-
+/*Bearbeiten Styles*/
 .dropzone {
     width: 100%;
     max-width: 400px;
@@ -95,4 +95,9 @@ div#errorBox {
     color: red;
     margin-top: 10px;
     font-weight: bold;
+}
+
+/* Vorschau Styles */
+.class-button {
+    margin-top: 20px;
 }
