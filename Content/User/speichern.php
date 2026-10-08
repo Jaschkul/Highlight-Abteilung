@@ -15,15 +15,16 @@ try {
     $stmt = $pdo->prepare($sql);
 
     $stmt->execute([
-        ':titel' => $_SESSION['titel'],
-        ':beschreibung1' => $_SESSION['beschreibung1'],
-        ':bild1' => $_SESSION['bild1'],
-        ':bild2' => $_SESSION['bild2'],
-        ':bild3' => $_SESSION['bild3'],
-        ':bild4' => $_SESSION['bild4'],
-        ':bild5' => $_SESSION['bild5'],
-        ':abteilungs_id' => $_SESSION['abteilungs_id']
-    ]);
+    ':titel' => $_SESSION['titel'] ?? null,
+    ':beschreibung1' => $_SESSION['beschreibung1'] ?? null,
+    ':bild1' => $_SESSION['bild1'] ?? null,
+    ':bild2' => $_SESSION['bild2'] ?? null,
+    ':bild3' => $_SESSION['bild3'] ?? null,
+    ':bild4' => $_SESSION['bild4'] ?? null,
+    ':bild5' => $_SESSION['bild5'] ?? null,
+    ':abteilungs_id' => $_SESSION['abteilungs_id'] ?? null
+]);
+
     for ($i = 1; $i <= 5; $i++) {
     $feld = 'bild' . $i;
     // Bilder aus temp/ nach uploads/ verschieben
