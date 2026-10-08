@@ -29,7 +29,9 @@ $db   = "iii";
 try {
     $pdo = new PDO("mysql:host=$host;dbname=$db;charset=utf8", $user, $pass);
 
-    
+    // Tabellen abrufen
+    $stmt = $pdo->query("SHOW TABLES;");
+    $tables = $stmt->fetchAll(PDO::FETCH_COLUMN);
 
       
 
