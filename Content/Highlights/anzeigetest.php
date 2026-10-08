@@ -4,25 +4,16 @@
 <meta charset="UTF-8">
 <title>Highlight Anzeige</title>
 
-<style>
-    body {
-        font-family: Arial;
-        text-align: center;
-        padding: 40px;
-    }
-    img {
-        width: 300px;
-        border-radius: 10px;
-        margin-top: 20px;
-    }
-</style>
+
 
 </head>
 <body>
 
 <h1 id="titel"></h1>
 <h3 id="beschreibung"></h3>
-
+<h3 id="autor"></h3>
+<h3 id="abteilung"></h3>
+<h3 id="erstellt_am"></h3>
 <div id="bilder"></div>
 
 <script>
