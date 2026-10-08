@@ -17,7 +17,7 @@ if (!is_dir($uploadDir)) {
     mkdir($uploadDir, 0755, true);
 }
 
-for ($i = 1; $i <= 5; $i++) {
+for ($i = 1; $i <= 4; $i++) {
     $feld = 'bild' . $i;
 
     if (
@@ -72,7 +72,7 @@ if ($abteilungs_id) {
 <h1><?= htmlspecialchars($_SESSION['titel']) ?></h1>
 <h3>Autor: <?= htmlspecialchars($_SESSION['autor']) ?></h3>
 <h4>Abteilung: <?= htmlspecialchars($abteilungs_name) ?></h4>
-<h3>Datum: <?= $now->format('Y-m-d') ?></h3>
+<h3>Datum: <?= $now->format('d-m-Y') ?></h3>
 
 <p><?= nl2br(htmlspecialchars($_SESSION['beschreibung1'])) ?></p>
 
@@ -80,9 +80,9 @@ if ($abteilungs_id) {
 // Anzahl Bilder je nach Typ
 $bildCount = [
     'lo' => 1,
-    'ro' => 1,
+    'ro' => 3,
     'lu' => 2,
-    'ru' => 5
+    'ru' => 4
 ][$typ] ?? 1;
 
 for ($i = 1; $i <= $bildCount; $i++) {

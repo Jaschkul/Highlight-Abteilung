@@ -23,7 +23,7 @@ if (!is_dir($uploadDir)) {
     mkdir($uploadDir, 0755, true);
 }
 
-for ($i = 1; $i <= 5; $i++) {
+for ($i = 1; $i <= 4; $i++) {
     $feld = 'bild' . $i;
 
     if (
@@ -67,9 +67,9 @@ $abteilungen = $stmt->fetchAll(PDO::FETCH_ASSOC);
  // Anzahl Bilder je nach Typ
     $bildCount = [
         'lo' => 1,
-        'ro' => 1,
+        'ro' => 3,
         'lu' => 2,
-        'ru' => 5
+        'ru' => 4
     ][$typ] ?? 1;
 ?>
 <!DOCTYPE html>
@@ -147,7 +147,7 @@ $abteilungen = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <?php endif; ?>
 
 <script>
-for (let i = 1; i <= 5; i++) {
+for (let i = 1; i <= 4; i++) {
     const dropzone = document.getElementById("dropzone" + i);
     const dropzoneText = document.getElementById("dropzoneText" + i);
     const fileInput = document.getElementById("bild" + i);
