@@ -97,7 +97,7 @@ $abteilungen = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <!--Autor box 4-->
         <div style ="grid-area: box-4;">
             <label>Autor:</label>
-            <input type="text" name="Autor" required value="<?= htmlspecialchars($_SESSION['autor'] ?? '') ?>">
+            <input type="text" name="autor" required value="<?= htmlspecialchars($_SESSION['autor'] ?? '') ?>">
         </div>
         <!--Beschreibung box 2-->
         <div style ="grid-area: box-2;">

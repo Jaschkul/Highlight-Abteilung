@@ -8,7 +8,7 @@ $pdo = new PDO("mysql:host=$host;dbname=$db;charset=utf8", $user, $pass);
 $sql = "
     SELECT h.*, a.name AS abteilungsname
     FROM highlights h
-    LEFT JOIN abteilungen a ON h.abteilungsid = a.id
+    LEFT JOIN abteilung a ON h.abteilungsid = a.id
     ORDER BY h.id ASC";
 
 $stmt = $pdo->query($sql);
