@@ -212,7 +212,7 @@ function showPreview(file, preview, dropzoneText) {
 
     reader.readAsDataURL(file);
 }
-<script>
+
 document.getElementById("vorschauBtn").addEventListener("click", function(e) {
 
     const required = <?= $bildCount ?>; // Anzahl Bilder aus PHP
@@ -257,7 +257,7 @@ document.getElementById("vorschauBtn").addEventListener("click", function(e) {
         }
     }
 });
-</script>
+
 
 </script>
 
