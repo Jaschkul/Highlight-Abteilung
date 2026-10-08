@@ -4,24 +4,16 @@
 <meta charset="UTF-8">
 <title>Highlight Anzeige</title>
 
-<style>
-    body {
-        font-family: Arial;
-        text-align: center;
-        padding: 40px;
-    }
-    img {
-        width: 300px;
-        border-radius: 10px;
-        margin-top: 20px;
-    }
-</style>
+
 
 </head>
 <body>
 
 <h1 id="titel"></h1>
 <h3 id="beschreibung"></h3>
+<h3 id="autor"></h3>
+<h3 id="abteilung"></h3>
+<h3 id="erstellt_am"></h3>
 <div id="bilder"></div>
 
 <script>
@@ -41,6 +33,9 @@ function showHighlight() {
 
     document.getElementById("titel").innerText = h.titel;
     document.getElementById("beschreibung").innerText = h.beschreibung1;
+    document.getElementById("autor").innerText = h.autor;
+    document.getElementById("abteilung").innerText = h.abteilung;
+    document.getElementById("erstellt_am").innerText = h.erstellt_am;
 
     // Bilder anzeigen
     let bilderDiv = document.getElementById("bilder");
@@ -50,7 +45,7 @@ function showHighlight() {
         let key = "bild" + i;
         if (h[key]) {
             let img = document.createElement("img");
-            img.src = "uploads/" + h[key];
+            img.src = "/User/uploads/" + h[key];
             bilderDiv.appendChild(img);
         }
     }
@@ -63,7 +58,7 @@ function showHighlight() {
 loadHighlights();
 
 // Automatischer Wechsel alle 60 Sekunden
-setInterval(showHighlight, 60000);
+setInterval(showHighlight, 6000);
 </script>
 
 </body>
