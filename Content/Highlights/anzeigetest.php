@@ -33,6 +33,9 @@ function showHighlight() {
 
     document.getElementById("titel").innerText = h.titel;
     document.getElementById("beschreibung").innerText = h.beschreibung1;
+    document.getElementById("autor").innerText = h.autor;
+    document.getElementById("abteilung").innerText = h.abteilung;
+    document.getElementById("erstellt_am").innerText = h.erstellt_am;
 
     // Bilder anzeigen
     let bilderDiv = document.getElementById("bilder");
