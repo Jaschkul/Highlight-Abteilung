@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <h1> Template1</h1>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <form action="vorschau.php" method="post" enctype="multipart/form-data">
+    
+    <input id="inputTitel" type="hidden" name="typ" value="<?= $typ ?>">
+    
+    <div class="template1">
+        <div style ="grid-area: box-1;">
+            <label> Titel</label>
+            <input></input>
+        </div>
+        <div style ="grid-area: box-2;">
+            <label> Beschreibung</label>
+            <textarea></textarea>
+        </div>
+        <div style ="grid-area: box-3;">
+            <input type="file"></input>
+        </div>
+        <div style ="grid-area: box-4;">
+            <label> Autor</label>
+            <input></input>
+        </div>
+        <div style ="grid-area: box-5;">
+            <label> Abteilung</label>
+            <select></select>
+        </div>
+        <div style ="grid-area: box-6;">
+            <button>zurück</button>
+        </div>
+        <div style ="grid-area: box-7;">
+            <button>Vorschau</button>
+        </div>
+
+    </div>
+</body>
+</html>

@@ -83,28 +83,41 @@ $abteilungen = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <?php if ($typ): ?>
 <form action="vorschau.php" method="post" enctype="multipart/form-data">
-    <input type="hidden" name="typ" value="<?= $typ ?>">
+    
+    <input id="inputTitel" type="hidden" name="typ" value="<?= $typ ?>">
+    
+    <div class="template1">
+        //Titel
+        <div style ="grid-area: box-1;">
+            <label>Titel:</label>
+            <input type="text" name="titel" required value="<?= htmlspecialchars($_SESSION['titel'] ?? '') ?>">
+        </div>
+        //Autor
+        <div>
+            <label>Autor:</label>
+            <input type="text" name="Autor" required value="<?= htmlspecialchars($_SESSION['autor'] ?? '') ?>">
+        </div>
+        //Beschreibung
+        <div>
+            <label>Beschreibung:</label>
+            <textarea name="beschreibung1" required><?= htmlspecialchars($_SESSION['beschreibung1'] ?? '') ?></textarea>
+        </div>
+        //Abteilungen
+        <div>
+            <label>Abteilung:</label>
+            <select name="abteilungs_id" required>
+                <option value="" selected >Bitte auswählen</option>
+                <?php foreach ($abteilungen as $abt): ?>
+                    <option value="<?= $abt['id'] ?>"
+                        <?= (isset($_SESSION['abteilungs_id']) && $_SESSION['abteilungs_id'] == $abt['id']) ? 'selected' : '' ?>
+                    >
+                        <?= htmlspecialchars($abt['name']) ?>
+                    </option>
+                <?php endforeach; ?>
+            </select>
+        </div>
 
-    <label>Titel:</label>
-    <input type="text" name="titel" required value="<?= htmlspecialchars($_SESSION['titel'] ?? '') ?>">
-
-    <label>Autor:</label>
-    <input type="text" name="Autor" required value="<?= htmlspecialchars($_SESSION['autor'] ?? '') ?>">
-
-    <label>Beschreibung:</label>
-    <textarea name="beschreibung1" required><?= htmlspecialchars($_SESSION['beschreibung1'] ?? '') ?></textarea>
-
-    <label>Abteilung:</label>
-    <select name="abteilungs_id" required>
-        <option value="" selected >Bitte auswählen</option>
-        <?php foreach ($abteilungen as $abt): ?>
-            <option value="<?= $abt['id'] ?>"
-                <?= (isset($_SESSION['abteilungs_id']) && $_SESSION['abteilungs_id'] == $abt['id']) ? 'selected' : '' ?>
-            >
-                <?= htmlspecialchars($abt['name']) ?>
-            </option>
-        <?php endforeach; ?>
-    </select>
+    </div>
 
     <?php for ($i = 1; $i <= $bildCount; $i++): ?>
     <?php
@@ -141,6 +154,7 @@ $abteilungen = $stmt->fetchAll(PDO::FETCH_ASSOC);
         style="display:none;"
     >
 <?php endfor; ?>
+    // Vorschau anzeigen
     <div id="errorBox" ></div>
     <button type="submit" id="vorschauBtn">Vorschau anzeigen</button>
 </form>
