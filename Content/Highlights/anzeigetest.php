@@ -51,7 +51,7 @@ function showHighlight() {
         let key = "bild" + i;
         if (h[key]) {
             let img = document.createElement("img");
-            img.src = "uploads/" + h[key];
+            img.src = "/User/uploads/" + h[key];
             bilderDiv.appendChild(img);
         }
     }
@@ -64,7 +64,7 @@ function showHighlight() {
 loadHighlights();
 
 // Automatischer Wechsel alle 60 Sekunden
-setInterval(showHighlight, 60000);
+setInterval(showHighlight, 6000);
 </script>
 
 </body>
