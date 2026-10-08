@@ -24,14 +24,20 @@ try {
         ':bild5' => $_SESSION['bild5'],
         ':abteilungs_id' => $_SESSION['abteilungs_id']
     ]);
-
+    for ($i = 1; $i <= 5; $i++) {
+    $feld = 'bild' . $i;
     // Bilder aus temp/ nach uploads/ verschieben
-    rename('temp/' . $_SESSION['bild1'], 'uploads/' . $_SESSION['bild1']);
-    rename('temp/' . $_SESSION['bild2'], 'uploads/' . $_SESSION['bild2']);
-    rename('temp/' . $_SESSION['bild3'], 'uploads/' . $_SESSION['bild3']);
-    rename('temp/' . $_SESSION['bild4'], 'uploads/' . $_SESSION['bild4']);
-    rename('temp/' . $_SESSION['bild5'], 'uploads/' . $_SESSION['bild5']);
+    if (!empty($_SESSION[$feld])) {
+        $tempPath = 'temp/' . $_SESSION[$feld];
+        $uploadPath = 'uploads/' . $_SESSION[$feld];
 
+        if (file_exists($tempPath)) {
+            rename($tempPath, $uploadPath);
+        }
+    }
+}
+
+    
     echo 'Highlight gespeichert!';
 } catch (\Throwable $th) {
     //throw $th;
