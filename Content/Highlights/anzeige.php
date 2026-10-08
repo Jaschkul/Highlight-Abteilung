@@ -1,3 +1,8 @@
+<?php
+
+header("Refresh:1");
+echo date('H:i:s Y-m-d'); ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,9 +17,8 @@
 </html>
 
 <?php
-# php 7.*
-header("Refresh:1");
-echo date('H:i:s Y-m-d');
+
+
 
 
 $host = "mariadb";
@@ -31,10 +35,7 @@ try {
         $stmt = $pdo->query("SELECT * FROM `$table`");
         $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-        if (empty($rows)) {
-            echo "<i>Keine Daten vorhanden.</i><br><br>";
-            continue;
-        }
+     
 
         echo "<table border='1' cellpadding='5' cellspacing='0' style='margin-bottom:20px;'>";
 
