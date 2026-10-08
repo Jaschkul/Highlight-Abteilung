@@ -141,7 +141,7 @@ $abteilungen = $stmt->fetchAll(PDO::FETCH_ASSOC);
         style="display:none;"
     >
 <?php endfor; ?>
-
+    <div id="errorBox" ></div>
     <button type="submit" id="vorschauBtn">Vorschau anzeigen</button>
 </form>
 <?php endif; ?>
@@ -212,6 +212,7 @@ function showPreview(file, preview, dropzoneText) {
 
     reader.readAsDataURL(file);
 }
+<script>
 document.getElementById("vorschauBtn").addEventListener("click", function(e) {
 
     const required = <?= $bildCount ?>; // Anzahl Bilder aus PHP
@@ -220,13 +221,13 @@ document.getElementById("vorschauBtn").addEventListener("click", function(e) {
     for (let i = 1; i <= required; i++) {
         const input = document.getElementById("bild" + i);
 
-        // Wenn ein neues Bild hochgeladen wurde → ok
+        // Neues Bild hochgeladen?
         if (input.files && input.files.length > 0) {
             filled++;
             continue;
         }
 
-        // Wenn bereits ein Bild in der Session existiert → auch ok
+        // Bereits vorhandenes Bild in der Session?
         const preview = document.getElementById("preview" + i);
         if (preview && preview.src && preview.style.display !== "none") {
             filled++;
@@ -235,9 +236,29 @@ document.getElementById("vorschauBtn").addEventListener("click", function(e) {
 
     if (filled < required) {
         e.preventDefault();
-        alert("Bitte alle " + required + " Bilder hochladen, bevor du zur Vorschau gehst.");
+
+        const errorBox = document.getElementById("errorBox");
+        errorBox.textContent = "Bitte alle " + required + " Bilder hochladen, bevor du zur Vorschau gehst.";
+
+        // Optional: Dropzones rot markieren
+        for (let i = 1; i <= required; i++) {
+            const input = document.getElementById("bild" + i);
+            const preview = document.getElementById("preview" + i);
+            const dropzone = document.getElementById("dropzone" + i);
+
+            if (
+                (!input.files || input.files.length === 0) &&
+                (!preview.src || preview.style.display === "none")
+            ) {
+                dropzone.style.border = "2px solid red";
+            } else {
+                dropzone.style.border = "";
+            }
+        }
     }
 });
+</script>
+
 </script>
 
 <a href="reset.php">Zurück</a>
