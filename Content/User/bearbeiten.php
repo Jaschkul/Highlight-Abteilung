@@ -146,7 +146,8 @@ $abteilungen = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <button type="submit" id="vorschauBtn">Vorschau anzeigen</button>
 </form>
 <?php endif; ?>
-//Script für Drag & Drop und Vorschau-Validierung
+
+<!-- Script für Drag & Drop und Vorschau-Validierung -->
 <script>
 for (let i = 1; i <= 4; i++) {
     const dropzone = document.getElementById("dropzone" + i);
@@ -196,7 +197,7 @@ for (let i = 1; i <= 4; i++) {
         }
     });
 }
-// Vorschau-Button Validierung Bild muss ausgewählt sein
+//Vorschau-Button Validierung Bild muss ausgewählt sein
 function showPreview(file, preview, dropzoneText) {
     if (!file.type.startsWith("image/")) {
         alert("Bitte nur ein Bild auswählen.");
@@ -261,8 +262,10 @@ document.getElementById("vorschauBtn").addEventListener("click", function(e) {
 
 
 </script>
+<form action="reset.php." method="post" class="class-button">
+    <button type="submit">Zurück</button>
+</form>
 
-<a href="reset.php">Zurück</a>
 
 </body>
 </html>

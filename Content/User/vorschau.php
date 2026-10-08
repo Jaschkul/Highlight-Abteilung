@@ -97,7 +97,7 @@ for ($i = 1; $i <= $bildCount; $i++) {
 </form>
 
 
-<form action="bearbeiten.php" method="post" class="button" >
+<form action="bearbeiten.php" method="post" class="class-button" >
     <input type="hidden" name="typ" value="<?= htmlspecialchars($typ) ?>">
     <button type="submit">Bearbeiten</button>
 </form>
