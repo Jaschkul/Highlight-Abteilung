@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,7 +33,7 @@
     rename('temp/' . $_SESSION['bild1'], 'uploads/' . $_SESSION['bild1']);
     rename('temp/' . $_SESSION['bild2'], 'uploads/' . $_SESSION['bild2']);
 
-    echo '✔ Highlight gespeichert!';
+    echo 'Highlight gespeichert!';
     ?>
 </body>
 </html>

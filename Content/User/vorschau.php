@@ -40,6 +40,21 @@ for ($i = 1; $i <= 5; $i++) {
         }
     }
 }
+$pdo = new PDO(
+    'mysql:host=mariadb;dbname=iii;charset=utf8',
+    'azubi26',
+    'Cucxe9-vyxxos'
+);
+$abteilungs_id = $_SESSION['abteilungs_id'] ?? null;
+
+// Abteilungsname laden
+$abteilungs_name = '';
+
+if ($abteilungs_id) {
+    $stmt = $pdo->prepare('SELECT name FROM abteilung WHERE id = ?');
+    $stmt->execute([$abteilungs_id]);
+    $abteilungs_name = $stmt->fetchColumn();
+}
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -52,7 +67,8 @@ for ($i = 1; $i <= 5; $i++) {
 
 <h1><?= htmlspecialchars($_SESSION['titel']) ?></h1>
 <h3>Autor: <?= htmlspecialchars($_SESSION['autor']) ?></h3>
-<h4>Abteilung: <?= htmlspecialchars($_SESSION['abteilungs_id']) ?></h4>
+<h4>Abteilung: <?= htmlspecialchars($abteilungs_name) ?></h4>
+
 
 <p><?= nl2br(htmlspecialchars($_SESSION['beschreibung1'])) ?></p>
 
