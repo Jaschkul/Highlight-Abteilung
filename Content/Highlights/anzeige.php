@@ -6,8 +6,8 @@
     <title>Document</title>
 </head>
 <body>
-    <h1> Highlights Abteilungem</h1>
-    <
+    
+    
 </body>
 </html>
 
@@ -54,7 +54,7 @@ try {
 
                 // Bildfelder automatisch erkennen
                 if (preg_match('/bild[1-5]/', $col) && !empty($value)) {
-                    echo "<td><img src='User/uploads/$value' style='width:150px; border-radius:8px;'></td>";
+                    echo "<td><img src='/User/uploads/$value' style='width:150px; border-radius:8px;'></td>";
                 } else {
                     echo "<td>" . htmlspecialchars($value ?? '') . "</td>";
                 }
