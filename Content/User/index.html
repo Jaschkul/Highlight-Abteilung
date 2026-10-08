@@ -11,29 +11,35 @@
     
     
     <form action="bearbeiten.php" method="post">
-    <div class="box1">
-        <button class="btns" id="btnlo" type="submit" name="typ" value="lo">
-            template1
+    <div class="gridContainer">
+        <!-- links oben-->
+        <button class="gridBtnlo" id="btnlo" type="submit" name="typ" value="lo">
+            <div id="txtlo">txtlo hier steht ein Beispiel</div>
+            <div id="imgU"><img src="bsp.png"></div>
         </button> 
-    </div>
-    <div class="box1">
-        <button class="btns" id="btnro" type="submit" name="typ" value="ro">
-            template2
+        <!-- rechts oben-->
+        <button class="gridBtnro" id="btnro" type="submit" name="typ" value="ro">
+            <div id="imgU" style ="grid-area: box-1;"><img src="bsp.png"></div>
+            <div id="imgU" style ="grid-area: box-2;"><img src="bsp.png"></div>
+            <div id="txtlu" style ="grid-area: box-3;">txtlo hier steht ein Beispiel</div>
         </button> 
-    </div>
-    <div class="box1">
-        <button  class="btns" id="btnlu" type="submit" name="typ" value="lu">
-            template3
+        <!--links unten-->
+        <button  class="gridBtnlu" id="btnlu" type="submit" name="typ" value="lu">
+            <div id="imgU" style ="grid-area: box-1;"><img src="bsp.png"></div>
+            <div id="imgU" style ="grid-area: box-2;"><img src="bsp.png"></div>
+            <div id="imgU" style ="grid-area: box-3;"><img src="bsp.png"></div>
+            <div id="txtlu" style ="grid-area: box-4;">txtlo hier steht ein Beispiel</div>
         </button> 
-    </div>
-    <div class="box1">
-        <button class="btns" id="btnru" type="submit" name="typ" value="ru">
-            template4
+        <!--rechts unten-->
+        <button class="gridBtnru" id="btnru" type="submit" name="typ" value="ru">
+            <div id="imgU" style ="grid-area: box-1;"><img src="bsp.png"></div>
+            <div id="imgU" style ="grid-area: box-2;"><img src="bsp.png"></div>
+            <div id="imgU" style ="grid-area: box-3;"><img src="bsp.png"></div>
+            <div id="imgU" style ="grid-area: box-4;"><img src="bsp.png"></div>
+            <div id="txtlu" style ="grid-area: box-5;">txtlo hier steht ein Beispiel</div>
         </button> 
     </div>
 
-
-    
 
     </form>
    
