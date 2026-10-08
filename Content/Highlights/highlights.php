@@ -5,8 +5,13 @@ $pass = "Cucxe9-vyxxos";
 $db   = "iii";
 
 $pdo = new PDO("mysql:host=$host;dbname=$db;charset=utf8", $user, $pass);
+$sql = "
+    SELECT h.*, a.name AS abteilungsname
+    FROM highlights h
+    LEFT JOIN abteilungen a ON h.abteilungsid = a.id
+    ORDER BY h.id ASC";
 
-$stmt = $pdo->query("SELECT * FROM highlights ORDER BY id ASC");
+$stmt = $pdo->query($sql);
 $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 header('Content-Type: application/json');

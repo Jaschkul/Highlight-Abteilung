@@ -10,7 +10,7 @@ if ($typ !== null) {
 // Textdaten übernehmen, wenn das Formular abgeschickt wurde
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $_SESSION['titel'] = $_POST['titel'] ?? $_SESSION['titel'] ?? '';
-    $_SESSION['autor'] = $_POST['Autor'] ?? $_SESSION['autor'] ?? '';
+    $_SESSION['autor'] = $_POST['autor'] ?? $_SESSION['autor'] ?? '';
     $_SESSION['beschreibung1'] = $_POST['beschreibung1'] ?? $_SESSION['beschreibung1'] ?? '';
     $_SESSION['abteilungs_id'] = $_POST['abteilungs_id'] ?? $_SESSION['abteilungs_id'] ?? '';
 }
