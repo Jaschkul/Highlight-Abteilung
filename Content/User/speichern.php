@@ -1,19 +1,12 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Speichern</title>
-</head>
-<body>
-    <?php
+<?php
     session_start();
-
+try {
+    
+    
     $pdo = new PDO(
-        'mysql:host=mariadb;dbname=iii;charset=utf8',
-        'azubi26',
-        'Cucxe9-vyxxos'
-    );
+    'mysql:host=mariadb;dbname=iii;charset=utf8',
+    'azubi26',
+    'Cucxe9-vyxxos');
 
     $sql = 'INSERT INTO highlights 
         (titel, beschreibung1, bild1, bild2, bild3, bild4, bild5, abteilungs_id)
@@ -40,6 +33,16 @@
     rename('temp/' . $_SESSION['bild5'], 'uploads/' . $_SESSION['bild5']);
 
     echo 'Highlight gespeichert!';
+} catch (\Throwable $th) {
+    //throw $th;
+    echo ''. $th->getMessage() .'';
+}
+    
     ?>
-</body>
-</html>
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speichern</title>
+</head>
