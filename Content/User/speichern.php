@@ -9,14 +9,15 @@ try {
     'Cucxe9-vyxxos');
 
     $sql = 'INSERT INTO highlights 
-        (titel, beschreibung1, bild1, bild2, bild3, bild4, bild5, abteilungs_id)
-        VALUES (:titel, :beschreibung1, :bild1, :bild2, :bild3, :bild4, :bild5, :abteilungs_id)';
+        (titel, beschreibung1, autor, bild1, bild2, bild3, bild4, bild5, abteilungs_id)
+        VALUES (:titel, :beschreibung1, :autor, :bild1, :bild2, :bild3, :bild4, :bild5, :abteilungs_id)';
 
     $stmt = $pdo->prepare($sql);
 
     $stmt->execute([
     ':titel' => $_SESSION['titel'] ?? null,
     ':beschreibung1' => $_SESSION['beschreibung1'] ?? null,
+    ':autor' => $_SESSION['autor'] ?? null,
     ':bild1' => $_SESSION['bild1'] ?? null,
     ':bild2' => $_SESSION['bild2'] ?? null,
     ':bild3' => $_SESSION['bild3'] ?? null,
