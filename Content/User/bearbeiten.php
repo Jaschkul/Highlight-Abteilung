@@ -87,24 +87,24 @@ $abteilungen = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
     <input id="inputTitel" type="hidden" name="typ" value="<?= $typ ?>">
     
-    //hier wird ein Container für die Anordnung des Templates geöffnet. Dieser wird später wieder geschlossen
+    <!--hier wird ein Container für die Anordnung des Templates geöffnet. Dieser wird später wieder geschlossen-->
     <div class="template1">
-        //Titel box 1
+        <!--Titel box 1-->
         <div style ="grid-area: box-1;">
             <label>Titel:</label>
             <input type="text" name="titel" required value="<?= htmlspecialchars($_SESSION['titel'] ?? '') ?>">
         </div>
-        //Autor box 4
+        <!--Autor box 4-->
         <div style ="grid-area: box-4;">
             <label>Autor:</label>
             <input type="text" name="Autor" required value="<?= htmlspecialchars($_SESSION['autor'] ?? '') ?>">
         </div>
-        //Beschreibung box 2
+        <!--Beschreibung box 2-->
         <div style ="grid-area: box-2;">
             <label>Beschreibung:</label>
             <textarea name="beschreibung1" required><?= htmlspecialchars($_SESSION['beschreibung1'] ?? '') ?></textarea>
         </div>
-        //Abteilungen box 5
+        <!--Abteilungen box 5-->
         <div style ="grid-area: box-5;">
             <label>Abteilung:</label>
             <select name="abteilungs_id" required>
@@ -128,7 +128,7 @@ $abteilungen = $stmt->fetchAll(PDO::FETCH_ASSOC);
             $bildUrl = 'temp/' . rawurlencode(basename($bildname));
         }
     ?>
-    //Dropzone box 3
+    <!--Dropzone box 3-->
     <div class="dropzone" id="dropzone<?= $i ?>" style ="grid-area: box-2;">
         <span
             id="dropzoneText<?= $i ?>"
@@ -154,9 +154,9 @@ $abteilungen = $stmt->fetchAll(PDO::FETCH_ASSOC);
         style="display:none;"
     >
 <?php endfor; ?>
-    // Error Message box 8
+    <!--Error Message box 8-->
     <div id="errorBox" style ="grid-area: box-8;"></div>
-    // Vorschau box 7
+    <!--Vorschau box 7-->
     <div>
         <button type="submit" id="vorschauBtn">Vorschau anzeigen</button>
     </div>
@@ -279,11 +279,11 @@ document.getElementById("vorschauBtn").addEventListener("click", function(e) {
 
 </script>
 <form action="reset.php" method="post" class="class-button">
-    //zurück box 6
+    <!--zurück box 6-->
     <div style ="grid-area: box-6;">
         <button type="submit">Zurück</button>
     </div>
-    //mit diesem schließenden div wird der Container für das GridLayout geschlossen
+    <!--mit diesem schließenden div wird der Container für das GridLayout geschlossen-->
     </div>
 </form>
 
