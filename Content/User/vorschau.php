@@ -55,7 +55,7 @@ if ($abteilungs_id) {
     $stmt->execute([$abteilungs_id]);
     $abteilungs_name = $stmt->fetchColumn();
 }
-try {
+
     // Aktuelles Datum und Uhrzeit erzeugen
     $now = new DateTime();
     $now->format('Y-m-d');
