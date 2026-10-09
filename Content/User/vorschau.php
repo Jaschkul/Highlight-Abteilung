@@ -50,10 +50,19 @@ $abteilungs_id = $_SESSION['abteilungs_id'] ?? null;
 // Abteilungsname laden
 $abteilungs_name = '';
 
-if ($abteilungs_id) {
-    $stmt = $pdo->prepare('SELECT name FROM abteilung WHERE id = ?');
-    $stmt->execute([$abteilungs_id]);
-    $abteilungs_name = $stmt->fetchColumn();
+if (!empty($abteilungs_ids)) {
+
+    // Platzhalter erzeugen: ?, ?, ?, ...
+    $placeholders = implode(',', array_fill(0, count($abteilungs_ids), '?'));
+
+    $stmt = $pdo->prepare("SELECT name FROM abteilung WHERE id IN ($placeholders)");
+    $stmt->execute($abteilungs_ids);
+
+    // Alle Namen als Array holen
+    $namen = $stmt->fetchAll(PDO::FETCH_COLUMN);
+
+    // Zu einem String verbinden
+    $abteilungs_name = implode(', ', $namen);
 }
 
     // Aktuelles Datum und Uhrzeit erzeugen
