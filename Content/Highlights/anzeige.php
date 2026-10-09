@@ -36,13 +36,23 @@ function showHighlight() {
     if (highlights.length === 0) return;
 
     const h = highlights[index];
+    const date = new Date(h.erstellt_am);
+
+// Datum Format: Y-m-d
+const formatted =
+    date.getFullYear() + "-" +
+    String(date.getMonth() + 1).padStart(2, "0") + "-" +
+    String(date.getDate()).padStart(2, "0");
+
+
+
 
     // Textfelder füllen
     document.getElementById("titel").innerText = h.titel;
     document.getElementById("beschreibung").innerText = h.beschreibung1;
     document.getElementById("autor").innerText = h.autor;
     document.getElementById("abteilung").innerText = h.abteilungen;
-    document.getElementById("erstellt_am").innerText = h.erstellt_am;
+    document.getElementById("erstellt_am").innerText = formatted;
 
     // Bilder anzeigen
     let bilderDiv = document.getElementById("bilder");

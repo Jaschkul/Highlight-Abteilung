@@ -39,12 +39,18 @@ function showHighlight() {
     }
 
     const h = highlights[index];
+    // Datum Format: Y-m-d
+    const date = new Date(h.erstellt_am);
+    const formatted =
+        date.getFullYear() + "-" +
+        String(date.getMonth() + 1).padStart(2, "0") + "-" +
+        String(date.getDate()).padStart(2, "0");
 
     document.getElementById("titel").innerText = h.titel;
     document.getElementById("beschreibung").innerText = h.beschreibung1;
     document.getElementById("autor").innerText = h.autor;
     document.getElementById("abteilung").innerText = h.abteilungen;
-    document.getElementById("erstellt_am").innerText = h.erstellt_am;
+    document.getElementById("erstellt_am").innerText = formatted;
 
     let bilderDiv = document.getElementById("bilder");
     bilderDiv.innerHTML = "";
