@@ -38,11 +38,11 @@ function showHighlight() {
     const h = highlights[index];
     const date = new Date(h.erstellt_am);
 
-// Datum Format: Y-m-d
+// Datum Format: d-m-Y
 const formatted =
-    date.getFullYear() + "-" +
-    String(date.getMonth() + 1).padStart(2, "0") + "-" +
-    String(date.getDate()).padStart(2, "0");
+    String(date.getDate()).padStart(2, "0") + "." +
+    String(date.getMonth() + 1).padStart(2, "0") + "." +
+    date.getFullYear();
 
 
 

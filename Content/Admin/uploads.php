@@ -39,12 +39,12 @@ function showHighlight() {
     }
 
     const h = highlights[index];
-    // Datum Format: Y-m-d
+    // Datum Format: d-m-Y
     const date = new Date(h.erstellt_am);
     const formatted =
-        date.getFullYear() + "-" +
-        String(date.getMonth() + 1).padStart(2, "0") + "-" +
-        String(date.getDate()).padStart(2, "0");
+        String(date.getDate()).padStart(2, "0") + "." +
+        String(date.getMonth() + 1).padStart(2, "0") + "." +
+        date.getFullYear();
 
     document.getElementById("titel").innerText = h.titel;
     document.getElementById("beschreibung").innerText = h.beschreibung1;
