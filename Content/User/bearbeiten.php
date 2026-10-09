@@ -111,19 +111,19 @@ $bildCount = [
         <!-- Titel -->
         <div style="grid-area: box-1;">
             <label>Titel:</label>
-            <input type="text" name="titel" required value="<?= htmlspecialchars($_SESSION['titel'] ?? '') ?>">
+            <input type="text" name="titel" required maxlength="100" value="<?= htmlspecialchars($_SESSION['titel'] ?? '') ?>">
         </div>
 
         <!-- Autor -->
         <div style="grid-area: box-4;">
             <label>Autor:</label>
-            <input type="text" name="autor" required value="<?= htmlspecialchars($_SESSION['autor'] ?? '') ?>">
+            <input type="text" name="autor" required maxlength="100" value="<?= htmlspecialchars($_SESSION['autor'] ?? '') ?>">
         </div>
 
         <!-- Beschreibung -->
         <div style="grid-area: box-2;">
             <label>Beschreibung:</label>
-            <textarea name="beschreibung1" required><?= htmlspecialchars($_SESSION['beschreibung1'] ?? '') ?></textarea>
+            <textarea name="beschreibung1" required maxlength="200"><?= htmlspecialchars($_SESSION['beschreibung1'] ?? '') ?></textarea>
         </div>
 
         <!-- Abteilungen -->

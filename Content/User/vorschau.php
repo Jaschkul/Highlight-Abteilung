@@ -86,6 +86,7 @@ if (!empty($abteilungs_id)) {
 
 // Aktuelles Datum erzeugen
 $now = new DateTime();
+$now->format('Y-m-d');
 ?>
 <!DOCTYPE html>
 <html lang="de">
