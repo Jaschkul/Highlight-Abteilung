@@ -4,11 +4,10 @@
 <meta charset="UTF-8">
 <title>Admin Seite</title>
 <link rel="stylesheet" href="/User/style.css">
-
-
 </head>
 <body>
 
+<!-- Bereiche für die Highlight-Daten -->
 <h1 id="titel"></h1>
 <h3 id="beschreibung"></h3>
 <h3 id="autor"></h3>
@@ -16,21 +15,23 @@
 <h3 id="erstellt_am"></h3>
 <div id="bilder"></div>
 
-
+<!-- Navigation -->
 <button class="class-button" onclick="prevHighlight()">⬅ Zurück</button>
 <button class="class-button" onclick="nextHighlight()">➡ Weiter</button>
-<button class="class-button"onclick="deleteHighlight()">Löschen</button>
+<button class="class-button" onclick="deleteHighlight()">Löschen</button>
 
 <script>
 let highlights = [];
 let index = 0;
 
+// Highlights laden
 async function loadHighlights() {
     const response = await fetch("/Highlights/highlights.php");
     highlights = await response.json();
     showHighlight();
 }
 
+// Highlight anzeigen
 function showHighlight() {
     if (highlights.length === 0) {
         document.body.innerHTML = "<h1>Keine Highlights vorhanden</h1>";
@@ -58,16 +59,19 @@ function showHighlight() {
     }
 }
 
+// Weiter
 function nextHighlight() {
     index = (index + 1) % highlights.length;
     showHighlight();
 }
 
+// Zurück
 function prevHighlight() {
     index = (index - 1 + highlights.length) % highlights.length;
     showHighlight();
 }
 
+// Löschen
 async function deleteHighlight() {
     const id = highlights[index].id;
 
@@ -76,10 +80,9 @@ async function deleteHighlight() {
 
     alert(result);
 
-    // Eintrag aus Array entfernen
+    // Eintrag entfernen
     highlights.splice(index, 1);
 
-    // Falls letzter Eintrag gelöscht wurde
     if (index >= highlights.length) {
         index = 0;
     }
