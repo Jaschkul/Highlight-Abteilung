@@ -65,13 +65,13 @@ $pdo = new PDO(
 $stmt = $pdo->query('SELECT id, name FROM abteilung ORDER BY name ASC');
 $abteilungen = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
- // Anzahl Bilder je nach Template Typ
-    $bildCount = [
-        'lo' => 1,
-        'ro' => 2,
-        'lu' => 3,
-        'ru' => 4
-    ][$typ] ?? 1;
+// Anzahl Bilder je nach Template Typ
+$bildCount = [
+    'lo' => 1,
+    'ro' => 2,
+    'lu' => 3,
+    'ru' => 4
+][$typ] ?? 1;
 ?>
 <!DOCTYPE html>
 <html lang="de">
@@ -92,7 +92,7 @@ $abteilungen = $stmt->fetchAll(PDO::FETCH_ASSOC);
     hier wird ein Container für die Anordnung des Templates geöffnet. Dieser wird später wieder geschlossen
     - es muss eine Variable in die class eingesetzt werden 
     -->
-    <div class="d<?php echo $bildCount;?>">
+    <div class="d<?php echo $bildCount; ?>">
         <!--Titel box 1-->
         <div style ="grid-area: box-1;">
             <label>Titel:</label>
@@ -111,26 +111,26 @@ $abteilungen = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <!--Abteilungen box 5-->
         <div style ="grid-area: box-5;">
             <label>Abteilung:</label>
-            <select name="abteilungs_id" required>
+            <select name="abteilungs_id[]" multiple required>
                 <option value="" selected >Bitte auswählen</option>
                 <?php foreach ($abteilungen as $abt): ?>
-                    <option value="<?= $abt['id'] ?>"
-                        <?= (isset($_SESSION['abteilungs_id']) && $_SESSION['abteilungs_id'] == $abt['id']) ? 'selected' : '' ?>
-                    >
-                        <?= htmlspecialchars($abt['name']) ?>
-                    </option>
+                <option value="<?= $abt['id'] ?>"
+                    <?= (!empty($_SESSION['abteilungs_id']) && in_array($abt['id'], $_SESSION['abteilungs_id'])) ? 'selected' : '' ?>>
+                    <?= htmlspecialchars($abt['name']) ?>
+                </option>
                 <?php endforeach; ?>
             </select>
+
         </div>
 
     <?php for ($i = 1; $i <= $bildCount; $i++): ?>
     <?php
-        $bildname = $_SESSION["bild$i"] ?? '';
-        $bildUrl = '';
+    $bildname = $_SESSION["bild$i"] ?? '';
+    $bildUrl = '';
 
-        if ($bildname !== '') {
-            $bildUrl = 'temp/' . rawurlencode(basename($bildname));
-        }
+    if ($bildname !== '') {
+        $bildUrl = 'temp/' . rawurlencode(basename($bildname));
+    }
     ?>
     <!--Dropzone box 3-->
     <div class="dropzone" id="dropzone<?= $i ?>" style ="grid-area: box-3;">
