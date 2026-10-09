@@ -4,18 +4,7 @@
 <meta charset="UTF-8">
 <title>Highlight Anzeige</title>
 
-<style>
-button {
-    padding: 10px 20px;
-    margin: 10px;
-    font-size: 18px;
-}
-img {
-    width: 300px;
-    border-radius: 10px;
-    margin: 10px;
-}
-</style>
+
 
 </head>
 <body>
@@ -27,9 +16,10 @@ img {
 <h3 id="erstellt_am"></h3>
 <div id="bilder"></div>
 
-<button class="class-button">⬅ Zurück</button>
-<button class="class-button">➡ Weiter</button>
-<button class="class-button">Löschen</button>
+
+<button class="class-button" onclick="prevHighlight()">⬅ Zurück</button>
+<button class="class-button" onclick="nextHighlight()">➡ Weiter</button>
+<button class="class-button"onclick="deleteHighlight()">Löschen</button>
 
 <script>
 let highlights = [];
