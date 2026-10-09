@@ -113,5 +113,13 @@ div#errorBox {
 
 /* Button aller Seiten */
 .class-button {
-    margin-top: 20px;
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 18px;
+}
+/* Bilder Admin */
+.img {
+    width: 300px;
+    border-radius: 10px;
+    margin: 10px;
 }

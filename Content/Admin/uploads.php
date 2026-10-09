@@ -27,9 +27,9 @@ img {
 <h3 id="erstellt_am"></h3>
 <div id="bilder"></div>
 
-<button onclick="prevHighlight()">⬅ Zurück</button>
-<button onclick="nextHighlight()">➡ Weiter</button>
-<button onclick="deleteHighlight()">🗑 Löschen</button>
+<button class="class-button">⬅ Zurück</button>
+<button class="class-button">➡ Weiter</button>
+<button class="class-button">Löschen</button>
 
 <script>
 let highlights = [];
@@ -52,7 +52,7 @@ function showHighlight() {
     document.getElementById("titel").innerText = h.titel;
     document.getElementById("beschreibung").innerText = h.beschreibung1;
     document.getElementById("autor").innerText = h.autor;
-    document.getElementById("abteilung").innerText = h.abteilungsname;
+    document.getElementById("abteilung").innerText = h.abteilungen;
     document.getElementById("erstellt_am").innerText = h.erstellt_am;
 
     let bilderDiv = document.getElementById("bilder");
