@@ -1,3 +1,6 @@
+<?php
+header("Refresh:60");
+ ?>
 <!DOCTYPE html>
 <html lang="de">
 <head>

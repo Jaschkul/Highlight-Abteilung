@@ -4,7 +4,18 @@
 <meta charset="UTF-8">
 <title>Highlight Anzeige</title>
 
-
+<style>
+button {
+    padding: 10px 20px;
+    margin: 10px;
+    font-size: 18px;
+}
+img {
+    width: 300px;
+    border-radius: 10px;
+    margin: 10px;
+}
+</style>
 
 </head>
 <body>
@@ -15,6 +26,10 @@
 <h3 id="abteilung"></h3>
 <h3 id="erstellt_am"></h3>
 <div id="bilder"></div>
+
+<button onclick="prevHighlight()">⬅ Zurück</button>
+<button onclick="nextHighlight()">➡ Weiter</button>
+<button onclick="deleteHighlight()">🗑 Löschen</button>
 
 <script>
 let highlights = [];
@@ -27,7 +42,10 @@ async function loadHighlights() {
 }
 
 function showHighlight() {
-    if (highlights.length === 0) return;
+    if (highlights.length === 0) {
+        document.body.innerHTML = "<h1>Keine Highlights vorhanden</h1>";
+        return;
+    }
 
     const h = highlights[index];
 
@@ -37,7 +55,6 @@ function showHighlight() {
     document.getElementById("abteilung").innerText = h.abteilungsname;
     document.getElementById("erstellt_am").innerText = h.erstellt_am;
 
-    // Bilder anzeigen
     let bilderDiv = document.getElementById("bilder");
     bilderDiv.innerHTML = "";
 
@@ -49,16 +66,38 @@ function showHighlight() {
             bilderDiv.appendChild(img);
         }
     }
-
-    // Nächstes Highlight nach 60 Sekunden
-    index = (index + 1) % highlights.length;
 }
 
-// Start
-loadHighlights();
+function nextHighlight() {
+    index = (index + 1) % highlights.length;
+    showHighlight();
+}
 
-// Automatischer Wechsel alle 60 Sekunden
-setInterval(showHighlight, 6000);
+function prevHighlight() {
+    index = (index - 1 + highlights.length) % highlights.length;
+    showHighlight();
+}
+
+async function deleteHighlight() {
+    const id = highlights[index].id;
+
+    const response = await fetch("delete.php?id=" + id);
+    const result = await response.text();
+
+    alert(result);
+
+    // Eintrag aus Array entfernen
+    highlights.splice(index, 1);
+
+    // Falls letzter Eintrag gelöscht wurde
+    if (index >= highlights.length) {
+        index = 0;
+    }
+
+    showHighlight();
+}
+
+loadHighlights();
 </script>
 
 </body>
