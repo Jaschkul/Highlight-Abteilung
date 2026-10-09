@@ -186,7 +186,116 @@ $bildCount = [
 
 <!-- Drag & Drop Script -->
 <script>
-/* ... dein JS bleibt unverändert ... */
+for (let i = 1; i <= 4; i++) {
+    const dropzone = document.getElementById("dropzone" + i);
+    const dropzoneText = document.getElementById("dropzoneText" + i);
+    const fileInput = document.getElementById("bild" + i);
+    const preview = document.getElementById("preview" + i);
+
+    if (!dropzone || !dropzoneText || !fileInput || !preview) {
+        continue;
+    }
+
+    dropzone.addEventListener("click", () => {
+        fileInput.click();
+    });
+
+    fileInput.addEventListener("change", () => {
+        if (fileInput.files.length > 0) {
+            showPreview(
+                fileInput.files[0],
+                preview,
+                dropzoneText
+            );
+        }
+    });
+
+    dropzone.addEventListener("dragover", (event) => {
+        event.preventDefault();
+        dropzone.classList.add("dragover");
+    });
+
+    dropzone.addEventListener("dragleave", () => {
+        dropzone.classList.remove("dragover");
+    });
+
+    dropzone.addEventListener("drop", (event) => {
+        event.preventDefault();
+        dropzone.classList.remove("dragover");
+
+        if (event.dataTransfer.files.length > 0) {
+            fileInput.files = event.dataTransfer.files;
+
+            showPreview(
+                event.dataTransfer.files[0],
+                preview,
+                dropzoneText
+            );
+        }
+    });
+}
+//Vorschau-Button Validierung Bild muss ausgewählt sein
+function showPreview(file, preview, dropzoneText) {
+    if (!file.type.startsWith("image/")) {
+        alert("Bitte nur ein Bild auswählen.");
+        return;
+    }
+
+    const reader = new FileReader();
+
+    reader.onload = function(event) {
+        preview.src = event.target.result;
+        preview.style.display = "block";
+        dropzoneText.style.display = "none";
+    };
+
+    reader.readAsDataURL(file);
+}
+
+document.getElementById("vorschauBtn").addEventListener("click", function(e) {
+
+    const required = <?= $bildCount ?>; // Anzahl Bilder aus PHP
+    let filled = 0;
+
+    for (let i = 1; i <= required; i++) {
+        const input = document.getElementById("bild" + i);
+
+        // Neues Bild hochgeladen?
+        if (input.files && input.files.length > 0) {
+            filled++;
+            continue;
+        }
+
+        // Bereits vorhandenes Bild in der Session?
+        const preview = document.getElementById("preview" + i);
+        if (preview && preview.src && preview.style.display !== "none") {
+            filled++;
+        }
+    }
+
+    if (filled < required) {
+        e.preventDefault();
+
+        const errorBox = document.getElementById("errorBox");
+        errorBox.textContent = "Bitte alle " + required + " Bilder hochladen, bevor du zur Vorschau gehst.";
+
+        
+        for (let i = 1; i <= required; i++) {
+            const input = document.getElementById("bild" + i);
+            const preview = document.getElementById("preview" + i);
+            const dropzone = document.getElementById("dropzone" + i);
+
+            if (
+                (!input.files || input.files.length === 0) &&
+                (!preview.src || preview.style.display === "none")
+            ) {
+                dropzone.style.border = "2px solid red";
+            } else {
+                dropzone.style.border = "";
+            }
+        }
+    }
+});
 </script>
 
 <!-- Zurück-Button -->
