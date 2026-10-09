@@ -6,10 +6,15 @@ $db   = "iii";
 
 $pdo = new PDO("mysql:host=$host;dbname=$db;charset=utf8", $user, $pass);
 $sql = "
-    SELECT h.*, a.name AS abteilungsname
-    FROM highlights h
-    LEFT JOIN abteilung a ON h.abteilungs_id = a.id
-    ORDER BY h.id ASC";
+    SELECT 
+    h.*,
+    GROUP_CONCAT(a.name SEPARATOR ', ') AS abteilungen
+FROM highlights h
+LEFT JOIN highlight_abteilung ha ON h.id = ha.highlight_id
+LEFT JOIN abteilung a ON ha.abteilungs_id = a.id
+GROUP BY h.id
+ORDER BY h.id ASC;
+
 
 $stmt = $pdo->query($sql);
 $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);

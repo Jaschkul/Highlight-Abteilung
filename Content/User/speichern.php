@@ -9,8 +9,8 @@ try {
     'Cucxe9-vyxxos');
 
     $sql = 'INSERT INTO highlights 
-        (titel, beschreibung1, autor, bild1, bild2, bild3, bild4, bild5, abteilungs_id)
-        VALUES (:titel, :beschreibung1, :autor, :bild1, :bild2, :bild3, :bild4, :bild5, :abteilungs_id)';
+        (titel, beschreibung1, autor, bild1, bild2, bild3, bild4, bild5)
+        VALUES (:titel, :beschreibung1, :autor, :bild1, :bild2, :bild3, :bild4, :bild5)';
 
     $stmt = $pdo->prepare($sql);
 
@@ -22,9 +22,25 @@ try {
     ':bild2' => $_SESSION['bild2'] ?? null,
     ':bild3' => $_SESSION['bild3'] ?? null,
     ':bild4' => $_SESSION['bild4'] ?? null,
-    ':bild5' => $_SESSION['bild5'] ?? null,
-    ':abteilungs_id' => $_SESSION['abteilungs_id'] ?? null
+    ':bild5' => $_SESSION['bild5'] ?? null
 ]);
+$highlight_id = $pdo->lastInsertId();
+$_SESSION['abteilungs_id'] = $_POST['abteilungs_id'];  // Array
+if (!empty($_SESSION['abteilungs_id'])) {
+
+    $sql2 = 'INSERT INTO highlight_abteilung (highlight_id, abteilungs_id)
+             VALUES (:highlight_id, :abteilungs_id)';
+    $stmt2 = $pdo->prepare($sql2);
+
+    foreach ($_SESSION['abteilungs_id'] as $abteilungs_id) {
+        $stmt2->execute([
+            ':highlight_id' => $highlight_id,
+            ':abteilungs_id' => $abteilungs_id
+        ]);
+    }
+}
+
+
 
     for ($i = 1; $i <= 5; $i++) {
     $feld = 'bild' . $i;

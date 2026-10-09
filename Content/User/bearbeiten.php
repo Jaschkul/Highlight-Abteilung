@@ -113,7 +113,7 @@ $bildCount = [
         <!--Abteilungen box 5-->
         <div style ="grid-area: box-5;">
             <label>Abteilung:</label>
-            <select name="abteilungs_id[]" multiple required>
+            <select name="abteilungs_id[]" multiple required size="6">
                 
                 <?php foreach ($abteilungen as $abt): ?>
                 <option value="<?= $abt['id'] ?>"
