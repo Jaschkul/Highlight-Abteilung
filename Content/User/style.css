@@ -58,8 +58,11 @@ h1{
 }
 /*die bearbeiten.php muss nun bearbeitet werden*/
 
-/* Template1*/
-.template1{
+/* 
+Template1
+- es muss responisve sein, d.h. beim Smartphone müssen alle Felder untereinander angezeigt werden
+*/
+.d1{
     background-color: beige;
     border: 1px solid;
     display: grid;
