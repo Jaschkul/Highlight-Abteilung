@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<title>Highlight Anzeige</title>
+<title>Admin Seite</title>
 <link rel="stylesheet" href="/User/style.css">
 
 
