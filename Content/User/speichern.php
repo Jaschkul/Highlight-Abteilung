@@ -25,7 +25,6 @@ try {
     ':bild5' => $_SESSION['bild5'] ?? null
 ]);
 $highlight_id = $pdo->lastInsertId();
-$_SESSION['abteilungs_id'] = $_POST['abteilungs_id'];  // Array
 if (!empty($_SESSION['abteilungs_id'])) {
 
     $sql2 = 'INSERT INTO highlight_abteilung (highlight_id, abteilungs_id)
