@@ -6,7 +6,7 @@ header("Refresh:60");
 <head>
 <meta charset="UTF-8">
 <title>Highlight Anzeige</title>
-
+<link rel="stylesheet" href="style.css">
 
 
 </head>

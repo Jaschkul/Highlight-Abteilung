@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Highlight Anzeige</title>
-
+<link rel="stylesheet" href="/User/style.css">
 
 
 </head>
