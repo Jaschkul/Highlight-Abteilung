@@ -114,7 +114,7 @@ $bildCount = [
         <div style ="grid-area: box-5;">
             <label>Abteilung:</label>
             <select name="abteilungs_id[]" multiple required>
-                <option value="" selected >Bitte auswählen</option>
+                
                 <?php foreach ($abteilungen as $abt): ?>
                 <option value="<?= $abt['id'] ?>"
                     <?= (!empty($_SESSION['abteilungs_id']) && in_array($abt['id'], $_SESSION['abteilungs_id'])) ? 'selected' : '' ?>>

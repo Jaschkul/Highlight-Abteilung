@@ -52,13 +52,13 @@ $abteilungs_id = $_SESSION['abteilungs_id'] ?? null;
 // Abteilungsname laden
 $abteilungs_name = '';
 
-if (!empty($abteilungs_ids)) {
+if (!empty($abteilungs_id)) {
 
     // Platzhalter erzeugen: ?, ?, ?, ...
-    $placeholders = implode(',', array_fill(0, count($abteilungs_ids), '?'));
+    $placeholders = implode(',', array_fill(0, count($abteilungs_id), '?'));
 
     $stmt = $pdo->prepare("SELECT name FROM abteilung WHERE id IN ($placeholders)");
-    $stmt->execute($abteilungs_ids);
+    $stmt->execute($abteilungs_id);
 
     // Alle Namen als Array holen
     $namen = $stmt->fetchAll(PDO::FETCH_COLUMN);
