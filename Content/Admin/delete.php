@@ -1,38 +1,54 @@
 <?php
-var_dump($_GET['id']);
-exit;
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+
 $host = "mariadb";
 $user = "azubi26";
 $pass = "Cucxe9-vyxxos";
 $db   = "iii";
 
-$pdo = new PDO("mysql:host=$host;dbname=$db;charset=utf8", $user, $pass);
+try {
+    $pdo = new PDO("mysql:host=$host;dbname=$db;charset=utf8", $user, $pass);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (Exception $e) {
+    echo "DB-Verbindung fehlgeschlagen: " . $e->getMessage();
+    exit;
+}
 
-$id = intval($_GET['id']);
+$id = intval($_GET['id'] ?? 0);
 
-// Bilder holen
-$stmt = $pdo->prepare("SELECT bild1, bild2, bild3, bild4, bild5 FROM highlights WHERE id = ?");
+if ($id === 0) {
+    echo "Keine gültige ID übergeben.";
+    exit;
+}
+
+// Prüfen ob der Datensatz existiert
+$stmt = $pdo->prepare("SELECT * FROM highlights WHERE id = ?");
 $stmt->execute([$id]);
-$bilder = $stmt->fetch(PDO::FETCH_ASSOC);
+$highlight = $stmt->fetch(PDO::FETCH_ASSOC);
+
+if (!$highlight) {
+    echo "Highlight mit ID $id nicht gefunden.";
+    exit;
+}
 
 // Bilder löschen
-foreach ($bilder as $bild) {
-    if ($bild && file_exists(__DIR__ . "/../User/uploads/" . $bild)) {
-        unlink(__DIR__ . "/../User/uploads/" . $bild);
-    }
-}
-foreach ($bilder as $bild) {
+$uploadDir = $_SERVER['DOCUMENT_ROOT'] . "/User/uploads/";
+
+for ($i = 1; $i <= 5; $i++) {
+    $bild = $highlight["bild$i"];
     if ($bild) {
-        $pfad = __DIR__ . "/../User/uploads/" . $bild;
-        var_dump($pfad, file_exists($pfad));
+        $pfad = $uploadDir . $bild;
+
+        if (file_exists($pfad)) {
+            unlink($pfad);
+        }
     }
 }
-exit;
 
-
-// DB-Eintrag löschen
+// Datensatz löschen
 $stmt = $pdo->prepare("DELETE FROM highlights WHERE id = ?");
 $stmt->execute([$id]);
 
-echo "Highlight wurde gelöscht.";
+echo "Highlight $id wurde gelöscht.";
 ?>
