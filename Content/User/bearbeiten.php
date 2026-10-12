@@ -303,14 +303,15 @@ document.getElementById("vorschauBtn").addEventListener("click", function(e) {
     }
 });
 </script>
-
+<div style="grid-area: box-6;">
 <!-- Zurück-Button -->
 <form action="reset.php" method="post" class="class-button">
-    <div style="grid-area: box-6;">
+   
         <button type="submit">Zurück</button>
+    </form>
     </div>
     </div> <!-- den </div> nicht entfernen, weil der sich auf .template1... bezieht und alle buttons enthalten muss-->
-</form>
+
 
 </body>
 </html>
