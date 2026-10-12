@@ -147,16 +147,21 @@ $bildCount = [
             <?php
             $bildname = $_SESSION["bild$i"] ?? '';
             $bildUrl = $bildname ? 'temp/' . rawurlencode(basename($bildname)) : '';
-            $nrBox = $i +7;
             ?>
             <!--
             hier muss bearbeitet werden, da die Anzahl der Container Dropzone sich je nach Auswahl des Templates verändert.
             Folglich werden im forech loop bis zu vier Dropzone Formulare erzeugt. 
             Lösungsansatz: 
-            Tausche box 3 und box 8, sodass die neuen boxen als Box 8 bis 12 ausgegeben werden. 
+            switch($bildCount){
+            case 1:
+            //php 
+                $bildname = $_SESSION["bild1"] ?? '';
+                $bildUrl = $bildname ? 'temp/' . rawurlencode(basename($bildname)) : '';
+                $nrBox = $i +7;
+
+            }
             --> 
-            <div class="dropzone" id="dropzone<?= $i ?>" style="grid-area: box-<?php echo $nrBox; ?>;">
-                <?php echo $nrBox;?>
+            <div class="dropzone" id="dropzone<?= $i ?>" style="grid-area: box-8;">
                 <span id="dropzoneText<?= $i ?>" style="<?= $bildUrl ? 'display:none;' : '' ?>">
                     Bild hierher ziehen oder klicken
                 </span>
