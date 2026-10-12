@@ -81,8 +81,7 @@ Template1
     justify-items: center;
     align-items: center;
     grid-template-areas: 
-    "box-1 box-1 box-1"
-    "box-1 box-1 box-1";
+    "box-8 box-9";
 }
 
 /*nächser Anschnitt*/
