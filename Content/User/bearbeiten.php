@@ -157,7 +157,7 @@ $bildCount = [
         
             }
             --> 
-            <div class="dropzone" id="dropzone<?= $i ?>" style="grid-area: box-8;">
+            <div class="dropzone" id="dropzone<?= $i ?>" style="grid-area: box-<?php echo ($bildCount+7);?>">
                 <span id="dropzoneText<?= $i ?>" style="<?= $bildUrl ? 'display:none;' : '' ?>">
                     Bild hierher ziehen oder klicken
                 </span>
