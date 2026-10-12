@@ -154,7 +154,7 @@ $bildCount = [
             Lösungsansatz: 
             
             --> 
-            <div class="dropzone" id="dropzone<?= $i ?>" style="grid-area: box-<?php echo ($bildCount+7);?>?>">
+            <div class="dropzone" id="dropzone<?= $i ?>" style="grid-area: box-8">
                 <span id="dropzoneText<?= $i ?>" style="<?= $bildUrl ? 'display:none;' : '' ?>">
                     Bild hierher ziehen oder klicken
                 </span>
@@ -309,7 +309,7 @@ document.getElementById("vorschauBtn").addEventListener("click", function(e) {
     <div style="grid-area: box-6;">
         <button type="submit">Zurück</button>
     </div>
-    <!-- den </div> nicht entfernen, weil der sich auf .template1... bezieht und alle buttons enthalten muss-->
+    </div> <!-- den </div> nicht entfernen, weil der sich auf .template1... bezieht und alle buttons enthalten muss-->
 </form>
 
 </body>
