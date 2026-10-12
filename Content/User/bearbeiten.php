@@ -147,6 +147,7 @@ $bildCount = [
             <?php
             $bildname = $_SESSION["bild$i"] ?? '';
             $bildUrl = $bildname ? 'temp/' . rawurlencode(basename($bildname)) : '';
+            $nrBox = $i +7;
             ?>
             <!--
             hier muss bearbeitet werden, da die Anzahl der Container Dropzone sich je nach Auswahl des Templates verändert.
@@ -154,7 +155,7 @@ $bildCount = [
             Lösungsansatz: 
             Tausche box 3 und box 8, sodass die neuen boxen als Box 8 bis 12 ausgegeben werden. 
             --> 
-            <div class="dropzone" id="dropzone<?= $i ?>" style="grid-area: box-<?php echo $i; ?>;">
+            <div class="dropzone" id="dropzone<?= $i ?>" style="grid-area: box-<?php echo $nrBox; ?>;">
                 <span id="dropzoneText<?= $i ?>" style="<?= $bildUrl ? 'display:none;' : '' ?>">
                     Bild hierher ziehen oder klicken
                 </span>
