@@ -53,8 +53,8 @@ h1{
     justify-items:center;
     align-items: center;
     grid-template-areas: 
-    "box-1 box-2 box-5"
-    "box-3 box-4 box-5";
+    "box-1 box-5 box-2"
+    "box-3 box-5 box-4";
 }
 /*die bearbeiten.php muss nun bearbeitet werden*/
 
