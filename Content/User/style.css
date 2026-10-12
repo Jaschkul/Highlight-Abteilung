@@ -78,8 +78,8 @@ Template1
     background-color: beige;
     border: 1px solid;
     display: grid;
-    justify-items: center;
-    align-items: center;
+    justify-items: left;
+    align-items: right;
     grid-template-areas: 
     "box-8 box-9";
 }
