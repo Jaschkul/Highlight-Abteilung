@@ -106,7 +106,7 @@ $bildCount = [
     <input id="inputTitel" type="hidden" name="typ" value="<?= $typ ?>">
 
     <!-- Grid-Container abhängig von Bildanzahl -->
-    <div class="template<?php echo $bildCount; ?>">
+    <div class="d<?php echo $bildCount; ?>">
 
         <!-- Titel -->
         <div style="grid-area: box-1;">
