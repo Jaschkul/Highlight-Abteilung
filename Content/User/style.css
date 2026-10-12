@@ -60,9 +60,8 @@ h1{
 
 /* 
 Template1
-- es muss responisve sein, d.h. beim Smartphone müssen alle Felder untereinander angezeigt werden
 */
-.d1{
+.template1{
     background-color: beige;
     border: 1px solid;
     display: grid;
@@ -70,12 +69,10 @@ Template1
     align-items: center;
     grid-template-areas: 
     "box-1 box-1 box-1 box-1"
-    "box-2 box-2 box-3 box-3"
-    "box-4 box-5 box-3 box-3"
+    "box-2 box-2 box-8 box-8"
+    "box-4 box-5 box-8 box-8"
     "box-6 box-6 box-7 box-7"
-    "box-8 box-8 box-8 box-8";
-    
-
+    "box-3 box-3 box-3 box-3";
 }
 
 

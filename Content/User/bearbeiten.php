@@ -106,7 +106,7 @@ $bildCount = [
     <input id="inputTitel" type="hidden" name="typ" value="<?= $typ ?>">
 
     <!-- Grid-Container abhängig von Bildanzahl -->
-    <div class="d<?php echo $bildCount; ?>">
+    <div class="template<?php echo $bildCount; ?>">
 
         <!-- Titel -->
         <div style="grid-area: box-1;">
@@ -148,8 +148,13 @@ $bildCount = [
             $bildname = $_SESSION["bild$i"] ?? '';
             $bildUrl = $bildname ? 'temp/' . rawurlencode(basename($bildname)) : '';
             ?>
-
-            <div class="dropzone" id="dropzone<?= $i ?>" style="grid-area: box-3;">
+            <!--
+            hier muss bearbeitet werden, da die Anzahl der Container Dropzone sich je nach Auswahl des Templates verändert.
+            Folglich werden im forech loop bis zu vier Dropzone Formulare erzeugt. 
+            Lösungsansatz: 
+            Tausche box 3 und box 8, sodass die neuen boxen als Box 8 bis 12 ausgegeben werden. 
+            --> 
+            <div class="dropzone" id="dropzone<?= $i ?>" style="grid-area: box-<?php echo ($i+7); ?>;">
                 <span id="dropzoneText<?= $i ?>" style="<?= $bildUrl ? 'display:none;' : '' ?>">
                     Bild hierher ziehen oder klicken
                 </span>
@@ -173,14 +178,14 @@ $bildCount = [
         <?php endfor; ?>
 
         <!-- Fehlerbox -->
-        <div id="errorBox" style="grid-area: box-8;"></div>
+        <div id="errorBox" style="grid-area: box-3;"></div>
 
         <!-- Vorschau -->
         <div style="grid-area: box-7;">
             <button type="submit" id="vorschauBtn">Vorschau anzeigen</button>
         </div>
 
-    </div>
+    
 </form>
 <?php endif; ?>
 
@@ -303,6 +308,7 @@ document.getElementById("vorschauBtn").addEventListener("click", function(e) {
     <div style="grid-area: box-6;">
         <button type="submit">Zurück</button>
     </div>
+    </div> <!-- den </div> nicht entfernen, weil der sich auf .template1... bezieht und alle buttons enthalten muss-->
 </form>
 
 </body>
