@@ -76,11 +76,11 @@ Template1
 }
 
 .d2{
-    background-color: beige;
+    background-color: rgb(220, 225, 245);
     border: 1px solid;
     display: grid;
-    justify-items: left;
-    align-items: right;
+    justify-items: center;
+    align-items: center;
     grid-template-areas: 
     "box-8 box-9";
 }
