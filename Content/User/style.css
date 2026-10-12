@@ -110,6 +110,7 @@ Template1
     justify-items: center;
     justify-content: center;
     align-items: center;
+    align-content: center;
     grid-template-areas: 
     "box-1 box-1 box-1"
     "box-8 box-2 box-9"
