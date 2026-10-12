@@ -175,8 +175,9 @@ $bildCount = [
                 accept="image/jpeg,image/png,image/gif,image/webp"
                 style="display:none;"
             >
-        <?php endfor; ?>
             </div>
+        <?php endfor; ?>
+            
 
         <!-- Fehlerbox -->
             <div id="errorBox" style="grid-area: box-3;"></div>
@@ -303,14 +304,13 @@ document.getElementById("vorschauBtn").addEventListener("click", function(e) {
     }
 });
 </script>
-<div style="grid-area: box-6;">
-<!-- Zurück-Button -->
-<form action="reset.php" method="post" class="class-button">
-   
-        <button type="submit">Zurück</button>
-    </form>
+    <div style="grid-area: box-6;">
+    <!-- Zurück-Button -->
+        <form action="reset.php" method="post" class="class-button">
+            <button type="submit">Zurück</button>
+        </form>
     </div>
-    </div> <!-- den </div> nicht entfernen, weil der sich auf .template1... bezieht und alle buttons enthalten muss-->
+</div> <!-- den </div> nicht entfernen, weil der sich auf .template1... bezieht und alle buttons enthalten muss-->
 
 
 </body>
