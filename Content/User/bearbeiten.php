@@ -154,11 +154,7 @@ $bildCount = [
             Lösungsansatz: 
             switch($bildCount){
             case 1:
-            //php 
-                $bildname = $_SESSION["bild1"] ?? '';
-                $bildUrl = $bildname ? 'temp/' . rawurlencode(basename($bildname)) : '';
-                $nrBox = $i +7;
-
+        
             }
             --> 
             <div class="dropzone" id="dropzone<?= $i ?>" style="grid-area: box-8;">
