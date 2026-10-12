@@ -108,6 +108,7 @@ Template1
     border: 1px solid;
     display: grid;
     justify-items: center;
+    justify-content: center;
     align-items: center;
     grid-template-areas: 
     "box-1 box-1 box-1"
