@@ -176,15 +176,15 @@ $bildCount = [
                 style="display:none;"
             >
         <?php endfor; ?>
-        </div>
+            </div>
 
         <!-- Fehlerbox -->
-        <div id="errorBox" style="grid-area: box-3;"></div>
+            <div id="errorBox" style="grid-area: box-3;"></div>
 
         <!-- Vorschau -->
-        <div style="grid-area: box-7;">
-            <button type="submit" id="vorschauBtn">Vorschau anzeigen</button>
-        </div>
+            <div style="grid-area: box-7;">
+                <button type="submit" id="vorschauBtn">Vorschau anzeigen</button>
+            </div>
 
     
 </form>
