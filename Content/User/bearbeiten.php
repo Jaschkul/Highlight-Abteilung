@@ -169,7 +169,7 @@ $bildCount = [
                     style="<?= $bildUrl ? 'display:block;' : 'display:none;' ?>"
                     alt="Bild <?= $i ?>"
                 >
-            </div>
+            
 
             <input
                 type="file"
@@ -179,6 +179,7 @@ $bildCount = [
                 style="display:none;"
             >
         <?php endfor; ?>
+        </div>
 
         <!-- Fehlerbox -->
         <div id="errorBox" style="grid-area: box-3;"></div>
