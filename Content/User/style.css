@@ -23,12 +23,9 @@ body{
     border-radius: 20px;
 }
 
-/*
-max-width: 800px;   
-    height: 500px;      
-    margin: 40px auto;  
-    
-*/
+#btnlu, #btnru, #btnlo, #btnro{
+    height: 400px;
+}
 
 .d1{
     background-color: white;
