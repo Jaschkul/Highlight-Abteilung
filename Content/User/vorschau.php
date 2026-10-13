@@ -94,18 +94,13 @@ $now->format('Y-m-d');
     <meta charset="UTF-8">
     <title>Vorschau</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="favicon.png">
 </head>
 <body>
 
-<!-- Titel, Autor, Abteilung, Datum 
-<h1><= htmlspecialchars($_SESSION['titel']) ?></h1>
-<h3>Autor: <= htmlspecialchars($_SESSION['autor']) ?></h3>
-<h4>Abteilung: <= htmlspecialchars($abteilungs_name) ?></h4>
--->
 <h3>Datum: <?= $now->format('d.m.Y') ?></h3>
 
 <!-- Beschreibung 
-<p><= nl2br(htmlspecialchars($_SESSION['beschreibung1'])) ?></p>
 
 <?php
 // Anzahl Bilder je nach Typ definieren

@@ -95,7 +95,7 @@ $bildCount = [
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css">
     <title>Bearbeiten</title>
-    <h1>Template1</h1>
+    <h1>Template</h1>
     <link rel="icon" type="image/png" href="favicon.png">
 </head>
 <body>
