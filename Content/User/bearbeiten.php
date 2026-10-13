@@ -151,7 +151,7 @@ $bildCount = [
     <div class="template2"> 
         <!-- Autor -->
         <div style = "grid-area: autor;">
-            <input placeholder= "@Autor" name="text" name="autor" required maxlength="100" value="<?= htmlspecialchars($_SESSION['autor'] ?? '') ?>">
+            <input placeholder= "@Autor" name="autor" required maxlength="100" value="<?= htmlspecialchars($_SESSION['autor'] ?? '') ?>">
         </div>
 
     <!-- Abteilungen -->
