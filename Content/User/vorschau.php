@@ -127,7 +127,7 @@ $bildCount = [
     <div style="grid-area: beschreibung;">
         <p><?= nl2br(htmlspecialchars($_SESSION['beschreibung1'])) ?></p>
     </div>
-    <div style="grid-area: bild<?php echo $i;?>";">
+    <div style="grid-area: bild<?php echo $bildCount;?>>
     <?php
         for ($i = 1; $i <= $bildCount; $i++) {
             if (!empty($_SESSION["bild$i"])) {
