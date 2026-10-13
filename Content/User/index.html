@@ -14,25 +14,46 @@
     <form action="bearbeiten.php" method="post">
     <div class="gridContainer">
         <!-- links oben-->
-            <div><button id="btnlo" type="submit" name="typ" value="lo">
-                <img src="template1.png">
+            <div><button class="d1" id="btnlo" type="submit" name="typ" value="lo">
+                <div style = "grid-area: titel;">
+                    <input placeholder="Überschrift"></input>
+                </div>
+                <div style = "grid-area: bild1;">
+                    <img src="favicon.png">
+                </div>
+                <div style = "grid-area: beschreibung;">
+                    <textarea placeholder="Text"></textarea>
+                </div>
+                
             </button></div> 
         <!-- rechts oben-->
 
-            <div><button id="btnro" type="submit" name="typ" value="ro">
-                <img src="template2.png">
+            <div><button class="d2" id="btnro" type="submit" name="typ" value="ro">
+                <div style = "grid-area: titel;">
+                    <input placeholder="Überschrift"></input>
+                </div>
+                <div style = "grid-area: bild1;">
+                    <img src="favicon.png">
+                </div>
+                <div style = "grid-area: bild2;">
+                    <img src="favicon.png">
+                </div>
+                <div style = "grid-area: beschreibung;">
+                    <textarea placeholder="Text"></textarea>
+                </div>
+                
             </button></div>
        
         <!--links unten-->
 
-            <div><button id="btnlu" type="submit" name="typ" value="lu">
-                <img src="template3.png">
+            <div><button class="d3" id="btnlu" type="submit" name="typ" value="lu">
+                
             </button></div>
       
         <!--rechts unten-->
         
-            <div><button id="btnru" type="submit" name="typ" value="ru">
-                <img src="template4.png">
+            <div><button class="d4" id="btnru" type="submit" name="typ" value="ru">
+                
             </button></div>
     </div>
 
