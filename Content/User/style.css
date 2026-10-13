@@ -82,7 +82,7 @@ body{
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     grid-template-rows: auto auto auto;
     grid-template-areas: 
-    "titel titel"
+    "titel titel titel"
     "bild1 beschreibung bild3"
     "bild2 beschreibung bild4";
 
