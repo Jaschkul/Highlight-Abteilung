@@ -148,13 +148,13 @@ $bildCount = [
     </div>
     <div style = "grid-area: vorschauBtn;">
         <form action="speichern.php" method="post" class="class-button">
-            <button type="submit">Speichern</button>
+            <button class="vorschauBtn" type="submit">Speichern</button>
         </form>
     </div>
     <div style = "grid-area: backBtn;">
         <form action="bearbeiten.php" method="post" class="class-button">
             <input type="hidden" name="typ" value="<= htmlspecialchars($typ) ?>">
-            <button type="submit">Bearbeiten</button>
+            <button class= "backBtn" type="submit">Bearbeiten</button>
         </form>
     </div>
 </div>

@@ -146,7 +146,7 @@ body{
     border-radius: 20px;
 }
 
-#backBtn, #vorschauBtn{
+.backBtn, .vorschauBtn{
     display:block;
     margin:6px;
     background: white;
@@ -157,15 +157,15 @@ body{
     background-color: #92D2FC;
 }
 
-#vorschauBtn:hover, #backBtn:hover{
+.vorschauBtn:hover, .backBtn:hover{
     background-color: rgb(214, 214, 234);
 }
 
-#vorschauBtn{
+.vorschauBtn{
     float: right;
     font-size: 24px;
 }
-#backBtn{
+.backBtn{
     float: left;
     font-size: 24px;
 }

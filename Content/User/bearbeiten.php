@@ -173,14 +173,14 @@ $bildCount = [
     </div>
     <div style="grid-area: vorschauBtn;">
         <!-- VorschauButton -->
-        <button type="submit" id="vorschauBtn">Vorschau anzeigen</button>
+        <button type="submit" class="vorschauBtn">Vorschau anzeigen</button>
     </div>
     </form>
 
     <div style="grid-area: backBtn;">
         <!-- zurueckButton -->
         <form action="reset.php" method="post">
-            <button type="submit" id="backBtn">zurück</button>
+            <button type="submit" class="backBtn">zurück</button>
         </form>
     </div>
     </div>
