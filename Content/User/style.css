@@ -83,9 +83,8 @@ body{
     grid-template-rows: auto auto auto;
     grid-template-areas: 
     "titel titel"
-    "bild1 beschreibung"
-    "bild2 beschreibung"
-    "bild3 bild4";
+    "bild1 beschreibung bild3"
+    "bild2 beschreibung bild4";
 
     max-width: 800px;   /*hier braucht man noch eine Schätzung*/
     margin: 40px auto;  
