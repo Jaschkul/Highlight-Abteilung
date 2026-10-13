@@ -152,7 +152,7 @@ $bildCount = [
     </div>
     <div style = "grid-area: backBtn;">
         <form action="bearbeiten.php" method="post" class="class-button">
-            <input type="hidden" name="typ" value="<= htmlspecialchars($typ) ?>">
+            <input type="hidden" name="typ" value="<?= htmlspecialchars($typ) ?>">
             <button class= "backBtn" type="submit">Bearbeiten</button>
         </form>
     </div>
