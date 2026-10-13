@@ -178,7 +178,9 @@ $bildCount = [
 
     <div style="grid-area: backBtn;">
         <!-- zurueckButton -->
+         <form action="reset.php" method="post" class="class-button">
         <button type="submit" id="backBtn">zurück</button>
+         </form>
     </div>
     </div>
 
