@@ -116,7 +116,7 @@ $bildCount = [
 
         <!-- Beschreibung -->
         <div style="grid-area: beschreibung;">
-            <textarea placeholder="Text" name="beschreibung1" required maxlength="200"><?= htmlspecialchars($_SESSION['beschreibung1'] ?? '') ?></textarea>
+            <textarea placeholder="Text (max. 200 Wörter)" name="beschreibung1" required maxlength="200"><?= htmlspecialchars($_SESSION['beschreibung1'] ?? '') ?></textarea>
         </div>
 
         <!-- Dropzones für Bilder -->
