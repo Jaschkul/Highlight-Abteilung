@@ -26,6 +26,10 @@ body{
 #btnlu, #btnru, #btnlo, #btnro{
     height: 400px;
 }
+.imgIndex{
+    height: 100px;
+    width: 100px;
+}
 
 .d1{
     background-color: white;
