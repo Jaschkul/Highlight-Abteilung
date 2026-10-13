@@ -96,7 +96,8 @@ body{
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     grid-template-rows: auto 1fr;
     grid-template-areas: 
-    "bild1 titel"
+    "titel titel"
+    "bild1 beschreibung"
     "bild2 beschreibung";
 
     max-width: 800px;   /*hier braucht man noch eine Schätzung*/
@@ -132,7 +133,8 @@ body{
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     grid-template-rows: auto 1fr;
     grid-template-areas: 
-    "bild1 titel"
+    "titel titel"
+    "bild1 beschreibung"
     "bild2 beschreibung"
     "bild3 bild4";
 
@@ -145,7 +147,7 @@ body{
 }
 
 
-.d1 input, .d2 input, .d3 input, .d4 input .template2 input{
+.d1 input, .d2 input, .d3 input, .d4 input, .template2 input{
     display: block;
     width: 100%;
     height: 100%;
