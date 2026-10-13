@@ -137,6 +137,7 @@ $bildCount = [
         }
     ?>
     </div>
+</div>
 <!--Template2-->
 <div class="template2">
     <div style = "grid-area: autor;">
