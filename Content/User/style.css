@@ -72,6 +72,7 @@ body{
 }
 
 .d1{
+    background-color: white;
     display:grid;
     gap:1em;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
