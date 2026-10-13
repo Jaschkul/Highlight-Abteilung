@@ -61,6 +61,16 @@ h1{
 /* 
 Template1
 */
+h1{
+    text-align: center;
+    color: white;
+     font-size: 32px;
+
+}
+body{
+    background-color: #080741;
+}
+
 .d1{
     display:grid;
     gap:1em;

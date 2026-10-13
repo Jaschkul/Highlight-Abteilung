@@ -105,8 +105,6 @@ $bildCount = [
     <!-- Template-Typ -->
     <input id="inputTitel" type="hidden" name="typ" value="<?= $typ ?>">
 
-    
-
     <!-- Grid-Container abhängig von Bildanzahl -->
     <div class="d<?php echo $bildCount; ?>">
 
@@ -118,7 +116,7 @@ $bildCount = [
         <!-- Beschreibung -->
         <div style="grid-area: beschreibung;">
             <label>Beschreibung:</label>
-            <textarea placeholder="Titel" name="beschreibung1" required maxlength="200"><?= htmlspecialchars($_SESSION['beschreibung1'] ?? '') ?></textarea>
+            <textarea placeholder="Text" name="beschreibung1" required maxlength="200"><?= htmlspecialchars($_SESSION['beschreibung1'] ?? '') ?></textarea>
         </div>
 
         <!-- Dropzones für Bilder -->
@@ -128,7 +126,7 @@ $bildCount = [
             $bildUrl = $bildname ? 'temp/' . rawurlencode(basename($bildname)) : '';
             ?>
            
-            <div class="dropzone" id="dropzone<?= $i ?>" style="grid-area: bild<?php echo $i?>">
+            <div class="dropzone" id="dropzone<?= $i ?>" style="grid-area: bild<?php echo $i;?>">
                 <span id="dropzoneText<?= $i ?>" style="<?= $bildUrl ? 'display:none;' : '' ?>">
                     Bild hierher ziehen oder klicken
                 </span>
