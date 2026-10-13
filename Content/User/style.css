@@ -88,7 +88,7 @@ body{
     padding: 20px;      
     border-radius: 20px;
 }
-.d1 input{
+.d1 input, .template2 input{
     display: block;
     width: 100%;
     height: 100%;
@@ -127,7 +127,7 @@ body{
     grid-template-rows: auto 1fr;
     grid-template-areas: 
     "autor autor"
-    "abteilung abteilung"
+    "abteilungen abteilungen"
     "backBtn vorschauBtn";
 
     max-width: 800px;   
@@ -136,6 +136,30 @@ body{
     
     padding: 20px;      
     border-radius: 20px;
+}
+
+#backBtn, #vorschauBtn{
+    display:block;
+    margin:6px;
+    background: white;
+    border-radius: 32px;
+    padding:8px;
+    font-size: sans-serif;
+    cursor: pointer;
+    background-color: #92D2FC;
+}
+
+#vorschauBtn:hover, #backBtn:hover{
+    background-color: rgb(214, 214, 234);
+}
+
+#vorschauBtn{
+    float: right;
+    font-size: 24px;
+}
+#backBtn{
+    float: left;
+    font-size: 24px;
 }
 
 /*
