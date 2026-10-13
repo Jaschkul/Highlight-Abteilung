@@ -116,7 +116,7 @@ body{
     grid-template-rows: auto 1fr;
     grid-template-areas: 
     "titel titel"
-    "bild2 beschreibung"
+    "bild1 beschreibung"
     "bild2 bild3";
 
     max-width: 800px;   /*hier braucht man noch eine Schätzung*/
