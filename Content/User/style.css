@@ -81,7 +81,7 @@ body{
     "bild1 titel"
     "bild1 beschreibung";
 
-    max-width: 800px;   
+    max-width: 800px;   /*hier braucht man noch eine Schätzung*/
     margin: 40px auto;  
     
     

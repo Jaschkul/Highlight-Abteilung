@@ -156,16 +156,19 @@ $bildCount = [
 
     <!-- Abteilungen -->
     <div style = "grid-area: abteilungen;">
-        <label>Abteilung:</label>
-    <?php foreach ($abteilungen as $abt): ?>
-        <label style="display:block; margin-bottom:4px;">
-            <input type="checkbox"
-                name="abteilungs_id[]"
-                value="<?= $abt['id'] ?>"
+        <details>
+            <summary>Abteilung:</summary>
+            <div>
+                <?php foreach ($abteilungen as $abt): ?>
+                    <label style="display:block; margin-bottom:4px;">
+                    <input type="checkbox"
+                        name="abteilungs_id[]"
+                        value="<?= $abt['id'] ?>"
                 <?= (!empty($_SESSION['abteilungs_id']) && in_array($abt['id'], $_SESSION['abteilungs_id'])) ? 'checked' : '' ?>
             >
             <?= htmlspecialchars($abt['name']) ?>
-        </label>
+            </div>
+            </details>
     <?php endforeach; ?>
     </div>
     <div style="grid-area: vorschauBtn;">
