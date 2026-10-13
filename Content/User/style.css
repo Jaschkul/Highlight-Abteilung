@@ -88,6 +88,25 @@ body{
     padding: 20px;      
     border-radius: 20px;
 }
+
+.d2{
+    background-color: white;
+    display:grid;
+    gap:1em;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-rows: auto 1fr;
+    grid-template-areas: 
+    "bild1 titel"
+    "bild2 beschreibung";
+
+    max-width: 800px;   /*hier braucht man noch eine Schätzung*/
+    margin: 40px auto;  
+    
+    
+    padding: 20px;      
+    border-radius: 20px;
+}
+
 .d1 input, .template2 input{
     display: block;
     width: 100%;
@@ -170,19 +189,6 @@ body{
 /*
 
 */
-.d2{
-    background-color: rgb(220, 225, 245);
-    border: 1px solid;
-    display: grid;
-    justify-items: center;
-    align-items: center;
-    grid-template-areas: 
-    "box-1 box-1 box-1 box-1"
-    "box-8 box-8 box-9 box-9"
-    "box-2 box-2 box-2 box-2"
-    "box-4 box-4 box-5 box-5"
-    "box-6 box-6 box-7 box-7";
-}
 
 .d3{
     background-color: rgb(220, 225, 245);
