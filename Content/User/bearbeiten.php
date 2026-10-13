@@ -150,16 +150,15 @@ $bildCount = [
         <?php endfor; ?>
     </div>
     <div class="template2"> 
-  
-         <!-- Autor -->
-          <div style = "grid-area: autor;">
-      <label>Autor:</label>
-      <input type="text" name="autor" required maxlength="100" value="<?= htmlspecialchars($_SESSION['autor'] ?? '') ?>">
-          </div>
+        <!-- Autor -->
+        <div style = "grid-area: autor;">
+            <label>Autor:</label>
+            <input type="text" name="autor" required maxlength="100" value="<?= htmlspecialchars($_SESSION['autor'] ?? '') ?>">
+        </div>
 
     <!-- Abteilungen -->
     <div style = "grid-area: abteilungen;">
-    <label>Abteilung:</label>
+        <label>Abteilung:</label>
     <?php foreach ($abteilungen as $abt): ?>
         <label style="display:block; margin-bottom:4px;">
             <input type="checkbox"
@@ -178,7 +177,7 @@ $bildCount = [
 
     <div style="grid-area: backBtn;">
         <!-- zurueckButton -->
-        <button type="submit" id="vorschauBtn">zurück</button>
+        <button type="submit" id="backBtn">zurück</button>
     </div>
     </div>
 
