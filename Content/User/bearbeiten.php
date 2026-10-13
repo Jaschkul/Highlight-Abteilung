@@ -116,7 +116,6 @@ $bildCount = [
 
         <!-- Beschreibung -->
         <div style="grid-area: beschreibung;">
-            <label>Beschreibung:</label>
             <textarea placeholder="Text" name="beschreibung1" required maxlength="200"><?= htmlspecialchars($_SESSION['beschreibung1'] ?? '') ?></textarea>
         </div>
 
