@@ -141,7 +141,7 @@ $bildCount = [
 <!--Template2-->
 <div class="template2">
     <div style = "grid-area: autor;">
-        <p>Autor: <?= htmlspecialchars($_SESSION['autor']) ?></p>
+        <h4>@<?= htmlspecialchars($_SESSION['autor']) ?></h4>
     </div>
     <div style = "grid-area: abteilungen;">
         <h4>Abteilung: <?= htmlspecialchars($abteilungs_name) ?></h4>
