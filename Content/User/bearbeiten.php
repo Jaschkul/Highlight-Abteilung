@@ -175,6 +175,7 @@ $bildCount = [
         <!-- VorschauButton -->
         <button type="submit" id="vorschauBtn">Vorschau anzeigen</button>
     </div>
+    </form>
 
     <div style="grid-area: backBtn;">
         <!-- zurueckButton -->
@@ -188,9 +189,7 @@ $bildCount = [
     <!-- Fehlerbox -->
         <div id="errorBox" style="grid-area: box-3;"></div>
 
-        
-        
-</form>
+    
 <?php endif; ?>
 
 <!-- Drag & Drop Script -->
