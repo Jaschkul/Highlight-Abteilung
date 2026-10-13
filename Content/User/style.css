@@ -14,6 +14,7 @@ body{
     grid-template-rows: auto auto;
     max-width: 800px;   /*hier braucht man noch eine Schätzung*/
     margin: 40px auto;  
+    gap: 1em;
     
     
     padding: 20px;      
