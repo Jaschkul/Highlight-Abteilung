@@ -105,41 +105,20 @@ $bildCount = [
     <!-- Template-Typ -->
     <input id="inputTitel" type="hidden" name="typ" value="<?= $typ ?>">
 
+    
+
     <!-- Grid-Container abhängig von Bildanzahl -->
     <div class="d<?php echo $bildCount; ?>">
 
-        <!-- Titel -->
-        <div style="grid-area: box-1;">
-            <label>Titel:</label>
-            <input type="text" name="titel" required maxlength="100" value="<?= htmlspecialchars($_SESSION['titel'] ?? '') ?>">
-        </div>
-
-        <!-- Autor -->
-        <div style="grid-area: box-4;">
-            <label>Autor:</label>
-            <input type="text" name="autor" required maxlength="100" value="<?= htmlspecialchars($_SESSION['autor'] ?? '') ?>">
+        <!-- Überschrift -->
+        <div style="grid-area: titel;">
+            <input placeholder="Titel" type="text" name="titel" required maxlength="100" value="<?= htmlspecialchars($_SESSION['titel'] ?? '') ?>">
         </div>
 
         <!-- Beschreibung -->
-        <div style="grid-area: box-2;">
+        <div style="grid-area: beschreibung;">
             <label>Beschreibung:</label>
-            <textarea name="beschreibung1" required maxlength="200"><?= htmlspecialchars($_SESSION['beschreibung1'] ?? '') ?></textarea>
-        </div>
-
-        <!-- Abteilungen -->
-        <div style="grid-area: box-5;">
-            <label>Abteilung:</label>
-
-            <?php foreach ($abteilungen as $abt): ?>
-                <label style="display:block; margin-bottom:4px;">
-                    <input type="checkbox"
-                        name="abteilungs_id[]"
-                        value="<?= $abt['id'] ?>"
-                        <?= (!empty($_SESSION['abteilungs_id']) && in_array($abt['id'], $_SESSION['abteilungs_id'])) ? 'checked' : '' ?>
-                    >
-                    <?= htmlspecialchars($abt['name']) ?>
-                </label>
-            <?php endforeach; ?>
+            <textarea placeholder="Titel" name="beschreibung1" required maxlength="200"><?= htmlspecialchars($_SESSION['beschreibung1'] ?? '') ?></textarea>
         </div>
 
         <!-- Dropzones für Bilder -->
@@ -148,13 +127,8 @@ $bildCount = [
             $bildname = $_SESSION["bild$i"] ?? '';
             $bildUrl = $bildname ? 'temp/' . rawurlencode(basename($bildname)) : '';
             ?>
-            <!--
-            hier muss bearbeitet werden, da die Anzahl der Container Dropzone sich je nach Auswahl des Templates verändert.
-            Folglich werden im forech loop bis zu vier Dropzone Formulare erzeugt. 
-            Lösungsansatz: 
-            
-            --> 
-            <div class="dropzone" id="dropzone<?= $i ?>" style="grid-area: box-<?php echo ($i+7)?>">
+           
+            <div class="dropzone" id="dropzone<?= $i ?>" style="grid-area: bild<?php echo $i?>">
                 <span id="dropzoneText<?= $i ?>" style="<?= $bildUrl ? 'display:none;' : '' ?>">
                     Bild hierher ziehen oder klicken
                 </span>
@@ -166,8 +140,6 @@ $bildCount = [
                     style="<?= $bildUrl ? 'display:block;' : 'display:none;' ?>"
                     alt="Bild <?= $i ?>"
                 >
-            
-
             <input
                 type="file"
                 name="bild<?= $i ?>"
@@ -177,17 +149,46 @@ $bildCount = [
             >
             </div>
         <?php endfor; ?>
-            
+    </div>
+    <div class="template2"> 
+  
+         <!-- Autor -->
+          <div style = "grid-area: autor;">
+      <label>Autor:</label>
+      <input type="text" name="autor" required maxlength="100" value="<?= htmlspecialchars($_SESSION['autor'] ?? '') ?>">
+          </div>
 
-        <!-- Fehlerbox -->
-            <div id="errorBox" style="grid-area: box-3;"></div>
+    <!-- Abteilungen -->
+    <div style = "grid-area: abteilungen;">
+    <label>Abteilung:</label>
+    <?php foreach ($abteilungen as $abt): ?>
+        <label style="display:block; margin-bottom:4px;">
+            <input type="checkbox"
+                name="abteilungs_id[]"
+                value="<?= $abt['id'] ?>"
+                <?= (!empty($_SESSION['abteilungs_id']) && in_array($abt['id'], $_SESSION['abteilungs_id'])) ? 'checked' : '' ?>
+            >
+            <?= htmlspecialchars($abt['name']) ?>
+        </label>
+    <?php endforeach; ?>
+    </div>
+    <div style="grid-area: vorschauBtn;">
+        <!-- VorschauButton -->
+        <button type="submit" id="vorschauBtn">Vorschau anzeigen</button>
+    </div>
 
-        <!-- Vorschau -->
-            <div style="grid-area: box-7;">
-                <button type="submit" id="vorschauBtn">Vorschau anzeigen</button>
-            </div>
+    <div style="grid-area: backBtn;">
+        <!-- zurueckButton -->
+        <button type="submit" id="vorschauBtn">zurück</button>
+    </div>
+    </div>
 
-    
+
+    <!-- Fehlerbox -->
+        <div id="errorBox" style="grid-area: box-3;"></div>
+
+        
+        
 </form>
 <?php endif; ?>
 
@@ -304,13 +305,6 @@ document.getElementById("vorschauBtn").addEventListener("click", function(e) {
     }
 });
 </script>
-    <div style="grid-area: box-6;">
-    <!-- Zurück-Button -->
-        <form action="reset.php" method="post" class="class-button">
-            <button type="submit">Zurück</button>
-        </form>
-    </div>
-</div> <!-- den </div> nicht entfernen, weil der sich auf .template1... bezieht und alle buttons enthalten muss-->
 
 
 </body>
