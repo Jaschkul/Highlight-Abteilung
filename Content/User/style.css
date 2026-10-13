@@ -20,6 +20,10 @@ body{
     padding: 20px;      
 }
 
+.gridContainer button {
+    width: 100%; /* Lässt den Button die komplette Spaltenbreite ausfüllen */
+    box-sizing: border-box; /* Verhindert, dass Padding die Breite sprengt */
+}
 
 .d1{
     background-color: white;
