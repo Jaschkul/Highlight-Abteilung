@@ -156,7 +156,7 @@ $bildCount = [
 
     <!-- Abteilungen -->
     <div style = "grid-area: abteilungen;">
-        <details>
+        <details class="details">
             <summary>Abteilung:</summary>
             <div>
                 <?php foreach ($abteilungen as $abt): ?>
@@ -167,9 +167,9 @@ $bildCount = [
                 <?= (!empty($_SESSION['abteilungs_id']) && in_array($abt['id'], $_SESSION['abteilungs_id'])) ? 'checked' : '' ?>
             >
             <?= htmlspecialchars($abt['name']) ?>
-            </div>
-            </details>
     <?php endforeach; ?>
+    </div>
+    </details>
     </div>
     <div style="grid-area: vorschauBtn;">
         <!-- VorschauButton -->
