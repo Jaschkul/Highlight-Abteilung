@@ -122,7 +122,7 @@ $bildCount = [
 
 <div class="d<?php echo $bildCount; ?>">
     <div style="grid-area: titel;">
-        <p><?= htmlspecialchars($_SESSION['titel']) ?></p>
+        <p id="titelVorschau"><?= htmlspecialchars($_SESSION['titel']) ?></p>
     </div>
     <div style="grid-area: beschreibung;">
         <p><?= nl2br(htmlspecialchars($_SESSION['beschreibung1'])) ?></p>
