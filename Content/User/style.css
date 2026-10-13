@@ -251,12 +251,6 @@ div#errorBox {
     font-weight: bold;
 }
 
-/* Button aller Seiten */
-.class-button {
-    padding: 10px 20px;
-    margin: 10px;
-    font-size: 18px;
-}
 /* Bilder Admin */
 .img {
     width: 300px;
