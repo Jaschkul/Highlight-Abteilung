@@ -27,8 +27,7 @@ body{
     box-sizing: border-box; /* Verhindert, dass Padding die Breite sprengt */
 }
 
-.bild1,.bild2,.bild3, .bild4{
-    background-color: #55f;
+.beschreibung, .titel, .bild1,.bild2,.bild3, .bild4{
     border-radius: 32px;
     align-content: center;
     color: white;
@@ -36,17 +35,13 @@ body{
 }
 .beschreibung{
     background-color: rgb(193, 100, 13);
-    border-radius: 32px;
-    align-content: center;
-    color: white;
 }
 .titel{
     background-color: rgb(52, 17, 90);
-    border-radius: 32px;
-    align-content: center;
-    color: white;
 }
-
+.bild1,.bild2,.bild3, .bild4{
+    background-color: #55f;
+}
 
 .d1{
     background-color: white;
