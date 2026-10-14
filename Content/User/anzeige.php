@@ -19,15 +19,30 @@ header("Refresh:60");
 durch die Anzahl der Bilder haben wir das ausgewählte Template
 idee hier mit einem switch zu arbeiten
 -->
-<div id="template_info">
+<div id="template">
     <div style="grid-area: titel;">
         <p id="titel"></p>
     </div>
     <div style="grid-area: beschreibung;">
         <p id="beschreibung"></p>
     </div>
-    <div id="bilder"> <!--grid area muss variabel sein und die Anzahl der Bilder-->
-        <!--grid area muss variabel sein und die Anzahl der Bilder-->
+    <div id="b1"> 
+        <div id="bild1"></div>
+    </div>
+    <div id="b2"> 
+        <div id="bild1"></div>
+        <div id="bild2"></div>
+    </div>
+    <div id="b3"> 
+        <div id="bild1"></div>
+        <div id="bild2"></div>
+        <div id="bild3"></div>
+    </div>
+    <div id="b4"> 
+        <div id="bild1"></div>
+        <div id="bild2"></div>
+        <div id="bild3"></div>
+        <div id="bild4"></div>
     </div>
 </div>
 <div class="template2">
@@ -77,9 +92,9 @@ const formatted =
     let anzahlBilder = 0; // Zähler für die Bilder starten
 
     for (let i = 1; i <= 5; i++) { //hier entspricht die Anzahl i dem Template 
-        let key = "bild" + i;
+        let key = "bild" + i; 
         if (h[key]) {
-            let img = document.createElement("img");
+            let img = document.createElement("img"); //documents.getElementById("bild1")
             img.src = "/User/uploads/" + h[key];
             bilderDiv.appendChild(img);
 
@@ -90,14 +105,35 @@ const formatted =
     // Index erhöhen → nächstes Highlight
     index = (index + 1) % highlights.length;
 
- // Textfelder füllen
+ // Textfelder füllen hier ein switch einbauen
     document.getElementById("titel").innerText = h.titel;
     document.getElementById("beschreibung").innerText = h.beschreibung1;
     document.getElementById("autor").innerText = h.autor;
     document.getElementById("abteilung").innerText = h.abteilungen;
     document.getElementById("erstellt_am").innerText = formatted;
-    document.getElementById("template_info").className = "d" + anzahlBilder;
-    document.getElementById("Bilder").style.cssText= 'grid-area: bild${anzahlBilder}'; //er bekommt nicht die Anzahl der Bilder, sondern mit noch einem forloop 
+    document.getElementById("template").className = "d" + anzahlBilder;
+    document.getElementById("b1").style.cssText=`grid-area: bild1`;
+    document.getElementById("b2").style.cssText=`grid-area: bild2`;
+    document.getElementById("b3").style.cssText=`grid-area: bild3`;
+    document.getElementById("b4").style.cssText=`grid-area: bild4`;
+    switch(anzahlBilder){
+        case 1:
+            document.getElementById("b2").remove();
+            document.getElementById("b3").remove();
+            document.getElementById("b4").remove();
+            break;
+        case 2:
+            document.getElementById("b3").remove();
+            document.getElementById("b4").remove();
+            break;
+        case 3:
+            document.getElementById("b4").remove();
+            break;
+        default:
+    }
+    
+    
+   
 
 }
 // Start
