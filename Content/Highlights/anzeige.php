@@ -21,7 +21,7 @@ header("Refresh:60");
 <h3 id="autor"></h3>
 <h3 id="abteilung"></h3>
 <h3 id="erstellt_am"></h3>
-<h3 id= template_info></h3> 
+<h3 id="template_info"></h3> 
 <div id="bilder"></div>
 
 <script>
@@ -49,17 +49,6 @@ const formatted =
     String(date.getMonth() + 1).padStart(2, "0") + "." +
     date.getFullYear();
 
-
-
-
-    // Textfelder füllen
-    document.getElementById("titel").innerText = h.titel;
-    document.getElementById("beschreibung").innerText = h.beschreibung1;
-    document.getElementById("autor").innerText = h.autor;
-    document.getElementById("abteilung").innerText = h.abteilungen;
-    document.getElementById("erstellt_am").innerText = formatted;
-    document.getElementById("template_info").innerText = "Template-Typ: " + anzahlBilder + " Bilder";
-
     // Bilder anzeigen und zählen
     let bilderDiv = document.getElementById("bilder");
     bilderDiv.innerHTML = "";
@@ -79,6 +68,13 @@ const formatted =
     // Index erhöhen → nächstes Highlight
     index = (index + 1) % highlights.length;
 }
+ // Textfelder füllen
+    document.getElementById("titel").innerText = h.titel;
+    document.getElementById("beschreibung").innerText = h.beschreibung1;
+    document.getElementById("autor").innerText = h.autor;
+    document.getElementById("abteilung").innerText = h.abteilungen;
+    document.getElementById("erstellt_am").innerText = formatted;
+    document.getElementById("template_info").innerText = "Template-Typ: " + anzahlBilder + " Bilder";
 
 // Start
 loadHighlights();
