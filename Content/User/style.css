@@ -32,6 +32,7 @@ body{
     border-radius: 32px;
     align-content: center;
     color: white;
+    font-size: 24px;
 }
 .beschreibung{
     background-color: rgb(193, 100, 13);
