@@ -26,7 +26,7 @@ idee hier mit einem switch zu arbeiten
     <div style="grid-area: beschreibung;">
         <p id="beschreibung"></p>
     </div>
-    <div style="grid-area: bild(1)">
+    <div style="grid-area: bild1">
         <div id="bilder"></div>
     </div>
 </div>
