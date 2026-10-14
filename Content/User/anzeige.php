@@ -26,8 +26,8 @@ idee hier mit einem switch zu arbeiten
     <div style="grid-area: beschreibung;">
         <p id="beschreibung"></p>
     </div>
-    <div style="grid-area: bild1"> <!--grid area muss variabel sein und die Anzahl der Bilder-->
-        <div id="bilder"></div>
+    <div id="bilder"> <!--grid area muss variabel sein und die Anzahl der Bilder-->
+        <!--grid area muss variabel sein und die Anzahl der Bilder-->
     </div>
 </div>
 <div class="template2">
