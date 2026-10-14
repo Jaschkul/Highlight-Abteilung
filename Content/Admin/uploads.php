@@ -45,7 +45,7 @@ let index = 0;
 
 // Highlights laden
 async function loadHighlights() {
-    const response = await fetch("/Highlights/highlights.php");
+    const response = await fetch("/User/highlights.php");
     highlights = await response.json();
     showHighlight();
 }
