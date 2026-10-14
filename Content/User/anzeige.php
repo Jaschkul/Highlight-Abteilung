@@ -7,8 +7,8 @@ header("Refresh:60");
 <head>
 <meta charset="UTF-8">
 <title>Highlight Anzeige</title>
-<link rel="stylesheet" href="User/style.css">
-<link rel="icon" type="image/png" href="User/favicon.png">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" type="image/png" href="favicon.png">
 </head>
 <body>
 
@@ -17,14 +17,33 @@ header("Refresh:60");
 <!--
 durch die Anzahl der Bilder haben wir das ausgewählte Template
 idee hier mit einem switch zu arbeiten
---> 
-<h3 id="erstellt_am"></h3>
-<h1 id="titel"></h1>
-<h3 id="beschreibung"></h3>
- <h3 id="abteilung"></h3>
-<div id="bilder"></div>
-<h3 id="autor"></h3>
-<h3 id="template_info"></h3> 
+-->
+<div id="template_info">
+    <div style="grid-area: titel;">
+        <h1 id="titel"></h1>
+    </div>
+    <div style="grid-area: beschreibung;">
+        <h3 id="beschreibung"></h3>
+    </div>
+    <div style="grid-area: bild(1)">
+        <div id="bilder"></div>
+    </div>
+</div>
+<div class="template2">
+    <div style = "grid-area: autor;">
+        <h3 id="autor"></h3>
+    </div>
+    <div style = "grid-area: abteilungen;">
+        <h3 id="abteilung"></h3>
+    </div>
+    <div style="grid-area: vorschauBtn;">
+        <h3 id="erstellt_am"></h3>
+    </div>
+</div> 
+
+
+ 
+
 
 <script>
 // Array für alle Highlights
@@ -76,7 +95,7 @@ const formatted =
     document.getElementById("autor").innerText = h.autor;
     document.getElementById("abteilung").innerText = h.abteilungen;
     document.getElementById("erstellt_am").innerText = formatted;
-    document.getElementById("template_info").innerText = "Template-Typ: " + anzahlBilder + " Bilder";
+    document.getElementById("template_info").className = "d" + anzahlBilder;
 
 }
 // Start
