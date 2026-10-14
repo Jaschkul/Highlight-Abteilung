@@ -128,7 +128,7 @@ body{
     border-radius: 16px;
     background-color: #92D2FC;
     color:#080741;
-    font-size: 32px;
+    font-size: 24px;
 }
 
 .d1 textarea, .d2 textarea, .d3 textarea, .d4 textarea, .gridContainer textarea{
@@ -215,9 +215,7 @@ body{
     font-weight: bold;
 }
 
-#autor{
-    font-size: 24px;
-}
+
 
 /*nächser Anschnitt
 

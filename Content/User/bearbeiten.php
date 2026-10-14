@@ -160,7 +160,7 @@ $bildCount = [
             <summary>Abteilung:</summary>
             <div>
                 <?php foreach ($abteilungen as $abt): ?>
-                    <label style="display:block; margin-bottom:4px;">
+                    <!--<label style="display:block; margin-bottom:4px;">-->
                     <input type="checkbox"
                         name="abteilungs_id[]"
                         value="<?= $abt['id'] ?>"
