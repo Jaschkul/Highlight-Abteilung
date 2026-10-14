@@ -21,7 +21,7 @@ header("Refresh:60");
 <h3 id="autor"></h3>
 <h3 id="abteilung"></h3>
 <h3 id="erstellt_am"></h3>
-<h3 id= tenplate_info></h3> 
+<h3 id= template_info></h3> 
 <div id="bilder"></div>
 
 <script>
@@ -58,6 +58,7 @@ const formatted =
     document.getElementById("autor").innerText = h.autor;
     document.getElementById("abteilung").innerText = h.abteilungen;
     document.getElementById("erstellt_am").innerText = formatted;
+    document.getElementById("template_info").innerText = "Template-Typ: " + anzahlBilder + " Bilder";
 
     // Bilder anzeigen und zählen
     let bilderDiv = document.getElementById("bilder");
