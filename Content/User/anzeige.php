@@ -64,20 +64,21 @@ const formatted =
     date.getFullYear();
 
     // Bilder anzeigen und zählen
-    let bilderDiv = document.getElementById("bilder");
-    bilderDiv.innerHTML = "";
     let anzahlBilder = 0; // Zähler für die Bilder starten
 
     for (let i = 1; i <= 5; i++) { //hier entspricht die Anzahl i dem Template 
         let bildDiv = document.getElementById("bild"+i);
         let key = "bild" + i; 
+        if (bildDiv) {
+        // Vorherigen Inhalt (altes Bild) löschen
+        bildDiv.innerHTML = "";
         if (h[key]) {
             let img = document.createElement("img"); //documents.getElementById("bild1")
             img.src = "/User/uploads/" + h[key];
             bildDiv.appendChild(img);
 
             anzahlBilder++;
-        }
+        }}
     }
 
     // Index erhöhen → nächstes Highlight
