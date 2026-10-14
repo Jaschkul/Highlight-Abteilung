@@ -97,7 +97,7 @@ const formatted =
     document.getElementById("abteilung").innerText = h.abteilungen;
     document.getElementById("erstellt_am").innerText = formatted;
     document.getElementById("template_info").className = "d" + anzahlBilder;
-    document.getElementById("Bilder").style.cssText= 'grid-area: Bilder${anzahlBilder}';
+    document.getElementById("Bilder").style.cssText= 'grid-area: bild${anzahlBilder}'; //er bekommt nicht die Anzahl der Bilder, sondern mit noch einem forloop 
 
 }
 // Start
