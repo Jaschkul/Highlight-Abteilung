@@ -157,9 +157,9 @@ $bildCount = [
     <!-- Abteilungen -->
     <div style = "grid-area: abteilungen;">
         <details class="details">
-            <summary>Abteilung:</summary>
+            <summary>Abteilungen:</summary>
                 <?php foreach ($abteilungen as $abt): ?>
-                    <label style="margin-bottom:4px;">
+                   
                     <input type="checkbox"
                         name="abteilungs_id[]"
                         value="<?= $abt['id'] ?>">
