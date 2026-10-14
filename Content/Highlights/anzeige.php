@@ -67,7 +67,7 @@ const formatted =
 
     // Index erhöhen → nächstes Highlight
     index = (index + 1) % highlights.length;
-}
+
  // Textfelder füllen
     document.getElementById("titel").innerText = h.titel;
     document.getElementById("beschreibung").innerText = h.beschreibung1;
@@ -75,7 +75,7 @@ const formatted =
     document.getElementById("abteilung").innerText = h.abteilungen;
     document.getElementById("erstellt_am").innerText = formatted;
     document.getElementById("template_info").innerText = "Template-Typ: " + anzahlBilder + " Bilder";
-
+}
 // Start
 loadHighlights();
 
