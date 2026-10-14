@@ -8,15 +8,20 @@ header("Refresh:60");
 <meta charset="UTF-8">
 <title>Highlight Anzeige</title>
 <link rel="stylesheet" href="style.css">
+<link rel="icon" type="image/png" href="favicon.png">
 </head>
 <body>
 
 <!-- Bereiche für die Highlight-Daten -->
+
+<!--durch die Anzahl der Bilder haben wir das ausgewählte Template--> 
+
 <h1 id="titel"></h1>
 <h3 id="beschreibung"></h3>
 <h3 id="autor"></h3>
 <h3 id="abteilung"></h3>
 <h3 id="erstellt_am"></h3>
+<h3 id= tenplate_info></h3> 
 <div id="bilder"></div>
 
 <script>
@@ -54,16 +59,19 @@ const formatted =
     document.getElementById("abteilung").innerText = h.abteilungen;
     document.getElementById("erstellt_am").innerText = formatted;
 
-    // Bilder anzeigen
+    // Bilder anzeigen und zählen
     let bilderDiv = document.getElementById("bilder");
     bilderDiv.innerHTML = "";
+    let anzahlBilder = 0; // Zähler für die Bilder starten
 
-    for (let i = 1; i <= 5; i++) {
+    for (let i = 1; i <= 5; i++) { //hier entspricht die Anzahl i dem Template 
         let key = "bild" + i;
         if (h[key]) {
             let img = document.createElement("img");
             img.src = "/User/uploads/" + h[key];
             bilderDiv.appendChild(img);
+
+            anzahlBilder++;
         }
     }
 
