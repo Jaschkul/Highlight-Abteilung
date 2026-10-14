@@ -64,15 +64,7 @@ function showHighlight() {
         String(date.getDate()).padStart(2, "0") + "." +
         String(date.getMonth() + 1).padStart(2, "0") + "." +
         date.getFullYear();
-
-    document.getElementById("titel").innerText = h.titel;
-    document.getElementById("beschreibung").innerText = h.beschreibung1;
-    document.getElementById("autor").innerText = h.autor;
-    document.getElementById("abteilung").innerText = h.abteilungen;
-    document.getElementById("erstellt_am").innerText = formatted;
-    document.getElementById("template").className = "d" + anzahlBilder;
-
-    let anzahlBilder = 0; // Zähler für die Bilder starten
+  let anzahlBilder = 0; // Zähler für die Bilder starten
 
     for (let i = 1; i <= 5; i++) { //hier entspricht die Anzahl i dem Template 
         let bildDiv = document.getElementById("bild"+i);
@@ -88,6 +80,13 @@ function showHighlight() {
             anzahlBilder++;
         }}
     }
+
+    document.getElementById("titel").innerText = h.titel;
+    document.getElementById("beschreibung").innerText = h.beschreibung1;
+    document.getElementById("autor").innerText = h.autor;
+    document.getElementById("abteilung").innerText = h.abteilungen;
+    document.getElementById("erstellt_am").innerText = formatted;
+    document.getElementById("template").className = "d" + anzahlBilder;
 }
 
 // Weiter
