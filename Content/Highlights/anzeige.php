@@ -7,22 +7,24 @@ header("Refresh:60");
 <head>
 <meta charset="UTF-8">
 <title>Highlight Anzeige</title>
-<link rel="stylesheet" href="style.css">
-<link rel="icon" type="image/png" href="favicon.png">
+<link rel="stylesheet" href="User/style.css">
+<link rel="icon" type="image/png" href="User/favicon.png">
 </head>
 <body>
 
 <!-- Bereiche für die Highlight-Daten -->
 
-<!--durch die Anzahl der Bilder haben wir das ausgewählte Template--> 
-
+<!--
+durch die Anzahl der Bilder haben wir das ausgewählte Template
+idee hier mit einem switch zu arbeiten
+--> 
+<h3 id="erstellt_am"></h3>
 <h1 id="titel"></h1>
 <h3 id="beschreibung"></h3>
-<h3 id="autor"></h3>
-<h3 id="abteilung"></h3>
-<h3 id="erstellt_am"></h3>
-<h3 id="template_info"></h3> 
+ <h3 id="abteilung"></h3>
 <div id="bilder"></div>
+<h3 id="autor"></h3>
+<h3 id="template_info"></h3> 
 
 <script>
 // Array für alle Highlights
@@ -75,6 +77,7 @@ const formatted =
     document.getElementById("abteilung").innerText = h.abteilungen;
     document.getElementById("erstellt_am").innerText = formatted;
     document.getElementById("template_info").innerText = "Template-Typ: " + anzahlBilder + " Bilder";
+
 }
 // Start
 loadHighlights();
