@@ -159,13 +159,12 @@ $bildCount = [
         <details class="details">
             <summary>Abteilung:</summary>
                 <?php foreach ($abteilungen as $abt): ?>
-                    <label style="margin-bottom:4px;"
+                    <label style="margin-bottom:4px;">
                     <input type="checkbox"
                         name="abteilungs_id[]"
-                        value="<?= $abt['id'] ?>"
+                        value="<?= $abt['id'] ?>">
                 <?= (!empty($_SESSION['abteilungs_id']) && in_array($abt['id'], $_SESSION['abteilungs_id'])) ? 'checked' : '' ?>
-            >>
-            <?= htmlspecialchars($abt['name']) ?> <input type = "checkbox">
+            <?= htmlspecialchars($abt['name']) ?> 
     <?php endforeach; ?>
     </details>
     </div>
