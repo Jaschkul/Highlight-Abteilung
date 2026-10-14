@@ -4,16 +4,35 @@
 <meta charset="UTF-8">
 <title>Admin Seite</title>
 <link rel="stylesheet" href="/User/style.css">
+<link rel="icon" type="image/png" href="/User/favicon.png">
 </head>
 <body>
 
 <!-- Bereiche für die Highlight-Daten -->
-<h1 id="titel"></h1>
-<h3 id="beschreibung"></h3>
-<h3 id="autor"></h3>
-<h3 id="abteilung"></h3>
-<h3 id="erstellt_am"></h3>
-<div id="bilder"></div>
+<div id="template">
+    <div style="grid-area: titel;">
+        <p id="titel"></p>
+    </div>
+    <div style="grid-area: beschreibung;">
+        <p id="beschreibung"></p>
+    </div>
+    <div id="bild1" style="grid-area: bild1;"></div>
+    <div id="bild2" style="grid-area: bild2;"></div>
+    <div id="bild3" style="grid-area: bild3;"></div>
+    <div id="bild4" style="grid-area: bild4;"></div>
+</div>
+
+<div class="template2">
+    <div style = "grid-area: autor;">
+        <p id="autor"></p>
+    </div>
+    <div style = "grid-area: abteilungen;">
+        <p id="abteilung"></p>
+    </div>
+    <div style="grid-area: vorschauBtn;">
+        <p id="erstellt_am"></p>
+    </div>
+</div>
 
 <!-- Navigation -->
 <button class="class-button" onclick="prevHighlight()">⬅ Zurück</button>
@@ -51,17 +70,23 @@ function showHighlight() {
     document.getElementById("autor").innerText = h.autor;
     document.getElementById("abteilung").innerText = h.abteilungen;
     document.getElementById("erstellt_am").innerText = formatted;
+    document.getElementById("template").className = "d" + anzahlBilder;
 
-    let bilderDiv = document.getElementById("bilder");
-    bilderDiv.innerHTML = "";
+    let anzahlBilder = 0; // Zähler für die Bilder starten
 
-    for (let i = 1; i <= 5; i++) {
-        let key = "bild" + i;
+    for (let i = 1; i <= 5; i++) { //hier entspricht die Anzahl i dem Template 
+        let bildDiv = document.getElementById("bild"+i);
+        let key = "bild" + i; 
+        if (bildDiv) {
+        // Vorherigen Inhalt (altes Bild) löschen
+        bildDiv.innerHTML = "";
         if (h[key]) {
-            let img = document.createElement("img");
+            let img = document.createElement("img"); //documents.getElementById("bild1")
             img.src = "/User/uploads/" + h[key];
-            bilderDiv.appendChild(img);
-        }
+            bildDiv.appendChild(img);
+
+            anzahlBilder++;
+        }}
     }
 }
 
