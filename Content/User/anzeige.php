@@ -13,12 +13,6 @@ header("Refresh:60");
 </head>
 <body>
 
-<!-- Bereiche für die Highlight-Daten -->
-
-<!--
-durch die Anzahl der Bilder haben wir das ausgewählte Template
-idee hier mit einem switch zu arbeiten
--->
 <div id="template">
     <div style="grid-area: titel;">
         <p id="titel"></p>
@@ -26,25 +20,12 @@ idee hier mit einem switch zu arbeiten
     <div style="grid-area: beschreibung;">
         <p id="beschreibung"></p>
     </div>
-    <div id="b1"> 
-        <div id="bild1"></div>
-    </div>
-    <div id="b2"> 
-        <div id="bild1"></div>
-        <div id="bild2"></div>
-    </div>
-    <div id="b3"> 
-        <div id="bild1"></div>
-        <div id="bild2"></div>
-        <div id="bild3"></div>
-    </div>
-    <div id="b4"> 
-        <div id="bild1"></div>
-        <div id="bild2"></div>
-        <div id="bild3"></div>
-        <div id="bild4"></div>
-    </div>
+    <div id="bild1" style="grid-area: bild1;"></div>
+    <div id="bild2" style="grid-area: bild2;"></div>
+    <div id="bild3" style="grid-area: bild3;"></div>
+    <div id="bild4" style="grid-area: bild4;"></div>
 </div>
+
 <div class="template2">
     <div style = "grid-area: autor;">
         <p id="autor"></p>
@@ -55,11 +36,7 @@ idee hier mit einem switch zu arbeiten
     <div style="grid-area: vorschauBtn;">
         <p id="erstellt_am"></p>
     </div>
-</div> 
-
-
- 
-
+</div>
 
 <script>
 // Array für alle Highlights
@@ -92,11 +69,12 @@ const formatted =
     let anzahlBilder = 0; // Zähler für die Bilder starten
 
     for (let i = 1; i <= 5; i++) { //hier entspricht die Anzahl i dem Template 
+        let bildDiv = document.getElementById("bild"+i);
         let key = "bild" + i; 
         if (h[key]) {
             let img = document.createElement("img"); //documents.getElementById("bild1")
             img.src = "/User/uploads/" + h[key];
-            bilderDiv.appendChild(img);
+            bildDiv.appendChild(img);
 
             anzahlBilder++;
         }
@@ -112,29 +90,6 @@ const formatted =
     document.getElementById("abteilung").innerText = h.abteilungen;
     document.getElementById("erstellt_am").innerText = formatted;
     document.getElementById("template").className = "d" + anzahlBilder;
-    document.getElementById("b1").style.cssText=`grid-area: bild1`;
-    document.getElementById("b2").style.cssText=`grid-area: bild2`;
-    document.getElementById("b3").style.cssText=`grid-area: bild3`;
-    document.getElementById("b4").style.cssText=`grid-area: bild4`;
-    switch(anzahlBilder){
-        case 1:
-            document.getElementById("b2").remove();
-            document.getElementById("b3").remove();
-            document.getElementById("b4").remove();
-            break;
-        case 2:
-            document.getElementById("b3").remove();
-            document.getElementById("b4").remove();
-            break;
-        case 3:
-            document.getElementById("b4").remove();
-            break;
-        default:
-    }
-    
-    
-   
-
 }
 // Start
 loadHighlights();
