@@ -26,7 +26,7 @@ idee hier mit einem switch zu arbeiten
     <div style="grid-area: beschreibung;">
         <p id="beschreibung"></p>
     </div>
-    <div style="grid-area: bild1">
+    <div style="grid-area: bild1"> <!--grid area muss variabel sein und die Anzahl der Bilder-->
         <div id="bilder"></div>
     </div>
 </div>
@@ -97,6 +97,7 @@ const formatted =
     document.getElementById("abteilung").innerText = h.abteilungen;
     document.getElementById("erstellt_am").innerText = formatted;
     document.getElementById("template_info").className = "d" + anzahlBilder;
+    document.getElementById("Bilder").style.cssText= 'grid-area: Bilder${anzahlBilder}';
 
 }
 // Start
