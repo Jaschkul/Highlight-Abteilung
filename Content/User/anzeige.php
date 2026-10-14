@@ -7,6 +7,7 @@ header("Refresh:60");
 <head>
 <meta charset="UTF-8">
 <title>Highlight Anzeige</title>
+<h1> Highlights IT</h1>
 <link rel="stylesheet" href="style.css">
 <link rel="icon" type="image/png" href="favicon.png">
 </head>
@@ -20,10 +21,10 @@ idee hier mit einem switch zu arbeiten
 -->
 <div id="template_info">
     <div style="grid-area: titel;">
-        <h1 id="titel"></h1>
+        <p id="titel"></p>
     </div>
     <div style="grid-area: beschreibung;">
-        <h3 id="beschreibung"></h3>
+        <p id="beschreibung"></p>
     </div>
     <div style="grid-area: bild(1)">
         <div id="bilder"></div>
@@ -31,13 +32,13 @@ idee hier mit einem switch zu arbeiten
 </div>
 <div class="template2">
     <div style = "grid-area: autor;">
-        <h3 id="autor"></h3>
+        <p id="autor"></p>
     </div>
     <div style = "grid-area: abteilungen;">
-        <h3 id="abteilung"></h3>
+        <p id="abteilung"></p>
     </div>
     <div style="grid-area: vorschauBtn;">
-        <h3 id="erstellt_am"></h3>
+        <p id="erstellt_am"></p>
     </div>
 </div> 
 
