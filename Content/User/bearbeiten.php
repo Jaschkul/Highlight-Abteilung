@@ -164,7 +164,8 @@ $bildCount = [
                         name="abteilungs_id[]"
                         value="<?= $abt['id'] ?>"
                 <?= (!empty($_SESSION['abteilungs_id']) && in_array($abt['id'], $_SESSION['abteilungs_id'])) ? 'checked' : '' ?>
-            ><?= htmlspecialchars($abt['name']) ?>>
+            >>
+            <?= htmlspecialchars($abt['name']) ?> <input type = "checkbox">
     <?php endforeach; ?>
     </details>
     </div>
