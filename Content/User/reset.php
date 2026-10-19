@@ -8,5 +8,5 @@ $_SESSION = [];
 session_destroy();
 
 // Zurück zur Startseite
-header('Location: index.html');
+header('Location: index.php');
 exit; // Skript beenden – alles danach darf NICHT mehr existieren!
