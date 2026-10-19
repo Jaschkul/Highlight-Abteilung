@@ -15,7 +15,7 @@ body{
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
     grid-template-rows: auto auto;
 
-    max-width: 800px;   /*hier braucht man noch eine Schätzung*/
+    max-width: 1000px;   /*hier braucht man noch eine Schätzung*/
     margin: 40px auto; 
 
     padding: 20px;      
