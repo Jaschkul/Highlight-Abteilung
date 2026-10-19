@@ -119,7 +119,7 @@ body{
 }
 
 
-.d1 input:not([type="checkbox"]), .d2 input:not([type="checkbox"]), .d3 input:not([type="checkbox"]), .d4 input:not([type="checkbox"]), .template2 input:not([type="checkbox"]), .gridContainer input:not([type="checkbox"]){
+.d1 input, .d2 input, .d3 input, .d4 input, .template2 input:not([type="checkbox"]), .gridContainer input{
     display: block;
     width: 100%;
     height: 100%;
