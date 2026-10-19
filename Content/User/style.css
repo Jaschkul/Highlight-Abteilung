@@ -50,8 +50,8 @@ body{
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     grid-template-rows: auto auto;
     grid-template-areas: 
-    "titel titel"
-    "bild1 beschreibung";
+    "titel"
+    "beschreibung";
 
     max-width: 800px;   /*hier braucht man noch eine Schätzung*/
     margin: 40px auto;  
