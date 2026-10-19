@@ -171,7 +171,7 @@ body{
 
 
 
-.d1 textarea, .d2 textarea, .d3 textarea, .d4 textarea, .gridContainer textarea{
+.do textarea, .d1 textarea, .d2 textarea, .d3 textarea, .d4 textarea, .gridContainer textarea{
    display: block;
     width: 100%;
     height: auto;           /* Wichtig: Nicht mehr 100%, sondern auto */
@@ -184,7 +184,7 @@ body{
     font-size: 24px;
 }
 
-.d1 p, .d2 p, .d3 p, .d4 p, .d6 p{
+.do p, .d1 p, .d2 p, .d3 p, .d4 p, .d6 p{
    display: block;
     width: 100%;
     height: auto;
