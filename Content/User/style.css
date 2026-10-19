@@ -14,9 +14,9 @@ body{
     gap:1em;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
     grid-template-rows: minmax(0, 1fr) minmax(0, 1fr);
-
+    max-height: 100px;
     max-width: 1100px;   /*hier braucht man noch eine Schätzung*/
-    margin: 40px 40px; 
+    margin: 40px auto; 
 
     padding: 20px;      
 }
