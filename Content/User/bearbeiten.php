@@ -83,6 +83,7 @@ $abteilungen = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 // Anzahl Bilder je nach Template-Typ
 $bildCount = [
+    '0' => 0,
     'lo' => 1,
     'ro' => 2,
     'lu' => 3,
