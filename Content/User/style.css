@@ -11,7 +11,7 @@ body{
 
 .gridContainer{
     display:grid;
-    gap:1em;
+    gap:8em;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
     grid-template-rows: auto auto;
 
@@ -23,7 +23,6 @@ body{
 
 .gridContainer button {
     height:100%;
-    gap: 8em;
     width: 100%; /* Lässt den Button die komplette Spaltenbreite ausfüllen */
     box-sizing: border-box; /* Verhindert, dass Padding die Breite sprengt */
 }
