@@ -106,7 +106,11 @@ $bildCount = [
     <!-- Template-Typ -->
     <input id="inputTitel" type="hidden" name="typ" value="<?= $typ ?>">
 
-    <!-- Grid-Container abhängig von Bildanzahl -->
+    <!-- 
+    Grid-Container abhängig von Bildanzahl 
+    hier kann auch template d0 ausgewählt werden  
+    
+    -->
     <div class="d<?php echo $bildCount; ?>">
 
         <!-- Überschrift -->
