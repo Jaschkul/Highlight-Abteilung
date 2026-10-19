@@ -43,6 +43,23 @@ body{
     background-color: #55f;
 }
 
+.dW{
+    background-color: white;
+    display:grid;
+    gap:1em;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto;
+    grid-template-areas: 
+    "titel";
+
+    max-width: 800px;   /*hier braucht man noch eine Schätzung*/
+    margin: 40px auto;  
+    
+    
+    padding: 20px;      
+    border-radius: 20px;
+}
+
 .d0{
     background-color: white;
     display:grid;
