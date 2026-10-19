@@ -113,9 +113,21 @@ $bildCount = [
 
 ?>
 -->
- 
 
-<div class="d<?php echo $bildCount; ?>">
+
+
+<div class="d
+
+"<?php for ($i = 1; $i <= $bildCount; $i++): 
+    if (empty($_SESSION["bild$i"])){
+        echo 0;
+    } 
+    else{   
+        echo $bildCount; 
+} endfor
+
+?>>"
+
     <div style="grid-area: titel;">
         <p id="titelVorschau"><?= htmlspecialchars($_SESSION['titel']) ?></p>
     </div>
