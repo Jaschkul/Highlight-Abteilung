@@ -119,7 +119,7 @@ body{
 }
 
 
-.d1 input, .d2 input, .d3 input, .d4 input, .template2 input, .gridContainer input{
+.d1 input:not([type="checkbox"]), .d2 input:not([type="checkbox"]), .d3 input:not([type="checkbox"]), .d4 input:not([type="checkbox"]), .template2 input, .gridContainer input{
     display: block;
     width: 100%;
     height: 100%;
@@ -131,10 +131,7 @@ body{
     font-size: 24px;
 }
 
-.inputCheckbox {
-   display: flex;
-   float: left;
-}
+
 
 .d1 textarea, .d2 textarea, .d3 textarea, .d4 textarea, .gridContainer textarea{
    display: block;
