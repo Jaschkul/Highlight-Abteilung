@@ -68,7 +68,7 @@ body{
     grid-template-columns: minmax(0, 1fr), minmax(0, 1fr);
     grid-template-rows: auto auto;
     grid-template-areas: 
-    "titel1 titel2"
+    "titel titel"
     "beschreibung1 beschreibung2";
 
     max-width: 800px;   /*hier braucht man noch eine Schätzung*/
@@ -183,7 +183,7 @@ body{
     font-size: 24px;
 }
 
-.d1 p, .d2 p, .d3 p, .d4 p{
+.d1 p, .d2 p, .d3 p, .d4 p, .d6 p{
    display: block;
     width: 100%;
     height: auto;
