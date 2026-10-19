@@ -249,7 +249,11 @@ body{
 }
 .gespeichert{
     color: white;
-    
+}
+.datum{
+    display: block; 
+    float: right;
+    color: white;
 }
 
 #titelVorschau{
