@@ -159,4 +159,4 @@ $bildCount = [
 
 </body>
 </html>
-<?php include("footer.hml");?>
+<?php include("footer.html");?>
