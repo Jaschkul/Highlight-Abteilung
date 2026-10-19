@@ -23,6 +23,7 @@ body{
 
 .gridContainer button {
     height:100%;
+    gap: 8em;
     width: 100%; /* Lässt den Button die komplette Spaltenbreite ausfüllen */
     box-sizing: border-box; /* Verhindert, dass Padding die Breite sprengt */
 }
