@@ -118,7 +118,7 @@ $bildCount = [
 
 <div class="d
 
-"<?php for ($i = 1; $i <= $bildCount; $i++): 
+<?php for ($i = 1; $i <= $bildCount; $i++): 
     if (empty($_SESSION["bild$i"])){
         echo 0;
     } 
