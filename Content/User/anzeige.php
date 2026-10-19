@@ -66,7 +66,7 @@ const formatted =
     // Bilder anzeigen und zählen
     let anzahlBilder = 0; // Zähler für die Bilder starten
 
-    for (let i = 1; i <= 5; i++) { //hier entspricht die Anzahl i dem Template 
+    for (let i = 0; i <= 4; i++) { //hier entspricht die Anzahl i dem Template 
         let bildDiv = document.getElementById("bild"+i);
         let key = "bild" + i; 
         if (bildDiv) {
