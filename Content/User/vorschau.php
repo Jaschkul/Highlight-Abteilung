@@ -124,9 +124,7 @@ $bildCount = [
     } 
     else{   
         echo $bildCount; 
-} endfor
-
-?>>"
+} endfor;?>">
 
     <div style="grid-area: titel;">
         <p id="titelVorschau"><?= htmlspecialchars($_SESSION['titel']) ?></p>
