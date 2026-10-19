@@ -131,7 +131,7 @@ body{
     font-size: 24px;
 }
 
-#inputCheckbox {
+.inputCheckbox {
    display: flex;
    float: left;
 }
