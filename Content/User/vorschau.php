@@ -105,6 +105,7 @@ $now->format('Y-m-d');
 <?php
 // Anzahl Bilder je nach Typ definieren
 $bildCount = [
+    'btn0' => 0,
     'lo' => 1,
     'ro' => 2,
     'lu' => 3,
