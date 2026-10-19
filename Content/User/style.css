@@ -210,11 +210,13 @@ body{
     font-size: 24px;
     font-family: sans-serif;
 }
+/*
 .details input{
     font-size: 24px;
     font-family: sans-serif;
     display: flex;
 }
+*/
 
 #titelVorschau{
     text-align: center;
