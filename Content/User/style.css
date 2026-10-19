@@ -44,6 +44,11 @@ body{
     background-color: #55f;
 }
 
+.footer{
+    color: white;
+    text-align: center;
+}
+
 .dW{
     background-color: white;
     display:grid;
