@@ -31,13 +31,14 @@
     </div>
     <div style="grid-area: vorschauBtn;">
         <p id="erstellt_am"></p>
+        <button class="vorschauBtn" onclick="nextHighlight()">➡ Weiter</button>
+        <button class="vorschauBtn" onclick="deleteHighlight()">Löschen</button>
+    </div>
+    <div style="grid-area: backBtn;">
+        <button class="backBtn" onclick="prevHighlight()">⬅ Zurück</button>
     </div>
 </div>
 
-<!-- Navigation -->
-<button class="class-button" onclick="prevHighlight()">⬅ Zurück</button>
-<button class="class-button" onclick="nextHighlight()">➡ Weiter</button>
-<button class="class-button" onclick="deleteHighlight()">Löschen</button>
 
 <script>
 let highlights = [];

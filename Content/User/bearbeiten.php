@@ -312,4 +312,4 @@ document.getElementById("vorschauBtn").addEventListener("click", function(e) {
 
 </body>
 </html>
-<?php include("footer.html");?>
+<?php include("footer.php");?>

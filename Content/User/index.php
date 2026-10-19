@@ -93,9 +93,9 @@
             </button></div>
             <!--d weitere-->
 
-            <div><button class="dW" id="btnlo" type="submit" name="typ" value="lo">
+            <div><button class="dW" id="btn0">
                 <div style = "grid-area: titel;">
-                    <p>weitere Templates auf Anfrage</p>
+                    <p> weitere Templates auf Anfrage</p>
                 </div>
             </button></div> 
     </div>
@@ -105,4 +105,4 @@
    
 </body>
 </html>
-<?php include("footer.html");?>
+<?php include("footer.php");?>

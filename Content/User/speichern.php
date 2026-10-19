@@ -64,7 +64,7 @@ try {
         }
     }
 
-    echo 'Highlight gespeichert!';
+    echo '<p class="gespeichert">Highlight gespeichert!</p>';
 
 } catch (\Throwable $th) {
     // Fehler ausgeben
@@ -80,3 +80,4 @@ try {
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="stylesheet" href="style.css">
 </head>
+<?php include("footer.php");?>
