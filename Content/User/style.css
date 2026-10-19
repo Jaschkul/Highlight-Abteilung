@@ -132,13 +132,8 @@ body{
 }
 
 #inputCheckbox {
-    order: -1; /* Schiebt die Checkbox an die erste Stelle */
-    box-sizing: border-box;
-    resize: none;
-    border-radius: 16px;
-    background-color: #92D2FC;
-    color: #080741;
-    font-size: 24px;
+   display: flex;
+   float: left;
 }
 
 .d1 textarea, .d2 textarea, .d3 textarea, .d4 textarea, .gridContainer textarea{
