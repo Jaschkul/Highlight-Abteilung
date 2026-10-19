@@ -131,12 +131,13 @@ body{
     font-size: 24px;
 }
 
-#inputChechbox{
+#inputCheckbox {
+    order: -1; /* Schiebt die Checkbox an die erste Stelle */
     box-sizing: border-box;
     resize: none;
     border-radius: 16px;
     background-color: #92D2FC;
-    color:#080741;
+    color: #080741;
     font-size: 24px;
 }
 
