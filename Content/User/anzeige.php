@@ -28,7 +28,9 @@ header("Refresh:60");
 
 <div class="template2">
     <div style = "grid-area: autor;">
-        <p id="autor">Autor: @</p>
+        <label> Autor: @
+            <p id="autor"></p>
+        </label>
     </div>
     <div style = "grid-area: abteilungen;">
         <p id="abteilung"></p>
