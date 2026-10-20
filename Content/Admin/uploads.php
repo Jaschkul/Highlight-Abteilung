@@ -125,4 +125,4 @@ loadHighlights();
 
 </body>
 </html>
-<?php include("/User/footer.php");?>
+<?php include("includes/footer.php");?>
