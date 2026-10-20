@@ -267,7 +267,10 @@ body{
 }
 
 .back, .delete, .forward{
-    font-size: sans-serif;
+    font-size: 24px;
+    font-family: sans-serif;
+    border-radius: 32px;
+    background-color: white;
 }
 
 .details{
