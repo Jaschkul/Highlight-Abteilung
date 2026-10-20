@@ -242,7 +242,7 @@ body{
     border-radius: 20px;
 }
 
-.backBtn, .vorschauBtn{
+.backBtn, .vorschauBtn, .delete{
     display:block;
     margin:6px;
     background: white;
@@ -255,6 +255,10 @@ body{
 
 .vorschauBtn:hover, .backBtn:hover{
     background-color: rgb(214, 214, 234);
+}
+
+.delete:hover{
+    background-color: red;
 }
 
 .vorschauBtn{

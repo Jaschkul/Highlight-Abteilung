@@ -26,16 +26,16 @@
 <div class="template3">
     <div style = "grid-area: autor;">
         <p id="autor"></p>
-        <button class="backBtn" onclick="prevHighlight()">⬅</button>
+        <button class="backBtn" onclick="prevHighlight()">⬅ zurück</button>
     </div>
     <div style = "grid-area: abteilungen;">
         <p id="abteilung"></p>
-        <button onclick="deleteHighlight()">Löschen</button>
+        <button class="delete" onclick="deleteHighlight()">Löschen</button>
     </div>
     <div style="grid-area: datum;">
         <p id="erstellt_am"></p>
         
-        <button onclick="nextHighlight()">➡</button>
+        <button class= "vorschaBtn" onclick="nextHighlight()">weiter ➡</button>
     </div>
 </div>
 
