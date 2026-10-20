@@ -33,9 +33,9 @@
         <p id="erstellt_am"></p>
     </div>
 </div>
-<button class="vorschauBtn" onclick="nextHighlight()">➡ Weiter</button>
-<button class="vorschauBtn" onclick="deleteHighlight()">Löschen</button>
-<button class="backBtn" onclick="prevHighlight()">⬅ Zurück</button>
+<button class="forward" onclick="nextHighlight()">➡</button>
+<button class="delete" onclick="deleteHighlight()">Löschen</button>
+<button class="back" onclick="prevHighlight()">⬅</button>
 
 
 <script>
