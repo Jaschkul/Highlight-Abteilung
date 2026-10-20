@@ -98,7 +98,6 @@ $now->format('Y-m-d');
 </head>
 <body>
 <!-- diese Stelle noch anpassen--> 
-<h3 class = "datum">Datum: <?= $now->format('d.m.Y') ?></h3>
 
 
 
@@ -142,6 +141,7 @@ $bildCount = [
     </div>
     <div style = "grid-area: abteilungen;">
         <h4>Abteilung: <?= htmlspecialchars($abteilungs_name) ?></h4>
+        <h3 class = "datum">Datum: <?= $now->format('d.m.Y') ?></h3>
     </div>
     <div style = "grid-area: vorschauBtn;">
         <form action="speichern.php" method="post" class="class-button">
