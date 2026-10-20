@@ -49,8 +49,7 @@ body{
     color: white;
     font-size: sans-serif;
     text-align: center;
-    position: fix;
-    margin-bottom: 0%;
+    clear: both;
 }
 .footer a{
     text-decoration: none;
