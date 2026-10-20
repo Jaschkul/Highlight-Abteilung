@@ -15,7 +15,7 @@ header("Refresh:60");
 
 <div id="template">
     <div style="grid-area: titel;">
-        <p id="titel"></p>
+        <h1 id="titel"></h1>
     </div>
     <div style="grid-area: beschreibung;">
         <p id="beschreibung"></p>
