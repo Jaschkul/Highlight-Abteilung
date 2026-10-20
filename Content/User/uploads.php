@@ -26,17 +26,18 @@
 <div class="template3">
     <div style = "grid-area: autor;">
         <p id="autor"></p>
+        <button onclick="nextHighlight()">➡</button>
     </div>
     <div style = "grid-area: abteilungen;">
         <p id="abteilung"></p>
+        <button onclick="deleteHighlight()">Löschen</button>
     </div>
     <div style="grid-area: datum;">
         <p id="erstellt_am"></p>
+        <button onclick="prevHighlight()">⬅</button>
     </div>
 </div>
-<button class="forward" onclick="nextHighlight()">➡</button>
-<button class="delete" onclick="deleteHighlight()">Löschen</button>
-<button class="back" onclick="prevHighlight()">⬅</button>
+
 
 
 <script>
