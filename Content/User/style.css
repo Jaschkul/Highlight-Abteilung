@@ -274,12 +274,13 @@ body{
     position:absolute;
     top: 50%;
     transform: translateY(-50%);
+    padding: 8px;
 }
 .back{
-    left: 10%;
+    left: 30%;
 }
 .forward{
-    right: 10%;
+    right: 30%;
 }
 
 .details{
