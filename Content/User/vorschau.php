@@ -97,10 +97,10 @@ $now->format('Y-m-d');
     <link rel="icon" type="image/png" href="favicon.png">
 </head>
 <body>
+<!-- diese Stelle noch anpassen--> 
+<h3 class = "datum">Datum: <?= $now->format('d.m.Y') ?></h3>
 
-<h3>Datum: <?= $now->format('d.m.Y') ?></h3>
 
-<!-- Beschreibung 
 
 <?php
 // Anzahl Bilder je nach Typ definieren
@@ -113,7 +113,7 @@ $bildCount = [
 ][$typ] ?? 1;
 
 ?>
--->
+
 
 
 

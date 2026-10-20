@@ -101,3 +101,4 @@ setInterval(showHighlight, 6000);
 
 </body>
 </html>
+<?php include("footer.php");?>
