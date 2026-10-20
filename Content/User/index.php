@@ -93,7 +93,7 @@
             </button></div>
             <!--d weitere-->
 
-            <div><button class="dW" id="btn0">
+            <div><button class="dW">
                 <div style = "grid-area: titel;">
                     <p> weitere Templates auf Anfrage</p>
                 </div>
