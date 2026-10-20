@@ -140,7 +140,7 @@ $bildCount = [
         <h4>@<?= htmlspecialchars($_SESSION['autor']) ?></h4>
     </div>
     <div style = "grid-area: abteilungen;">
-        <p>Abteilung: <?= htmlspecialchars($abteilungs_name); $now->format('d.m.Y') ?></p>
+        <p>Abteilung: <?= htmlspecialchars($abteilungs_name); $now->format('d.m.Y'); ?></p>
     </div>
     <div style = "grid-area: vorschauBtn;">
         <form action="speichern.php" method="post" class="class-button">
