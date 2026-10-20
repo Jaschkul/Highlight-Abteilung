@@ -31,13 +31,11 @@
     </div>
     <div style="grid-area: datum;">
         <p id="erstellt_am"></p>
-        <button class="vorschauBtn" onclick="nextHighlight()">➡ Weiter</button>
-        <button class="vorschauBtn" onclick="deleteHighlight()">Löschen</button>
-    </div>
-    <div style="grid-area: backBtn;">
-        <button class="backBtn" onclick="prevHighlight()">⬅ Zurück</button>
     </div>
 </div>
+<button class="vorschauBtn" onclick="nextHighlight()">➡ Weiter</button>
+<button class="vorschauBtn" onclick="deleteHighlight()">Löschen</button>
+<button class="backBtn" onclick="prevHighlight()">⬅ Zurück</button>
 
 
 <script>
