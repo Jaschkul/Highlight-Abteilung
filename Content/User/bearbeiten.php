@@ -112,7 +112,7 @@ $bildCount = [
 
         <!-- Überschrift -->
         <div style="grid-area: titel;">
-            <input placeholder="Titel" type="text" name="titel" required maxlength="100" value="<?= htmlspecialchars($_SESSION['titel'] ?? '') ?>">
+            <input id="ueberschrift" placeholder="Titel" type="text" name="titel" required maxlength="100" value="<?= htmlspecialchars($_SESSION['titel'] ?? '') ?>">
         </div>
 
         <!-- Beschreibung -->
