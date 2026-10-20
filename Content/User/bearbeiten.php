@@ -107,11 +107,7 @@ $bildCount = [
     <!-- Template-Typ -->
     <input id="inputTitel" type="hidden" name="typ" value="<?= $typ ?>">
 
-    <!-- 
-    Grid-Container abhängig von Bildanzahl 
-    hier kann auch template d0 ausgewählt werden  
-    
-    -->
+   
     <div class="d<?php echo $bildCount; ?>">
 
         <!-- Überschrift -->
@@ -170,7 +166,7 @@ $bildCount = [
                             value="<?= $abt['id'] ?>"
                             <?= (!empty($_SESSION['abteilungs_id']) && in_array($abt['id'], $_SESSION['abteilungs_id'])) ? 'checked' : '' ?>>
                         <?= htmlspecialchars($abt['name']) ?>
-                    </label><br>
+                    </label><br><br>
                 <?php endforeach; ?>
    </details>
     </div>
@@ -262,7 +258,7 @@ function showPreview(file, preview, dropzoneText) {
 
     reader.readAsDataURL(file);
 }
-
+//hier geht es um die Anzahl der Bilder 
 document.getElementById("vorschauBtn").addEventListener("click", function(e) {
 
     const required = <?= $bildCount ?>; // Anzahl Bilder aus PHP
