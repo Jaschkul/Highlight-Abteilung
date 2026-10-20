@@ -22,14 +22,14 @@
     <div id="bild4" style="grid-area: bild4;"></div>
 </div>
 
-<div class="template2">
+<div class="template3">
     <div style = "grid-area: autor;">
         <p id="autor"></p>
     </div>
     <div style = "grid-area: abteilungen;">
         <p id="abteilung"></p>
     </div>
-    <div style="grid-area: vorschauBtn;">
+    <div style="grid-area: datum;">
         <p id="erstellt_am"></p>
         <button class="vorschauBtn" onclick="nextHighlight()">➡ Weiter</button>
         <button class="vorschauBtn" onclick="deleteHighlight()">Löschen</button>
@@ -84,9 +84,9 @@ function showHighlight() {
 
     document.getElementById("titel").innerText = h.titel;
     document.getElementById("beschreibung").innerText = h.beschreibung1;
-    document.getElementById("autor").innerText = h.autor;
-    document.getElementById("abteilung").innerText = h.abteilungen;
-    document.getElementById("erstellt_am").innerText = formatted;
+    document.getElementById("autor").innerText = "@" + h.autor;
+    document.getElementById("abteilung").innerText = "Abteilung: " + h.abteilungen;
+    document.getElementById("erstellt_am").innerText = "erstellt am " + formatted;
     document.getElementById("template").className = "d" + anzahlBilder;
 }
 
