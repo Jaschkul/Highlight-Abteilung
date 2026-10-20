@@ -265,11 +265,6 @@ body{
     background-color: rgb(214, 214, 234);
 }
 
-.delete{
-    float: none;
-    font-size: 24px;
-}
-
 .delete:hover{
     background-color: red;
 }
@@ -278,7 +273,7 @@ body{
     float: right;
     font-size: 24px;
 }
-.backBtn{
+.backBtn, .delete{
     float: left;
     font-size: 24px;
 }
