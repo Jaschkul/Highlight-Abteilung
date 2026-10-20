@@ -266,11 +266,20 @@ body{
     font-size: 24px;
 }
 
-.back, .delete, .forward{
+.back, .forward{
     font-size: 24px;
     font-family: sans-serif;
     border-radius: 32px;
     background-color: white;
+    position:absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.back{
+    left: 0%;
+}
+.forward{
+    right: 0%;
 }
 
 .details{
