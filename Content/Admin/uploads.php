@@ -4,14 +4,14 @@
 <meta charset="UTF-8">
 <title>Admin Seite</title>
 <link rel="stylesheet" href="/User/style.css">
-<link rel="icon" type="image/png" href="/User/favicon.png">
+<link rel="icon" type="image/png" href="favicon.png">
 </head>
 <body>
 
 <!-- Bereiche für die Highlight-Daten -->
 <div id="template">
     <div style="grid-area: titel;">
-        <p id="titel"></p>
+        <h1 id="titel"></h1>
     </div>
     <div style="grid-area: beschreibung;">
         <p id="beschreibung"></p>

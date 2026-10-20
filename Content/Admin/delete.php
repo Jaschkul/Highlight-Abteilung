@@ -55,5 +55,5 @@ for ($i = 1; $i <= 5; $i++) {
 $stmt = $pdo->prepare("DELETE FROM highlights WHERE id = ?");
 $stmt->execute([$id]);
 
-echo '<div class="gespeichert"> Highlight wurde gelöscht.</div>';
+echo 'Highlight wurde gelöscht';
 ?>
