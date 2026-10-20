@@ -46,12 +46,13 @@ body{
 }
 
 .footer{
-    color: white;
     font-size: sans-serif;
     text-align: center;
     display: block;
     background-color: white;
-    clear: both;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }
 .footer a{
     text-decoration: none;
