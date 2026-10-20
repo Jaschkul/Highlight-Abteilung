@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Admin Seite</title>
-<link rel="stylesheet" href="/User/style.css">
+<link rel="stylesheet" href="style.css">
 <link rel="icon" type="image/png" href="favicon.png">
 <h1> Admin Seite </h1>
 </head>
@@ -125,4 +125,4 @@ loadHighlights();
 
 </body>
 </html>
-<?php include("includes/footer.php");?>
+<?php include("footer.php");?>
