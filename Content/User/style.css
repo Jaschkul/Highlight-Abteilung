@@ -7,6 +7,14 @@ h1{
 body{
     background-color: #080741;
     font-size: 24px;
+    display: flex;
+    min-height: 100vh;
+    margin: 0 auto;
+    flex-direction: column;
+}
+main{
+    min-height: 5em;
+    flex:1;
 }
 
 .gridContainer{
