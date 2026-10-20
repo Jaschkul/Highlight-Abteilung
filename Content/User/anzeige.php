@@ -26,14 +26,14 @@ header("Refresh:60");
     <div id="bild4" style="grid-area: bild4;"></div>
 </div>
 
-<div class="template2">
+<div class="template3">
     <div style = "grid-area: autor;">
         <p id="autor"></p>
     </div>
     <div style = "grid-area: abteilungen;">
         <p id="abteilung"></p>
     </div>
-    <div style="grid-area: vorschauBtn;">
+    <div style="grid-area: datum;">
         <p id="erstellt_am"></p>
     </div>
 </div>

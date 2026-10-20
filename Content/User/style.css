@@ -225,6 +225,23 @@ body{
     border-radius: 20px;
 }
 
+.template3{
+    background-color: white;
+    display:grid;
+    gap:1em;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-rows: auto 1fr;
+    grid-template-areas: 
+    "autor abteilungen datum";
+
+    max-width: 1000px;   
+    margin: 40px auto;  
+    
+    
+    padding: 20px;      
+    border-radius: 20px;
+}
+
 .backBtn, .vorschauBtn{
     display:block;
     margin:6px;
