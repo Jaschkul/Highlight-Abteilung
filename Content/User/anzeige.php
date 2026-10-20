@@ -87,9 +87,9 @@ const formatted =
  // Textfelder füllen hier ein switch einbauen
     document.getElementById("titel").innerText = h.titel;
     document.getElementById("beschreibung").innerText = h.beschreibung1;
-    document.getElementById("autor").innerText = h.autor;
-    document.getElementById("abteilung").innerText = "Autor: " + h.abteilungen;
-    document.getElementById("erstellt_am").innerText = formatted;
+    document.getElementById("autor").innerText = "@" + h.autor;
+    document.getElementById("abteilung").innerText = "Abteilung: " + h.abteilungen;
+    document.getElementById("erstellt_am").innerText = "erstellt am " + formatted;
     document.getElementById("template").className = "d" + anzahlBilder;
 }
 // Start
