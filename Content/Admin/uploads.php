@@ -5,6 +5,7 @@
 <title>Admin Seite</title>
 <link rel="stylesheet" href="/User/style.css">
 <link rel="icon" type="image/png" href="favicon.png">
+<h1> Admin Seite </h1>
 </head>
 <body>
 
@@ -124,3 +125,4 @@ loadHighlights();
 
 </body>
 </html>
+<?php include("footer.php");?>
