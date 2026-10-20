@@ -95,6 +95,7 @@ $now->format('Y-m-d');
     <title>Vorschau</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" type="image/png" href="favicon.png">
+    <h1> Vorschau </h1>
 </head>
 <body>
 <!-- diese Stelle noch anpassen--> 
