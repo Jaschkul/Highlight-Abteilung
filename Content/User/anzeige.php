@@ -28,9 +28,7 @@ header("Refresh:60");
 
 <div class="template2">
     <div style = "grid-area: autor;">
-         Autor: @
-            <p id="autor"></p>
-        
+        <p id="autor"></p>
     </div>
     <div style = "grid-area: abteilungen;">
         <p id="abteilung"></p>
@@ -90,7 +88,7 @@ const formatted =
     document.getElementById("titel").innerText = h.titel;
     document.getElementById("beschreibung").innerText = h.beschreibung1;
     document.getElementById("autor").innerText = h.autor;
-    document.getElementById("abteilung").innerText = h.abteilungen;
+    document.getElementById("abteilung").innerText = "Autor: " + h.abteilungen;
     document.getElementById("erstellt_am").innerText = formatted;
     document.getElementById("template").className = "d" + anzahlBilder;
 }
