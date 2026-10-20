@@ -196,11 +196,12 @@ body{
 }
 
 .d0 p, .d1 p, .d2 p, .d3 p, .d4 p, .d6 p{
-   display: inline-block;
+   display: block;
     width: 100%;
     height: auto;
     box-sizing: border-box;
     font-size: 24px;
+    margin: auto;
 
     overflow-wrap: break-word;
     word-break: break-word;
