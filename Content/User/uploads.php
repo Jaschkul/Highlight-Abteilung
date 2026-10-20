@@ -35,7 +35,7 @@
     <div style="grid-area: datum;">
         <p id="erstellt_am"></p>
         
-        <button class= "vorschaBtn" onclick="nextHighlight()">weiter ➡</button>
+        <button class= "vorschauBtn" onclick="nextHighlight()">weiter ➡</button>
     </div>
 </div>
 
