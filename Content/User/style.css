@@ -52,8 +52,7 @@ body{
     font-size: sans-serif;
     text-align: center;
     display: block;
-    position: fixed;
-    bottom: 0;
+    position: static;
     width: 100%;
     color: white;
     clear: both;
