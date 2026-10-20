@@ -74,11 +74,11 @@ body{
     background-color: white;
     display:grid;
     gap:1em;
-    grid-template-columns: minmax(0, 1fr);
-    grid-template-rows: auto;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-rows: auto auto;
     grid-template-areas: 
-    "titel"
-    "beschreibung";
+    "titel titel"
+    "beschreibung beschreibung";
 
     max-width: 1000px;   /*hier braucht man noch eine Schätzung*/  
     
