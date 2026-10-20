@@ -72,7 +72,7 @@ body{
     "titel"
     "beschreibung";
 
-    max-width: 800px;   /*hier braucht man noch eine Schätzung*/  
+    max-width: 1000px;   /*hier braucht man noch eine Schätzung*/  
     
     
     padding: 20px;      
@@ -112,7 +112,7 @@ body{
     "bild1 beschreibung"
     "bild2 beschreibung";
 
-    max-width: 800px;   /*hier braucht man noch eine Schätzung*/ 
+    max-width: 1000px;   /*hier braucht man noch eine Schätzung*/ 
     
     
     padding: 20px;      
@@ -131,7 +131,7 @@ body{
     "bild1 beschreibung"
     "bild2 bild3";
 
-    max-width: 800px;   /*hier braucht man noch eine Schätzung*/
+    max-width: 1000px;   /*hier braucht man noch eine Schätzung*/
     
     
     padding: 20px; 
@@ -150,7 +150,7 @@ body{
     "bild2 bild4"
     "beschreibung beschreibung";
 
-    max-width: 800px;   /*hier braucht man noch eine Schätzung*/
+    max-width: 1000px;   /*hier braucht man noch eine Schätzung*/
  
     
     
@@ -217,7 +217,7 @@ body{
     "abteilungen abteilungen"
     "backBtn vorschauBtn";
 
-    max-width: 800px;   
+    max-width: 1000px;   
     margin: 40px auto;  
     
     

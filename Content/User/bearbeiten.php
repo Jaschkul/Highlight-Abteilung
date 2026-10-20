@@ -158,7 +158,7 @@ $bildCount = [
     <!-- Abteilungen -->
     <div style = "grid-area: abteilungen;">
         <details class="details">
-            <summary>Abteilungen:</summary>
+            <summary>Abteilungen:</summary><br>
                 <?php foreach ($abteilungen as $abt): ?>
                     <label>
                         <input type="checkbox"
@@ -172,7 +172,7 @@ $bildCount = [
     </div>
     <div style="grid-area: vorschauBtn;">
         <!-- VorschauButton -->
-        <button type="submit" class="vorschauBtn">Vorschau anzeigen</button>
+        <button id="vorschauBtn" type="submit" class="vorschauBtn">Vorschau anzeigen</button>
     </div>
     </form>
 
