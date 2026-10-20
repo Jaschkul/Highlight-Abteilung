@@ -276,6 +276,10 @@ body{
     transform: translateY(-50%);
     padding: 8px;
 }
+.delete{
+    background-color: red;
+    right: 10%;
+}
 .back{
     left: 30%;
 }
