@@ -279,13 +279,13 @@ body{
 }
 .delete{
     background-color: red;
-    right: 10%;
+    margin-right: 10%;
 }
 .back{
-    left: 30%;
+    margin-left: 30%;
 }
 .forward{
-    right: 30%;
+    margin-right: 30%;
 }
 
 .details{
