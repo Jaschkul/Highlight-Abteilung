@@ -266,6 +266,10 @@ body{
     font-size: 24px;
 }
 
+.back, .delete, .forward{
+    font-size: sans-serif;
+}
+
 .details{
     font-size: 24px;
     font-family: sans-serif;
