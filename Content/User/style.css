@@ -204,9 +204,9 @@ body{
     font-size: 24px;
     margin: auto;
 
-    overflow-wrap: break-word;
+    
     word-break: break-word;
-    padding: 10px;
+
 }
 
 .gridContainer img, .d1 img, .d2 img, .d3 img, .d4 img{
