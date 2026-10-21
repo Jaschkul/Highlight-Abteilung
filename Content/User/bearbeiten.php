@@ -128,7 +128,7 @@ $bildCount = [
     
     foreach($array as $a){
         if(in_array($a , $schimpfwort)){
-            session_destroy();
+            session_unset();
         }
     }
 
