@@ -1,4 +1,4 @@
-<?php include("./Content/User/data.php");?>
+<?php include("C:\Users\Ulrich\Documents\GitHub\Highlight-Abteilung\Content\User\data.php");?>
 <?php
 session_start(); // Session starten, um Formulardaten und Bilder zwischenzuspeichern
 
