@@ -7,9 +7,3 @@
     </p>
 </footer>
 
-<?php
-$schimpfwort = [
-    "arsch", "idiot"
-];
-
-?>

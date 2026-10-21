@@ -126,6 +126,7 @@ $bildCount = [
         <p id="titelVorschau"><?= htmlspecialchars($_SESSION['titel']) ?></p>
     </div>
     <div style="grid-area: beschreibung;">
+        
         <p><?= nl2br(htmlspecialchars($_SESSION['beschreibung1'])) ?></p>
     </div>
     <?php for ($i = 1; $i <= $bildCount; $i++): ?>
@@ -139,6 +140,7 @@ $bildCount = [
     </div>
 </div>
 <!--Template2-->
+
 <div class="template2">
     <div style = "grid-area: autor;">
         <h4>@<?= htmlspecialchars($_SESSION['autor']) ?></h4>
@@ -156,13 +158,14 @@ $text = strtolower($input);
 
 $array = explode(" ", $text);
 
+include("../Highlight-Abteilung/Content/User/data.php");
 foreach($array as $a){
-    if(in_array($a , include("badword.php"))){
+    if(in_array($a , $schimpfwort)){
         echo 'Schimpfwort gefunden: ' . $a;
         echo '<button disabled class="vorschauBtn" type="submit">Speichern</button>';
         break;
     }
-    elseif((!in_array($a,include("badword.php"))) && (end($array)==="$a")){
+        elseif (!in_array($a, $schimpfwort) && end($array) === $a) {
         echo '<button class="vorschauBtn" type="submit">Speichern</button>';
 
     }
