@@ -155,7 +155,7 @@ $text = strtolower($input);
 
 $array = explode(" ", $text);
 
-include("badword.php");
+$schimpfwort = include("badword.php");
 
 foreach($array as $a){
     if(in_array($a , $schimpfwort)){
