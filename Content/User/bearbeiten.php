@@ -172,7 +172,7 @@ $bildCount = [
     </div>
     <div style="grid-area: vorschauBtn;">
         <!-- VorschauButton -->
-        <button id="vorschauBtn" type="submit" class="vorschauBtn">Vorschau anzeigen</button>
+        <button id="vorschauBtn" type="submit" class="vorschauBtn" name="text">Vorschau anzeigen</button>
     </div>
     </form>
 
@@ -190,6 +190,22 @@ $bildCount = [
 
     
 <?php endif; ?>
+<?php
+$schimpfwort = ["arsch", "idiot", "depp"];
+
+$input = "{$_POST["text"]}";
+
+//kleinbuchstaben
+$text = strtolower($input);
+
+$array = explode(" ", $text);
+
+foreach($array as $a){
+    if(in_array($a , $schimpfwort)){
+        echo 'Schimpfwort gefunden: ' . $a;
+    }
+}
+?>
 
 <!-- Drag & Drop Script -->
 <script>
@@ -247,6 +263,15 @@ function showPreview(file, preview, dropzoneText) {
         alert("Bitte nur ein Bild auswählen.");
         return;
     }
+
+    <?php foreach($array as $a){
+            if(in_array($a,$schimpfwort)){
+                echo "schimpfwort";
+            }
+            
+    }?>
+
+
 
     const reader = new FileReader();
 
