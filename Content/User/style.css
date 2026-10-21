@@ -82,6 +82,7 @@ body{
     "beschreibung beschreibung";
 
     max-width: 1000px;   /*hier braucht man noch eine Schätzung*/  
+    min-width: 500px;
     
     
     padding: 20px;      
