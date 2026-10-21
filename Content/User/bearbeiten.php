@@ -128,7 +128,8 @@ $bildCount = [
     
     foreach($array as $a){
         if(in_array($a , $schimpfwort)){
-            session_unset();
+            header("Location: index.php");
+            exit;
         }
     }
 
