@@ -1,4 +1,4 @@
-<?php include("../Highlight-Abteilung/Content/User/data.php");?>
+<?php include("./Content/User/data.php");?>
 <?php
 session_start(); // Session starten, um Formulardaten und Bilder zwischenzuspeichern
 
