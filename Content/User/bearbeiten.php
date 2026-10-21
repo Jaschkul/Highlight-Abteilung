@@ -119,6 +119,7 @@ $bildCount = [
         <div style="grid-area: beschreibung;">
             <textarea placeholder="Text (max. 3000 Wörter)" name="beschreibung1" required maxlength="3000"><?= htmlspecialchars($_SESSION['beschreibung1'] ?? '') ?></textarea>
             <?php 
+    //Filter         
     $schimpfwort = ["arsch", "idiot", "depp"];
     $input = htmlspecialchars($_SESSION['beschreibung1'] ?? '');
     //kleinbuchstaben
@@ -127,8 +128,7 @@ $bildCount = [
     
     foreach($array as $a){
         if(in_array($a , $schimpfwort)){
-            header('Location: index.php');
-            exit;
+            session_destroy();
         }
     }
 
