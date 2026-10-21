@@ -272,7 +272,7 @@ document.getElementById("vorschauBtn").addEventListener("click", function(e) {
     <?php
     $schimpfwort = ["arsch", "idiot", "depp"];
     //kleinbuchstaben
-    $text = strtolower($input);
+    $text = strtolower($_SESSION['beschreibung1'] ?? '');
     $array = explode(" ", $text);
     $filter = function($ar, $schim){
         foreach($ar as $a){
