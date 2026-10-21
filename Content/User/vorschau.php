@@ -1,4 +1,3 @@
-<?php include("../Highlight-Abteilung/Content/User/dataTest.php");?>
 <?php
 session_start(); // Session starten, um Formulardaten und Bilder zwischenzuspeichern
 
@@ -153,6 +152,8 @@ $bildCount = [
     <div style = "grid-area: vorschauBtn;">
 <form action="speichern.php" method="post" class="class-button">
        <?php 
+
+$schimpfwort = include("dataTest.php");
 
 $input = nl2br(htmlspecialchars($_SESSION['beschreibung1']));
 
