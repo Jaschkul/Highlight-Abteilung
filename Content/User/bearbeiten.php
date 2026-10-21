@@ -118,7 +118,7 @@ $bildCount = [
         <!-- Beschreibung -->
         <div style="grid-area: beschreibung;">
             <textarea placeholder="Text (max. 3000 Wörter)" name="beschreibung1" required maxlength="3000"><?= htmlspecialchars($_SESSION['beschreibung1'] ?? '') ?></textarea>
-            
+            <?php $input = htmlspecialchars($_SESSION['beschreibung1'] ?? '');?>
         </div>
 
         <!-- Dropzones für Bilder -->
@@ -271,20 +271,19 @@ function showPreview(file, preview, dropzoneText) {
 document.getElementById("vorschauBtn").addEventListener("click", function(e) {
     <?php
     $schimpfwort = ["arsch", "idiot", "depp"];
-    $input = htmlspecialchars($_SESSION['beschreibung1'] ?? '');
     //kleinbuchstaben
     $text = strtolower($input);
     $array = explode(" ", $text);
-    $wort = function($ar, $schimp){
+    $filter = function($ar, $schim){
         foreach($ar as $a){
-            if(in_array($a , $schimp)){
+            if(in_array($a , $schim)){
                 return 0;
             }
         }
         return 1;
     };
 
-    $ergebnis = $wort($array, $schimpfwort);
+    $ergebnis = $filter($array, $schimpfwort);
     ?>
     let test = 0;
     if(test == <?php echo $ergebnis; ?>){
