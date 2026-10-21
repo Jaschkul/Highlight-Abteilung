@@ -153,7 +153,7 @@ $bildCount = [
 <form action="speichern.php" method="post" class="class-button">
        <?php 
 
-$schimpfwort = include("dataTest.php");
+$schimpfwort = include("../Highlight-Abteilung/Content/User/dataTest.php");
 
 $input = nl2br(htmlspecialchars($_SESSION['beschreibung1']));
 
