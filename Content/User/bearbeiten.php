@@ -127,7 +127,7 @@ $bildCount = [
     
     foreach($array as $a){
         if(in_array($a , $schimpfwort)){
-            echo 'Schimpfwort gefunden: ' . $a;
+            header('Location: index.php');
         }
     }
 
