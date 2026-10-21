@@ -269,30 +269,12 @@ function showPreview(file, preview, dropzoneText) {
 }
 //hier geht es um die Anzahl der Bilder 
 document.getElementById("vorschauBtn").addEventListener("click", function(e) {
-    <?php
-    $schimpfwort = ["arsch", "idiot", "depp"];
-    //kleinbuchstaben
-    $text = strtolower($_SESSION['beschreibung1'] ?? '');
-    $array = explode(" ", $text);
-    $filter = function($ar, $schim){
-        foreach($ar as $a){
-            if(in_array($a , $schim)){
-                return 0;
-            }
-        }
-        return 1;
-    };
-
-    $ergebnis = $filter($array, $schimpfwort);
-    ?>
-    let test = 0;
-    if(test == <?php echo $ergebnis; ?>){
-        e.preventDefault();
-        return;
-    }
+    
 
     const required = <?= $bildCount ?>; // Anzahl Bilder aus PHP
     let filled = 0;
+
+    
 
     for (let i = 1; i <= required; i++) {
         const input = document.getElementById("bild" + i);

@@ -144,6 +144,24 @@ $bildCount = [
         <p>Abteilung: <?= htmlspecialchars($abteilungs_name); $now->format('d.m.Y'); ?></p>
     </div>
     <div style = "grid-area: vorschauBtn;">
+        <?php 
+
+$schimpfwort = ["arsch", "idiot", "depp"];
+
+$input = nl2br(htmlspecialchars($_SESSION['beschreibung1']));
+
+//kleinbuchstaben
+$text = strtolower($input);
+
+$array = explode(" ", $text);
+
+foreach($array as $a){
+    if(in_array($a , $schimpfwort)){
+        echo 'Schimpfwort gefunden: ' . $a;
+    }
+}
+
+?>
         <form action="speichern.php" method="post" class="class-button">
             <button class="vorschauBtn" type="submit">Speichern</button>
         </form>
