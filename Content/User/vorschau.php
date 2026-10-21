@@ -1,8 +1,5 @@
-
 <?php
 session_start(); // Session starten, um Formulardaten und Bilder zwischenzuspeichern
-
-include("badword.php");
 
 
 // Typ laden: zuerst POST, dann GET, dann Session
