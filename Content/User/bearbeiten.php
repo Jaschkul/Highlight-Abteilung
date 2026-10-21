@@ -172,11 +172,11 @@ $bildCount = [
     </div>
     <div style="grid-area: vorschauBtn;">
         <!-- VorschauButton -->
-        <button id="vorschauBtn" type="submit" class="vorschauBtn" name="text">Vorschau anzeigen</button>
+        <button id="vorschauBtn" type="submit" class="vorschauBtn">Vorschau anzeigen</button>
     </div>
     <?php 
     $schimpfwort = ["arsch", "idiot", "depp"];
-    $input = "{$_POST["text"]}";
+    $input = "{$_POST["beschreibung1"]}";
     //kleinbuchstaben
     $text = strtolower($input);
     $array = explode(" ", $text);
