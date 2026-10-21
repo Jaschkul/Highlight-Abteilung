@@ -1,5 +1,6 @@
 <?php
 session_start(); // Session starten, um Formulardaten und Bilder zwischenzuspeichern
+include("../Highlight-Abteilung/Content/User/data.php");
 
 
 // Typ laden: zuerst POST, dann GET, dann Session
@@ -158,7 +159,7 @@ $text = strtolower($input);
 
 $array = explode(" ", $text);
 
-include("../Highlight-Abteilung/Content/User/data.php");
+
 foreach($array as $a){
     if(in_array($a , $schimpfwort)){
         echo 'Schimpfwort gefunden: ' . $a;
