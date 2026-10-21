@@ -144,13 +144,13 @@ $bildCount = [
         <p>Abteilung: <?= htmlspecialchars($abteilungs_name); $now->format('d.m.Y'); ?></p>
     </div>
     <div style = "grid-area: vorschauBtn;">
+<form action="speichern.php" method="post" class="class-button">
         <?php 
 
 $schimpfwort = ["arsch", "idiot", "depp"];
 
 $input = nl2br(htmlspecialchars($_SESSION['beschreibung1']));
 
-//kleinbuchstaben
 $text = strtolower($input);
 
 $array = explode(" ", $text);
@@ -158,14 +158,20 @@ $array = explode(" ", $text);
 foreach($array as $a){
     if(in_array($a , $schimpfwort)){
         echo 'Schimpfwort gefunden: ' . $a;
-        header("Location: /var/www/html/User/index.php");
-        exit;
+        //hier muss man die session killen
+        return '<button disabled class="vorschauBtn" type="submit">Speichern</button>';
+    }
+    elseif((!in_array($a,$schimpfwort)) && (end($array)==="$a")){
+        return '<button class="vorschauBtn" type="submit">Speichern</button>';
+
     }
 }
+// return button disabled
+// elseif ($a !== in_array && $a)
 
 ?>
-        <form action="speichern.php" method="post" class="class-button">
-            <button class="vorschauBtn" type="submit">Speichern</button>
+        
+           
         </form>
     </div>
     <div style = "grid-area: backBtn;">
