@@ -118,22 +118,7 @@ $bildCount = [
         <!-- Beschreibung -->
         <div style="grid-area: beschreibung;">
             <textarea placeholder="Text (max. 3000 Wörter)" name="beschreibung1" required maxlength="3000"><?= htmlspecialchars($_SESSION['beschreibung1'] ?? '') ?></textarea>
-            <?php 
-    //Filter         
-    $schimpfwort = ["arsch", "idiot", "depp"];
-    $input = htmlspecialchars($_SESSION['beschreibung1'] ?? '');
-    //kleinbuchstaben
-    $text = strtolower($input);
-    $array = explode(" ", $text);
-    
-    foreach($array as $a){
-        if(in_array($a , $schimpfwort)){
-            header("Location: bearbeiten.php");
-            exit;
-        }
-    }
-
-    ?>
+            
         </div>
 
         <!-- Dropzones für Bilder -->
@@ -266,6 +251,8 @@ function showPreview(file, preview, dropzoneText) {
         return;
     }
 
+  
+
 
 
 
@@ -282,6 +269,21 @@ function showPreview(file, preview, dropzoneText) {
 }
 //hier geht es um die Anzahl der Bilder 
 document.getElementById("vorschauBtn").addEventListener("click", function(e) {
+    <?php
+
+     //Filter         
+    $schimpfwort = ["arsch", "idiot", "depp"];
+    $input = htmlspecialchars($_SESSION['beschreibung1'] ?? '');
+    //kleinbuchstaben
+    $text = strtolower($input);
+    $array = explode(" ", $text);
+    
+    foreach($array as $a){
+        if(in_array($a , $schimpfwort)){
+            echo 'Schimpfwort gefunden: ' . $a;
+        }
+    }
+    ?>
 
     const required = <?= $bildCount ?>; // Anzahl Bilder aus PHP
     let filled = 0;
