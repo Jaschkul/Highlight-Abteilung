@@ -1,5 +1,5 @@
 <?php
-$schimpfwort=["idiot"];
+$schimpfwort = ["idiot"];
 echo "Hallo Welt";
 
 ?>

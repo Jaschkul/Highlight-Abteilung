@@ -274,7 +274,7 @@ document.getElementById("vorschauBtn").addEventListener("click", function(e) {
     const required = <?= $bildCount ?>; // Anzahl Bilder aus PHP
     let filled = 0;
 
-    
+
 
     for (let i = 1; i <= required; i++) {
         const input = document.getElementById("bild" + i);
