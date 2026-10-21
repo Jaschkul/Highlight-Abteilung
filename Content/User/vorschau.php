@@ -158,7 +158,8 @@ $array = explode(" ", $text);
 foreach($array as $a){
     if(in_array($a , $schimpfwort)){
         echo 'Schimpfwort gefunden: ' . $a;
-        $disabled = "disabled";
+        header("Location: berarbeiten.php");
+        exit;
     }
 }
 
@@ -170,7 +171,7 @@ foreach($array as $a){
     <div style = "grid-area: backBtn;">
         <form action="bearbeiten.php" method="post" class="class-button">
             <input type="hidden" name="typ" value="<?= htmlspecialchars($typ) ?>">
-            <button <?= $disabled; ?>class= "backBtn" type="submit">Bearbeiten</button>
+            <button class= "backBtn" type="submit">Bearbeiten</button>
         </form>
     </div>
 </div>
