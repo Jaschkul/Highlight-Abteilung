@@ -1,6 +1,7 @@
+<?php include("../Highlight-Abteilung/Content/User/data.php");?>
 <?php
 session_start(); // Session starten, um Formulardaten und Bilder zwischenzuspeichern
-include("../Highlight-Abteilung/Content/User/data.php");
+
 
 
 // Typ laden: zuerst POST, dann GET, dann Session
