@@ -159,10 +159,11 @@ foreach($array as $a){
     if(in_array($a , $schimpfwort)){
         echo 'Schimpfwort gefunden: ' . $a;
         //hier muss man die session killen
-        return '<button disabled class="vorschauBtn" type="submit">Speichern</button>';
+        echo '<button disabled class="vorschauBtn" type="submit">Speichern</button>';
+        break;
     }
     elseif((!in_array($a,$schimpfwort)) && (end($array)==="$a")){
-        return '<button class="vorschauBtn" type="submit">Speichern</button>';
+        echo '<button class="vorschauBtn" type="submit">Speichern</button>';
 
     }
 }
