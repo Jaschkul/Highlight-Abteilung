@@ -120,7 +120,7 @@ $bildCount = [
             <textarea placeholder="Text (max. 3000 Wörter)" name="beschreibung1" required maxlength="3000"><?= htmlspecialchars($_SESSION['beschreibung1'] ?? '') ?></textarea>
             <?php 
     $schimpfwort = ["arsch", "idiot", "depp"];
-    $input = "{$_POST["beschreibung1"]}";
+    $input = "{$_POST['beschreibung1']}";
     //kleinbuchstaben
     $text = strtolower($input);
     $array = explode(" ", $text);
