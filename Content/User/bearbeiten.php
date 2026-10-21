@@ -174,6 +174,21 @@ $bildCount = [
         <!-- VorschauButton -->
         <button id="vorschauBtn" type="submit" class="vorschauBtn" name="text">Vorschau anzeigen</button>
     </div>
+    <?php 
+    $schimpfwort = ["arsch", "idiot", "depp"];
+    $input = "{$_POST["text"]}";
+    //kleinbuchstaben
+    $text = strtolower($input);
+    $array = explode(" ", $text);
+    
+    foreach($array as $a){
+        if(in_array($a , $schimpfwort)){
+            echo 'Schimpfwort gefunden: ' . $a;
+        }
+    }
+
+    ?>
+     
     </form>
 
     <div style="grid-area: backBtn;">
@@ -190,22 +205,7 @@ $bildCount = [
 
     
 <?php endif; ?>
-<?php
-$schimpfwort = ["arsch", "idiot", "depp"];
 
-$input = "{$_POST["text"]}";
-
-//kleinbuchstaben
-$text = strtolower($input);
-
-$array = explode(" ", $text);
-
-foreach($array as $a){
-    if(in_array($a , $schimpfwort)){
-        echo 'Schimpfwort gefunden: ' . $a;
-    }
-}
-?>
 
 <!-- Drag & Drop Script -->
 <script>
@@ -264,12 +264,7 @@ function showPreview(file, preview, dropzoneText) {
         return;
     }
 
-    <?php foreach($array as $a){
-            if(in_array($a,$schimpfwort)){
-                echo "schimpfwort";
-            }
-            
-    }?>
+
 
 
 
