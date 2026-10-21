@@ -1,4 +1,4 @@
-<?php include("C:\Users\Ulrich\Documents\GitHub\Highlight-Abteilung\Content\User\data.php");?>
+<?php include("../Highlight-Abteilung/Content/User/dataTest.php");?>
 <?php
 session_start(); // Session starten, um Formulardaten und Bilder zwischenzuspeichern
 
