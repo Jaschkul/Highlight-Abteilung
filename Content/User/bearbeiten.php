@@ -118,6 +118,20 @@ $bildCount = [
         <!-- Beschreibung -->
         <div style="grid-area: beschreibung;">
             <textarea placeholder="Text (max. 3000 Wörter)" name="beschreibung1" required maxlength="3000"><?= htmlspecialchars($_SESSION['beschreibung1'] ?? '') ?></textarea>
+            <?php 
+    $schimpfwort = ["arsch", "idiot", "depp"];
+    $input = "{$_POST["beschreibung1"]}";
+    //kleinbuchstaben
+    $text = strtolower($input);
+    $array = explode(" ", $text);
+    
+    foreach($array as $a){
+        if(in_array($a , $schimpfwort)){
+            echo 'Schimpfwort gefunden: ' . $a;
+        }
+    }
+
+    ?>
         </div>
 
         <!-- Dropzones für Bilder -->
@@ -174,20 +188,6 @@ $bildCount = [
         <!-- VorschauButton -->
         <button id="vorschauBtn" type="submit" class="vorschauBtn">Vorschau anzeigen</button>
     </div>
-    <?php 
-    $schimpfwort = ["arsch", "idiot", "depp"];
-    $input = "{$_POST["beschreibung1"]}";
-    //kleinbuchstaben
-    $text = strtolower($input);
-    $array = explode(" ", $text);
-    
-    foreach($array as $a){
-        if(in_array($a , $schimpfwort)){
-            echo 'Schimpfwort gefunden: ' . $a;
-        }
-    }
-
-    ?>
      
     </form>
 
