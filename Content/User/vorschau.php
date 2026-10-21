@@ -1,5 +1,9 @@
+
 <?php
 session_start(); // Session starten, um Formulardaten und Bilder zwischenzuspeichern
+
+include("badword.php");
+
 
 // Typ laden: zuerst POST, dann GET, dann Session
 $typ = $_POST['typ'] ?? $_GET['typ'] ?? $_SESSION['typ'] ?? null;
@@ -88,6 +92,7 @@ if (!empty($abteilungs_id)) {
 $now = new DateTime();
 $now->format('Y-m-d');
 ?>
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -111,6 +116,7 @@ $bildCount = [
     'lu' => 3,
     'ru' => 4
 ][$typ] ?? 1;
+
 
 ?>
 
@@ -145,9 +151,7 @@ $bildCount = [
     </div>
     <div style = "grid-area: vorschauBtn;">
 <form action="speichern.php" method="post" class="class-button">
-        <?php 
-
-
+       <?php 
 
 $input = nl2br(htmlspecialchars($_SESSION['beschreibung1']));
 
@@ -155,15 +159,13 @@ $text = strtolower($input);
 
 $array = explode(" ", $text);
 
-$schimpfwort = include("badword.php");
-
 foreach($array as $a){
-    if(in_array($a , $schimpfwort)){
+    if(in_array($a , include("badword.php"))){
         echo 'Schimpfwort gefunden: ' . $a;
         echo '<button disabled class="vorschauBtn" type="submit">Speichern</button>';
         break;
     }
-    elseif((!in_array($a,$schimpfwort)) && (end($array)==="$a")){
+    elseif((!in_array($a,include("badword.php"))) && (end($array)==="$a")){
         echo '<button class="vorschauBtn" type="submit">Speichern</button>';
 
     }
@@ -186,4 +188,5 @@ foreach($array as $a){
 
 </body>
 </html>
-<?php include("footer.php");?>
+<?php include("footer.php"); ?>
+

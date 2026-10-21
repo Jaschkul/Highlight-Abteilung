@@ -6,3 +6,10 @@
         <a href="mailto: ulrich.jaschke@sdk.de">ulrich.jaschke@sdk.de</a>
     </p>
 </footer>
+
+<?php
+$schimpfwort = [
+    "arsch", "idiot"
+];
+
+?>
