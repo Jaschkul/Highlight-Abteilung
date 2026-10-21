@@ -147,7 +147,7 @@ $bildCount = [
 <form action="speichern.php" method="post" class="class-button">
         <?php 
 
-$schimpfwort = ["arsch", "idiot", "depp"];
+
 
 $input = nl2br(htmlspecialchars($_SESSION['beschreibung1']));
 
@@ -155,10 +155,11 @@ $text = strtolower($input);
 
 $array = explode(" ", $text);
 
+include("badword.php");
+
 foreach($array as $a){
     if(in_array($a , $schimpfwort)){
         echo 'Schimpfwort gefunden: ' . $a;
-        //hier muss man die session killen
         echo '<button disabled class="vorschauBtn" type="submit">Speichern</button>';
         break;
     }
@@ -167,8 +168,7 @@ foreach($array as $a){
 
     }
 }
-// return button disabled
-// elseif ($a !== in_array && $a)
+
 
 ?>
         
