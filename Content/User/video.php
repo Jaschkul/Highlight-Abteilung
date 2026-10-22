@@ -6,15 +6,13 @@
     <title>Document</title>
 </head>
 <body>
-    <form action = "">
+    <form action = "uploadVideo.php" method="post" enctype="multipart/form-data">
         <input type="file" name="my_video">
         <input type="submit" name = "submit" value = "Upload"> 
 </body>
 </html>
 
 <!--
-method post
-enctype="multipart/form-data"
 
 upload 
 if(isset)
