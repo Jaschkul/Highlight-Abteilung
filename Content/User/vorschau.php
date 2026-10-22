@@ -189,5 +189,5 @@ foreach($array as $a){
 
 </body>
 </html>
-<?php include("footer.php"); ?>
+<?php include("C:\Users\Ulrich\Documents\GitHub\Highlight-Abteilung\Content\User\footer.php"); ?>
 
