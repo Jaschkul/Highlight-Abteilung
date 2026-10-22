@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-// Upload-Verzeichnis für temporäre Bildersdf
+// Upload-Verzeichnis für temporäre Bilder
 $uploadDir = __DIR__ . '/temp/';
 
 // Falls temp/ nicht existiert → erstellen
