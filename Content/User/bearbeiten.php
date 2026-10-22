@@ -111,15 +111,7 @@ $bildCount = [
     <div class="d<?php echo $bildCount; ?>">
 
         <!-- Überschrift -->
-        <div style="grid-area: titel;">
-            <input id="ueberschrift" placeholder="Titel" type="text" name="titel" required maxlength="100" value="<?= htmlspecialchars($_SESSION['titel'] ?? '') ?>">
-        </div>
-
-        <!-- Beschreibung -->
-        <div style="grid-area: beschreibung;">
-            <textarea placeholder="Text (max. 3000 Wörter)" name="beschreibung1" required maxlength="3000"><?= htmlspecialchars($_SESSION['beschreibung1'] ?? '') ?></textarea>
-            <?php $input = htmlspecialchars($_SESSION['beschreibung1'] ?? '');?>
-        </div>
+        
 
         <!-- 
         Dropzones für Bilder 
@@ -137,7 +129,18 @@ $bildCount = [
             $bildUrl = $bildname ? 'temp/' . rawurlencode(basename($bildname)) : '';
             $style = $bildUrl ? 'display:block;' : 'display:none;';
             $source =  htmlspecialchars($bildUrl);
+            $titel =htmlspecialchars($_SESSION['titel'] ?? '');
+            $beschreibung1 = htmlspecialchars($_SESSION['beschreibung1'] ?? '');
             echo <<<BILD
+            <div style="grid-area: titel;">
+            <input id="ueberschrift" placeholder="Titel" type="text" name="titel" required maxlength="100" value="$titel">
+            </div>
+
+            <!-- Beschreibung -->
+            <div style="grid-area: beschreibung;">
+            <textarea placeholder="Text (max. 3000 Wörter)" name="beschreibung1" required maxlength="3000"> $beschreibung1</textarea>
+            
+             </div>
             <div class="dropzone" id="dropzone$i" style="grid-area: bild$i;">
                 <span id="dropzoneText$i" style="$style">
                     Bild hierher ziehen oder klicken
