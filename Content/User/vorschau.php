@@ -155,7 +155,7 @@ $bildCount = [
 
 $schimpfwort = ["ist"];  
 
-include("dataTest.php");
+//include("dataTest.php");
 $input = nl2br(htmlspecialchars($_SESSION['beschreibung1']));
 $text = strtolower($input);
 $array = explode(" ", $text);
