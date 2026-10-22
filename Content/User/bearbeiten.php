@@ -43,7 +43,7 @@ for ($i = 1; $i <= 4; $i++) {
         $extension = strtolower(pathinfo($originalName, PATHINFO_EXTENSION));
 
         // Erlaubte Bildformate und Video 
-        $erlaubteEndungen = ['jpg', 'jpeg', 'png', 'gif', 'webp', 'mp4'];
+        $erlaubteEndungen = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
 
         if (in_array($extension, $erlaubteEndungen, true)) {
 
