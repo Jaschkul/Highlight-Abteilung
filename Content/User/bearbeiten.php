@@ -143,7 +143,7 @@ $bildCount = [
                 type="file"
                 name="bild<?= $i ?>"
                 id="bild<?= $i ?>"
-                accept="image/jpeg,image/png,image/gif,image/webp, video/mp4"
+                accept="image/jpeg,image/png,image/gif,image/webp;"
                 style="display:none;"
             >
             </div>
