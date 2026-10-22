@@ -87,7 +87,7 @@ $bildCount = [
     'ro' => 2,
     'lu' => 3,
     'ru' => 4,
-    'video' => 1
+    'video' => 5
 ][$typ] ?? 1;
 ?>
 <!DOCTYPE html>
@@ -121,34 +121,48 @@ $bildCount = [
             <?php $input = htmlspecialchars($_SESSION['beschreibung1'] ?? '');?>
         </div>
 
-        <!-- Dropzones für Bilder -->
-        <?php for ($i = 1; $i <= $bildCount; $i++): ?>
-            <?php
+        <!-- 
+        Dropzones für Bilder 
+        
+        -->
+        <?php
+        if($bildCount === 5){
+        echo<<<VIDEO
+         <input type="file" name="my_video">
+        <input type="submit" name = "submit" value = "Upload"> 
+        VIDEO;
+        }else{
+        for ($i = 1; $i <= $bildCount; $i++){ 
             $bildname = $_SESSION["bild$i"] ?? '';
             $bildUrl = $bildname ? 'temp/' . rawurlencode(basename($bildname)) : '';
-            ?>
-           
-            <div class="dropzone" id="dropzone<?= $i ?>" style="grid-area: bild<?php echo $i;?>">
-                <span id="dropzoneText<?= $i ?>" style="<?= $bildUrl ? 'display:none;' : '' ?>">
+            $style = $bildUrl ? 'display:block;' : 'display:none;';
+            $source =  htmlspecialchars($bildUrl);
+            echo <<<BILD
+            <div class="dropzone" id="dropzone$i" style="grid-area: bild$i;">
+                <span id="dropzoneText$i" style="$style">
                     Bild hierher ziehen oder klicken
                 </span>
 
                 <img
-                    id="preview<?= $i ?>"
+                    id="preview$i"
                     class="preview-img"
-                    src="<?= htmlspecialchars($bildUrl) ?>"
-                    style="<?= $bildUrl ? 'display:block;' : 'display:none;' ?>"
-                    alt="Bild <?= $i ?>"
+                    src="$source"
+                    style="$style"
+                    alt="Bild$i"
                 >
             <input
                 type="file"
-                name="bild<?= $i ?>"
-                id="bild<?= $i ?>"
+                name="bild$i"
+                id="bild$i"
                 accept="image/jpeg,image/png,image/gif,image/webp;"
                 style="display:none;"
             >
             </div>
-        <?php endfor; ?>
+
+            BILD;
+
+        }} ?>
+        
     </div>
     <div class="template2"> 
         <!-- Autor -->
