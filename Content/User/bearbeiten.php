@@ -1,6 +1,4 @@
-
-<?php
-session_start(); // Session starten, um Daten zwischenzuspeichern
+<?php session_start(); // Session starten, um Daten zwischenzuspeichern
 
 // Typ laden: GET → POST → Session
 $typ = $_GET['typ'] ?? $_POST['typ'] ?? $_SESSION['typ'] ?? null;
