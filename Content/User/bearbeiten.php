@@ -42,8 +42,8 @@ for ($i = 1; $i <= 4; $i++) {
         $originalName = basename($_FILES[$feld]['name']);
         $extension = strtolower(pathinfo($originalName, PATHINFO_EXTENSION));
 
-        // Erlaubte Bildformate
-        $erlaubteEndungen = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
+        // Erlaubte Bildformate und Video 
+        $erlaubteEndungen = ['jpg', 'jpeg', 'png', 'gif', 'webp', 'mp4'];
 
         if (in_array($extension, $erlaubteEndungen, true)) {
 
@@ -143,7 +143,7 @@ $bildCount = [
                 type="file"
                 name="bild<?= $i ?>"
                 id="bild<?= $i ?>"
-                accept="image/jpeg,image/png,image/gif,image/webp"
+                accept="image/jpeg,image/png,image/gif,image/webp, video/mp4"
                 style="display:none;"
             >
             </div>
