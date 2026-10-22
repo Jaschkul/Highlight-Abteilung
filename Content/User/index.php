@@ -93,11 +93,14 @@
             </button></div>
             <!--d weitere-->
 
-            <div><button disabled class="dW">
+            <div>
+                <a href="video.php">
+                <button class="dW">
                 <div style = "grid-area: titel;">
-                    <p> weitere Templates auf Anfrage</p>
+                    <p> Video </p>
                 </div>
-            </button></div> 
+            </button></a>
+        </div> 
     </div>
 
 

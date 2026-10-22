@@ -42,7 +42,7 @@ for ($i = 1; $i <= 4; $i++) {
         $originalName = basename($_FILES[$feld]['name']);
         $extension = strtolower(pathinfo($originalName, PATHINFO_EXTENSION));
 
-        // Erlaubte Bildformate und Video 
+        // Erlaubte Bildformate (und Videoformat) 
         $erlaubteEndungen = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
 
         if (in_array($extension, $erlaubteEndungen, true)) {
