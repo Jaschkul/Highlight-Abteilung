@@ -48,7 +48,7 @@ try {
         }
     }
 
-    // Bilder aus temp/ nach uploads/ verschieben
+
     for ($i = 1; $i <= 5; $i++) {
         $feld = 'bild' . $i;
 

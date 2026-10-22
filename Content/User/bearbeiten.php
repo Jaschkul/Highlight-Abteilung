@@ -30,7 +30,7 @@ if (!is_dir($uploadDir)) {
 }
 
 // Bild-Upload für bis zu 4 Bilder
-for ($i = 1; $i <= 4; $i++) {
+for ($i = 1; $i <= 5; $i++) {
     $feld = 'bild' . $i;
 
     // Prüfen, ob ein neues Bild hochgeladen wurde
@@ -86,7 +86,8 @@ $bildCount = [
     'lo' => 1,
     'ro' => 2,
     'lu' => 3,
-    'ru' => 4
+    'ru' => 4,
+    'video' => 5
 ][$typ] ?? 1;
 ?>
 <!DOCTYPE html>

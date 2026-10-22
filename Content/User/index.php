@@ -94,8 +94,7 @@
             <!--d weitere-->
 
             <div>
-                <a href="video.php">
-                <button class="dW" type="button">
+                <button class="dW" type="button" name="typ" value="video">
                 <div style = "grid-area: titel;">
                     <p> Video </p>
                 </div>

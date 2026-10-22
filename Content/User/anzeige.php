@@ -24,6 +24,7 @@ header("Refresh:60");
     <div id="bild2" style="grid-area: bild2;"></div>
     <div id="bild3" style="grid-area: bild3;"></div>
     <div id="bild4" style="grid-area: bild4;"></div>
+    <div id="bild5"></div>
 </div>
 
 <div class="template3">
@@ -80,6 +81,7 @@ const formatted =
             anzahlBilder++;
         }}
     }
+
 
     // Index erhöhen → nächstes Highlight
     index = (index + 1) % highlights.length;
