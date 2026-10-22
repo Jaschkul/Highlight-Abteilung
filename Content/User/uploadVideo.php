@@ -8,7 +8,7 @@ if(isset ($_POST["submit"]) && ($_FILES["my_video"])){
      if ($error === 0) {
     	$video_ex = pathinfo($video_name, PATHINFO_EXTENSION);
 
-    	echo $video_ex;
+    	//echo $video_ex;
     }
 }
 
