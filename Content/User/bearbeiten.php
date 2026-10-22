@@ -87,7 +87,7 @@ $bildCount = [
     'ro' => 2,
     'lu' => 3,
     'ru' => 4,
-    'video' => 5
+    'video' => 1
 ][$typ] ?? 1;
 ?>
 <!DOCTYPE html>
