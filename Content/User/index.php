@@ -94,7 +94,7 @@
             <!--d weitere-->
 
             <div>
-                <button class="dW" type="button" name="typ" value="video">
+                <button class="dW" type="submit" name="typ" value="video">
                 <div style = "grid-area: titel;">
                     <p> Video </p>
                 </div>
