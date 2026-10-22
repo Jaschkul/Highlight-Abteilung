@@ -153,9 +153,9 @@ $bildCount = [
 <form action="speichern.php" method="post" class="class-button">
        <?php 
 
-$schimpfwort = ["ist"];
+//$schimpfwort = ["ist"];
 
-include ("dataTest.php");
+include("dataTest.php");
 $input = nl2br(htmlspecialchars($_SESSION['beschreibung1']));
 $text = strtolower($input);
 $array = explode(" ", $text);
@@ -189,5 +189,5 @@ foreach($array as $a){
 
 </body>
 </html>
-<?php include("C:\Users\Ulrich\Documents\GitHub\Highlight-Abteilung\Content\User\footer.php"); ?>
+<?php include("footer.php"); ?>
 
