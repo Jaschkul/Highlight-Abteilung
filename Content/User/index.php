@@ -95,14 +95,18 @@
 
             <div>
                 <a href="video.php">
-                <button class="dW">
+                <button class="dW" type="button">
                 <div style = "grid-area: titel;">
                     <p> Video </p>
                 </div>
             </button></a>
         </div> 
     </div>
-
+<!--
+<a href="zielseite.php">
+    <button type="button">Zur nächsten PHP-Datei</button>
+</a>
+-->
 
     </form>
    
