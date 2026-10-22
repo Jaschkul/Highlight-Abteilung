@@ -153,9 +153,9 @@ $bildCount = [
 <form action="speichern.php" method="post" class="class-button">
        <?php 
 
-//$schimpfwort = ["ist"];
+//$schimpfwort = ["ist"];  
 
-include("dataTest.php");
+include("../Highlight-Abteilung/dataTest.php");
 $input = nl2br(htmlspecialchars($_SESSION['beschreibung1']));
 $text = strtolower($input);
 $array = explode(" ", $text);
